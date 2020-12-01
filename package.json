@@ -2,7 +2,7 @@
   "name": "displaylive",
   "version": "1.0.0",
   "private": true,
-  "homepage": "/display",
+  "homepage": "/live",
   "dependencies": {
     "@material-ui/core": "^4.9.5",
     "@material-ui/icons": "^4.9.1",

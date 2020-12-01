@@ -22,7 +22,6 @@ export class BaseFrontendStaticComponent extends React.Component<BaseFrontendInt
         let staticbox = classnames('staticbox');
         return (
             <div>
-
                 <HeaderEventHeatComponent
                     EventHeat={this.props.EventHeat}
                 />

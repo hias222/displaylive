@@ -54,6 +54,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
             MessageTime: Date.now().toString(),
             VideoVersion: ""
         };
+
         this.mylane = [];
         this.correctValueForLaneNull = 0;
         this.window_width = process.env.REACT_APP_PIXEL_WIDTH !== undefined ? Number(process.env.REACT_APP_PIXEL_WIDTH) : 512
@@ -174,18 +175,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
     render() {
 
         let webcontent = <p>starting</p>;
-        let statictable = classnames('statictable');
-
-        let buttonfullscreen = <div></div>
-
-        if (this.window_top_pixel > 20) {
-            buttonfullscreen = <div>
-                <button onClick={this.handleFullscreen}>Full screen
-                </button>
-                <a href="/download/index.html">Links - Downloads
-                </a>
-            </div>
-        }
+        let basepage = classnames('basepage');
 
         if (this.state.displayMode === 'message' || this.state.displayMode === 'clock' || this.state.displayMode === 'video') {
             webcontent = <MessageFrontendComponent
@@ -204,12 +194,11 @@ export default class Lcd extends React.Component<{}, FrontendState> {
                 runningTime={this.state.runningTime}
             />
         }
+        
         return (
             <div>
-                <Box height={this.window_top_pixel}>
-                    {buttonfullscreen}
-                </Box>
-                <Box width={this.window_width} height={this.window_height} className={statictable}>
+                <Box width={this.window_width} height={this.window_height} className={basepage}>
+                    <p>BOX</p>
                     <WsSocketState onStartStop={this.onStartStop}
                         onEventHeatChange={this.onEventHeatChange}
                         onLaneChange={this.onLaneChange}

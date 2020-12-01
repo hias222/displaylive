@@ -10,10 +10,10 @@ interface HeaderEventHeatInterface {
 export class HeaderEventHeatComponent extends React.Component<HeaderEventHeatInterface,{}>{
 
     render() {
-        let staticheatevent = classnames('staticheatevent');
+        let headerevent = classnames('headerevent');
 
         return (
-            <Grid container className={staticheatevent}>
+            <Grid container className={headerevent}>
                 <Grid item xs={3}>Wettkampf: {this.props.EventHeat.eventnr}</Grid>
                 <Grid item xs={3}>Lauf: {this.props.EventHeat.heatnr}</Grid>
             </Grid>

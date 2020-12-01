@@ -7,7 +7,7 @@ import { Route, BrowserRouter } from 'react-router-dom';
 
 
 const routing = (
-    <BrowserRouter basename="/display">
+    <BrowserRouter basename="/live">
         <Route path="/" exact component={App} />
     </BrowserRouter>
 )
