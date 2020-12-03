@@ -1,15 +1,15 @@
 import React from "react";
 
-import { swimmerData } from "../types/SwimmerData";
-import { LaneInterface } from "../interfaces/LaneInterface";
-import { LaneState } from "../state/LaneState";
+import { swimmerData } from "../../types/SwimmerData";
+import { LaneInterface } from "../../interfaces/LaneInterface";
+import { LaneState } from "../../state/LaneState";
 
-import checkUndefined from "../utilities/checkUndefined";
-import getBirthYear from "../utilities/getBirthYear";
-import stringToBoolean from "../utilities/stringToBoolean";
-import StyledLane from "./images/StyledLane";
-import LapStyledLane from "./images/LapStyledLane";
-import FinishStyledLane from "./images/FinishStyledLane";
+import checkUndefined from "../../utilities/checkUndefined";
+import getBirthYear from "../../utilities/getBirthYear";
+import stringToBoolean from "../../utilities/stringToBoolean";
+import StyledLane from "../images/StyledLane";
+import LapStyledLane from "../images/LapStyledLane";
+import FinishStyledLane from "../images/FinishStyledLane";
 
 export class SingleLaneStaticComponent extends React.Component<LaneInterface, LaneState>{
 

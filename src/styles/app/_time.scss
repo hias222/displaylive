@@ -1,0 +1,15 @@
+
+$farbeback: rgb(72, 118, 255);
+
+.runningtime {
+  margin: 1em;
+  padding: 0.4em;
+  color: white;
+  font-size: 1.5rem;
+  text-align: right;
+  background-color: $farbeback;
+}
+
+.runningbackground {
+  color: white;
+}

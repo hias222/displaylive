@@ -1,10 +1,10 @@
-$farbehintergrund:   rgba(196, 196, 196, 0.1);
+$farbeback: rgb(72, 118, 255);
 
 .headerevent {
-  border-spacing: 0;
-  background-color: $farbehintergrund;
-  border-top: 0;
-  border-bottom: 0;
-  border-left: 0;
-  border-right: 0;
+  margin: 0.3em;
+  padding: 0.5em;
+  color: white;
+  font-size: 1.3rem;
+  background-color: $farbeback;
+  box-shadow: 0px 2px 1px -1px $farbeback,0px 1px 1px 0px $farbeback,0px 1px 3px 0px $farbeback;
 }

@@ -6,8 +6,8 @@ import { FrontendState } from './state/FrontendState';
 import classnames from 'classnames';
 import { Box } from '@material-ui/core';
 import { MessageFrontendComponent } from './components/messages/MessageFrontendComponent';
-import { BaseFrontendStaticComponent } from './components/BaseFrontendStaticComponent';
 import { eventHeat } from './types/EventHeat';
+import { FrontendSwitchComponent } from './components/FrontendSwitchComponent';
 
 // https://towardsdatascience.com/passing-data-between-react-components-parent-children-siblings-a64f89e24ecf
 // https://medium.com/@RupaniChirag/parent-child-communication-in-vue-angular-and-react-all-in-typescript-9a47c75cbf74
@@ -90,6 +90,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         this.setState({
             runningTime: RunningTime
         });
+        console.log("onRunningTimeChange" + RunningTime )
     }
 
     onLaneChange(lane: number, LaneData: any) {
@@ -186,7 +187,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
                 displayFormat={"lcd"}
             />
         } else {
-            webcontent = <BaseFrontendStaticComponent
+            webcontent = <FrontendSwitchComponent
                 startdelayms={this.state.startdelayms}
                 EventHeat={this.state.eventHeat}
                 lanes={this.state.lanes}
@@ -198,7 +199,6 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         return (
             <div>
                 <Box width={this.window_width} height={this.window_height} className={basepage}>
-                    <p>BOX</p>
                     <WsSocketState onStartStop={this.onStartStop}
                         onEventHeatChange={this.onEventHeatChange}
                         onLaneChange={this.onLaneChange}
