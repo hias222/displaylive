@@ -22,6 +22,7 @@ export class FrontendLapComponent extends React.Component<BaseFrontendInterface,
 
         return (
             <div>
+                <p>LAP</p>
                 <HeaderEventHeatComponent
                     EventHeat={this.props.EventHeat}
                 />

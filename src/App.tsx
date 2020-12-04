@@ -8,6 +8,7 @@ import { Box } from '@material-ui/core';
 import { MessageFrontendComponent } from './components/messages/MessageFrontendComponent';
 import { eventHeat } from './types/EventHeat';
 import { FrontendSwitchComponent } from './components/FrontendSwitchComponent';
+import { LaneData } from './interfaces/lanedatainterface';
 
 // https://towardsdatascience.com/passing-data-between-react-components-parent-children-siblings-a64f89e24ecf
 // https://medium.com/@RupaniChirag/parent-child-communication-in-vue-angular-and-react-all-in-typescript-9a47c75cbf74
@@ -18,7 +19,7 @@ import { FrontendSwitchComponent } from './components/FrontendSwitchComponent';
 
 export default class Lcd extends React.Component<{}, FrontendState> {
 
-    mylane: string[];
+    mylane: LaneData[];
     correctValueForLaneNull: number;
     evenHeat: eventHeat;
 
@@ -63,7 +64,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
 
     }
     async onStartStop(startdelayms: number) {
-        console.log("App: start or stop event (" + startdelayms + ")");
+        //console.log("App: start or stop event (" + startdelayms + ")");
         // start without stop
         if (startdelayms !== -1) {
             if (this.state.racerunning) {
@@ -110,11 +111,11 @@ export default class Lcd extends React.Component<{}, FrontendState> {
             var sizeLanes = this.mylane.length - this.correctValueForLaneNull
 
             if (lane > sizeLanes) {
-                console.log(lane + ": new (" + this.correctValueForLaneNull + ")")
+                // console.log(lane + ": new (" + this.correctValueForLaneNull + ")")
                 this.mylane.push(LaneData)
             } else {
                 this.mylane[lane - 1 + this.correctValueForLaneNull] = (LaneData)
-                console.log(lane + ": change (" + this.correctValueForLaneNull + ")")
+                //console.log(lane + ": change (" + this.correctValueForLaneNull + ")")
             }
 
             this.setState({
@@ -124,7 +125,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
     }
 
     onDisplayModeChange(displaymode: string) {
-        console.log("change to " + displaymode)
+       // console.log("change to " + displaymode)
         this.setState({
             displayMode: displaymode
         })

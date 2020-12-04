@@ -1,16 +1,18 @@
 import React from "react";
-import { StartStopComponent } from "./modules/StartStopComponent";
 import { BaseFrontendInterface } from "../interfaces/BaseFrontendInterface";
 import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
-import { Box } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
+import { SingleLaneStaticComponent } from "./modules/SingleLaneStaticComponent";
+
 //import classnames from 'classnames';
 
-export class FrontendHeaderTimeComponent extends React.Component<BaseFrontendInterface, {}> {
+export class FrontendFinishComponent extends React.Component<BaseFrontendInterface, {}> {
 
     componentDidUpdate(prevProps: BaseFrontendInterface) {
 
         if (prevProps.lanes !== this.props.lanes) {
             console.log("update BaseFrontendStaticComponent lanes")
+            //console.log("update " + JSON.stringify(this.props.lanes))
         }
     }
 
@@ -20,18 +22,23 @@ export class FrontendHeaderTimeComponent extends React.Component<BaseFrontendInt
 
         return (
             <div>
-                <p>HeaderTime</p>
+                <p>Finish</p>
                 <HeaderEventHeatComponent
                     EventHeat={this.props.EventHeat}
                 />
 
-                <Box m={70} />
-
-                <StartStopComponent
-                    startdelayms={this.props.startdelayms}
-                    EventHeat={this.props.EventHeat}
-                    runningTime={this.props.runningTime}
-                />
+                <Grid container >
+                    {
+                        this.props.lanes.map((lane, index) => (
+                            <SingleLaneStaticComponent
+                                key={index}
+                                lane={lane}
+                                index={index}
+                                displayMode={this.props.displayMode}
+                            />
+                        ))
+                    }
+                </Grid>
 
             </div >
         )

@@ -1,11 +1,12 @@
 import React from "react";
-import { StartStopComponent } from "./modules/StartStopComponent";
 import { BaseFrontendInterface } from "../interfaces/BaseFrontendInterface";
 import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
-import { Box } from "@material-ui/core";
+import {  Grid } from "@material-ui/core";
+import { LapLaneSmallComponent } from "./modules/LapLaneSmallComponent";
+
 //import classnames from 'classnames';
 
-export class FrontendHeaderTimeComponent extends React.Component<BaseFrontendInterface, {}> {
+export class FrontendStartComponent extends React.Component<BaseFrontendInterface, {}> {
 
     componentDidUpdate(prevProps: BaseFrontendInterface) {
 
@@ -16,22 +17,25 @@ export class FrontendHeaderTimeComponent extends React.Component<BaseFrontendInt
 
     render() {
 
-        //let basefill = classnames('basefill');
-
         return (
             <div>
-                <p>HeaderTime</p>
+                <p>Start</p>
                 <HeaderEventHeatComponent
                     EventHeat={this.props.EventHeat}
                 />
 
-                <Box m={70} />
-
-                <StartStopComponent
-                    startdelayms={this.props.startdelayms}
-                    EventHeat={this.props.EventHeat}
-                    runningTime={this.props.runningTime}
-                />
+                <Grid container >
+                    {
+                        this.props.lanes.map((lane, index) => (
+                            <LapLaneSmallComponent
+                                key={index}
+                                lane={lane}
+                                index={index}
+                                displayMode={this.props.displayMode}
+                            />
+                        ))
+                    }
+                </Grid>
 
             </div >
         )
