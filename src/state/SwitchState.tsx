@@ -1,3 +1,5 @@
+import { LaneData } from "../interfaces/lanedatainterface";
+
 export enum EnumHeatState {
   BeforeStart,
   Running,
@@ -5,9 +7,12 @@ export enum EnumHeatState {
   Finished
 }
 
+
 export type SwitchState = {
   runnning: boolean;
-  results: boolean;
   state: EnumHeatState;
+  lapdata: boolean;
+  finishdata: boolean;
+  lanes: LaneData[];
 };
 

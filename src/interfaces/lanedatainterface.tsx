@@ -5,6 +5,7 @@ export interface LaneData {
     entrytime?: string;
     finishtime?: string;
     place?: string;
+    lap?: string;
     swimmer: swimmerData;
 }
 

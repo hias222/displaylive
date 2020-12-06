@@ -3,7 +3,7 @@ export default function stringToBoolean(string) {
         case "true":
         case "yes":
         case "1": return true;
-        case "false":
+        case "false": return false;
         case "no":
         case "0":
         case null: return false;

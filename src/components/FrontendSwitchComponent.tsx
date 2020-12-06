@@ -1,7 +1,9 @@
 import React from "react";
 
 import { BaseFrontendInterface } from "../interfaces/BaseFrontendInterface";
+import { LaneData } from "../interfaces/lanedatainterface";
 import { EnumHeatState, SwitchState } from "../state/SwitchState";
+import stringToBoolean from "../utilities/stringToBoolean";
 import { FrontendFinishComponent } from "./FrontendFinishComponent";
 import { FrontendHeaderTimeComponent } from "./FrontendHeaderTimeComponent";
 import { FrontendLapComponent } from "./FrontendLapComponent";
@@ -16,24 +18,20 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
 
         this.state = {
             runnning: false,
-            results: false,
-            state: EnumHeatState.BeforeStart
+            lapdata: false,
+            finishdata: false,
+            state: EnumHeatState.BeforeStart,
+            lanes: []
         }
     }
 
     componentDidUpdate(prevProps: BaseFrontendInterface) {
 
-        if (prevProps.displayMode !== this.props.displayMode) {
-            if(this.props.displayMode === "race") this.checkResults()
-        }
-
-        //check exist index
-        //this.props.lanes.map((lane, index) => (
-        //    console.log(lane.finishtime + "" +  prevProps.lanes[index].finishtime)
-        //))
-
-        if (prevProps.lanes !== this.props.lanes) {
-            console.log("+++++++++++++++++")
+        if (this.state.runnning) {
+            // nein geht nicht 
+            if (!this.state.finishdata) {
+                this.checkResults(this.props.lanes)
+            }
         }
 
         if (prevProps.startdelayms !== this.props.startdelayms) {
@@ -41,11 +39,20 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
         }
 
         if (prevProps.EventHeat.heatnr !== this.props.EventHeat.heatnr) {
-            this.setState({ state: EnumHeatState.BeforeStart })
+            this.setState({
+                state: EnumHeatState.BeforeStart,
+                finishdata: false,
+                lapdata: false
+            })
+
         }
 
         if (prevProps.EventHeat.eventnr !== this.props.EventHeat.eventnr) {
-            this.setState({ state: EnumHeatState.BeforeStart })
+            this.setState({
+                state: EnumHeatState.BeforeStart,
+                finishdata: false,
+                lapdata: false
+            })
         }
 
     }
@@ -53,8 +60,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
     checkRunning() {
         if (this.props.startdelayms === -1) {
             this.setState({
-                runnning: false,
-                results: false
+                runnning: false
             })
         } else {
             this.setState({
@@ -63,10 +69,46 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
         }
     }
 
-    checkResults() {
-        this.setState({
-            results: true
-        })
+    checkResults(lanes: LaneData[]) {
+
+        if (lanes !== undefined) {
+            this.props.lanes.map((lane, index) => {
+                if (lane !== this.state.lanes[index]) {
+                    var sizeLanes = this.state.lanes.length
+                    if (index > sizeLanes - 1) {
+                        this.setState(state => {
+                            const lanes = [...state.lanes, lane];
+                            return {
+                                lanes
+                            };
+                        });
+                    } else {
+                        if (stringToBoolean(lane.lap)) {
+                            this.setState({
+                                lapdata: true
+                            })
+                        } else {
+                            this.setState({
+                                finishdata: true
+                            })
+                        }
+
+                        // eslint-disable-next-line
+                        this.state.lanes[index] = (lane)
+
+                        //  this.setState(state => {
+                        //     const lanes = state.lanes.map(item => lane);
+                        //     return {
+                        //         lanes
+                        //     };
+                        // });
+                    }
+
+                }
+                return true
+            })
+        }
+
     }
 
     getHeaderTimeData() {
@@ -107,16 +149,17 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
 
     getSwitchData() {
 
-        switch(this.state.state){
+        switch (this.state.state) {
             case EnumHeatState.BeforeStart: {
                 if (this.state.runnning) this.setState({ state: EnumHeatState.Running })
                 return this.getFrontendStartData()
             } case EnumHeatState.Running: {
-                if (this.state.results) this.setState({ state: EnumHeatState.LapTimes })
+                if (this.state.lapdata) this.setState({ state: EnumHeatState.LapTimes })
                 if (!this.state.runnning) this.setState({ state: EnumHeatState.Finished })
                 return this.getHeaderTimeData()
             } case EnumHeatState.LapTimes: {
                 if (!this.state.runnning) this.setState({ state: EnumHeatState.Finished })
+                if (this.state.finishdata) this.setState({ state: EnumHeatState.Finished })
                 return this.getFrontendLapData()
             } case EnumHeatState.Finished: {
                 return this.getFrontendFinishData()
