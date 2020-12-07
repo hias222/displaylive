@@ -1,8 +1,7 @@
 import React from "react";
 import classnames from 'classnames';
 import { LaneData } from "../../interfaces/lanedatainterface";
-import { Grid, Box } from "@material-ui/core";
-import LaneNumberFinish from "./LaneNumberFinish";
+import { Grid } from "@material-ui/core";
 export default class FinishStyledLane extends React.Component<LaneData, {}> {
 
     box_height: number;
@@ -33,39 +32,32 @@ export default class FinishStyledLane extends React.Component<LaneData, {}> {
     }
 
     render() {
-        let staticlaneeven = classnames('staticlaneeven');
+        let finishlane = classnames('finishlane');
         let correctName = this.checkName();
-        let staticbox = classnames('staticbox');
 
         return <Grid container item xs={12}>
-            <Grid item xs={2}>
-                <Box height={this.box_height} borderTop={1} borderLeft={0} borderBottom={0} className={staticbox}>
-                    <Grid className={staticlaneeven}>
-                        <LaneNumberFinish
-                            laneNumber={this.props.lane}
-                            place={this.props.place}
-                        />
+            <Grid item xs={1}>
+                    <Grid className={finishlane}>
+                        {this.props.lane}
                     </Grid>
-                </Box>
+            </Grid>
 
+            <Grid item xs={1}>
+                    <Grid className={finishlane}>
+                       {this.props.place}
+                    </Grid>
             </Grid>
 
             <Grid item xs={7}>
-
-                <Box height={this.box_height} borderTop={1} borderBottom={0} className={staticbox}>
-                    <Grid className={staticlaneeven}>
+                    <Grid className={finishlane}>
                         {correctName}
                     </Grid>
-                </Box>
-
+            
             </Grid>
             <Grid item xs={3} text-align={"center"}>
-                <Box height={this.box_height} borderTop={1} borderBottom={0} borderRight={0} className={staticbox}>
-                    <Grid className={staticlaneeven}>
+                    <Grid className={finishlane}>
                         {this.props.finishtime}
                     </Grid>
-                </Box>
-
             </Grid>
         </Grid>;
 

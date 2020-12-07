@@ -7,13 +7,10 @@ import { LaneState } from "../../state/LaneState";
 import checkUndefined from "../../utilities/checkUndefined";
 import getBirthYear from "../../utilities/getBirthYear";
 import stringToBoolean from "../../utilities/stringToBoolean";
-import StyledLane from "../images/StyledLane";
-import LapStyledLane from "../images/LapStyledLane";
-import FinishStyledLane from "../images/FinishStyledLane";
+import StartStyledLane from "../images/StartStyledLane";
 
-export class SingleLaneStaticComponent extends React.Component<LaneInterface, LaneState>{
+export class StartLaneComponent extends React.Component<LaneInterface, LaneState>{
 
-  intervalId: NodeJS.Timeout;
   swimmer: swimmerData;
 
   constructor(props: LaneInterface) {
@@ -38,17 +35,11 @@ export class SingleLaneStaticComponent extends React.Component<LaneInterface, La
 
     this.updateData = this.updateData.bind(this)
     this.getRaceData = this.getRaceData.bind(this)
-    this.laptimer = this.laptimer.bind(this)
-    this.intervalId = setInterval(this.laptimer, 1000);
   }
 
   componentDidMount() {
     this.updateData();
 
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.intervalId);
   }
 
   componentDidUpdate(prevProps: LaneInterface) {
@@ -59,19 +50,6 @@ export class SingleLaneStaticComponent extends React.Component<LaneInterface, La
     }
   }
 
-  laptimer() {
-    if (this.state.islaptime) {
-      var changesinceseconds = Date.now() - this.state.changed
-      //console.log("lap " + this.state.lane + " changed since " + changesinceseconds)
-      if (changesinceseconds > 15000) {
-        console.log("lap " + this.state.lane + " changed since " + changesinceseconds)
-        this.setState({
-          laptime: "",
-          islaptime: false
-        })
-      }
-    }
-  }
 
   updateData() {
     if (this.props.lane.lastname !== undefined) {
@@ -109,7 +87,7 @@ export class SingleLaneStaticComponent extends React.Component<LaneInterface, La
     if (stringToBoolean(this.props.lane.lap)) {
       this.setState({
         islaptime: true,
-        laptime: checkUndefined(this.props.lane.finishtime),
+        laptime: "",
       })
     } else {
       this.setState({
@@ -120,45 +98,22 @@ export class SingleLaneStaticComponent extends React.Component<LaneInterface, La
     }
 
   }
-
-  getData() {
-    switch (this.props.displayMode) {
-      case "startlist":
-        return <StyledLane
-          swimmer={this.state.swimmerData}
-          lane={this.state.lane}
-          entrytime={this.state.entrytime}
-        />
-      case "race":
-        return this.getRaceData()
-      default:
-        return <p>no displaymode</p>
-    }
-  }
   //paste in state
 
   getRaceData() {
-
-    if (this.state.islaptime) {
-      return <LapStyledLane
-        swimmer={this.state.swimmerData}
-        lane={this.state.lane}
-        finishtime={this.state.laptime}
-      />
+    if (!this.state.islaptime) {
+    return <StartStyledLane
+      swimmer={this.state.swimmerData}
+      lane={this.state.lane}
+    />
     } else {
-      return <FinishStyledLane
-        swimmer={this.state.swimmerData}
-        lane={this.state.lane}
-        place={this.state.place}
-        finishtime={this.state.time}
-      />
+      return null
     }
-
   }
 
   render() {
     return (
-      this.getData()
+      this.getRaceData()
     )
   }
 

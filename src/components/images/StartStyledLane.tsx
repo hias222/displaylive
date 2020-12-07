@@ -2,8 +2,7 @@ import React from "react";
 import classnames from 'classnames';
 import { LaneData } from "../../interfaces/lanedatainterface";
 import { Grid } from "@material-ui/core";
-import PoolIcon from '@material-ui/icons/Pool';
-export default class LapStyledLane extends React.Component<LaneData, {}> {
+export default class StartStyledLane extends React.Component<LaneData, {}> {
 
     box_height: number;
 
@@ -17,7 +16,6 @@ export default class LapStyledLane extends React.Component<LaneData, {}> {
 
         let sizeName = this.props.swimmer.name.length;
         let sizeLastName = (this.props.swimmer.firstName !== undefined) ? this.props.swimmer.firstName.length : 0
-
 
         if (sizeName > (namelength - 2)) {
             console.log("short name")
@@ -34,33 +32,24 @@ export default class LapStyledLane extends React.Component<LaneData, {}> {
     }
 
     render() {
-        let laplane = classnames('laplane');
+        let finishlane = classnames('finishlane');
         let correctName = this.checkName();
-        //let lapbox = classnames('lapbox');
 
         return <Grid container item xs={12}>
             <Grid item xs={1}>
-                <Grid className={laplane}>
-                    {this.props.lane} 
-                </Grid>
+                    <Grid className={finishlane}>
+                        {this.props.lane}
+                    </Grid>
             </Grid>
-            <Grid item xs={1}>
-                <Grid className={laplane}>
-                    <PoolIcon></PoolIcon>
-                </Grid>
 
-            </Grid>
+
             <Grid item xs={7}>
-
-                <Grid className={laplane}>
-                    {correctName}
-                </Grid>
+                    <Grid className={finishlane}>
+                        {correctName}
+                    </Grid>
+            
             </Grid>
-            <Grid item xs={3} text-align={"center"}>
-                <Grid className={laplane}>
-                    {this.props.finishtime}
-                </Grid>
-            </Grid>
+           
         </Grid>;
 
     }

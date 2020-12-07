@@ -2,7 +2,7 @@ import React from "react";
 import { BaseFrontendInterface } from "../interfaces/BaseFrontendInterface";
 import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
 import { Grid } from "@material-ui/core";
-import { SingleLaneStaticComponent } from "./modules/SingleLaneStaticComponent";
+import { FinishLaneComponent } from "./modules/FinishLaneComponent";
 
 //import classnames from 'classnames';
 
@@ -30,7 +30,7 @@ export class FrontendFinishComponent extends React.Component<BaseFrontendInterfa
                 <Grid container >
                     {
                         this.props.lanes.map((lane, index) => (
-                            <SingleLaneStaticComponent
+                            <FinishLaneComponent
                                 key={index}
                                 lane={lane}
                                 index={index}

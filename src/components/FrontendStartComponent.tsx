@@ -2,7 +2,7 @@ import React from "react";
 import { BaseFrontendInterface } from "../interfaces/BaseFrontendInterface";
 import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
 import {  Grid } from "@material-ui/core";
-import { LapLaneSmallComponent } from "./modules/LapLaneSmallComponent";
+import { StartLaneComponent } from "./modules/StartLaneComponent";
 
 //import classnames from 'classnames';
 
@@ -27,7 +27,7 @@ export class FrontendStartComponent extends React.Component<BaseFrontendInterfac
                 <Grid container >
                     {
                         this.props.lanes.map((lane, index) => (
-                            <LapLaneSmallComponent
+                            <StartLaneComponent
                                 key={index}
                                 lane={lane}
                                 index={index}

@@ -7,7 +7,7 @@ import stringToBoolean from "../utilities/stringToBoolean";
 import { FrontendFinishComponent } from "./FrontendFinishComponent";
 import { FrontendHeaderTimeComponent } from "./FrontendHeaderTimeComponent";
 import { FrontendLapComponent } from "./FrontendLapComponent";
-import { FrontendStartComponent } from "./FrontendStartComponent copy";
+import { FrontendStartComponent } from "./FrontendStartComponent";
 
 //import classnames from 'classnames';
 
@@ -38,7 +38,6 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
 
         if (this.state.runnning) {
             this.checkResults(this.props.lanes)
-
         }
 
         if (prevProps.startdelayms !== this.props.startdelayms) {
@@ -69,7 +68,6 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
 
     laptimer() {
         if (this.state.lapdata) {
-
             var changesinceseconds = Date.now() - this.state.lapchangetime
             //console.log("last lap time before ms " + changesinceseconds)
             if (changesinceseconds > 10000) {
@@ -109,6 +107,8 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
                         });
                     } else {
                         if (stringToBoolean(lane.lap)) {
+
+                            // add if finish - no
                             this.setState({
                                 lapdata: true,
                                 lapchangetime: Date.now()
