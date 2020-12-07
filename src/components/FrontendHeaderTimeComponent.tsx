@@ -25,7 +25,7 @@ export class FrontendHeaderTimeComponent extends React.Component<BaseFrontendInt
                     EventHeat={this.props.EventHeat}
                 />
 
-                <Box m={70} />
+                <Box m={60} />
 
                 <StartStopComponent
                     startdelayms={this.props.startdelayms}
