@@ -24,7 +24,8 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             finishdata: false,
             lapchangetime: Date.now(),
             state: EnumHeatState.BeforeStart,
-            lanes: []
+            lanes: [],
+            startdelay: -1
         }
         this.laptimer = this.laptimer.bind(this)
         this.intervalId = setInterval(this.laptimer, 1000);
@@ -34,8 +35,13 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
         clearInterval(this.intervalId);
     }
 
-    componentDidUpdate(prevProps: BaseFrontendInterface) {
+    componentDidMount() {
+        console.log("state " + this.state.state)
+        this.checkRunning();
+        this.checkResults(this.props.lanes)
+    }
 
+    componentDidUpdate(prevProps: BaseFrontendInterface) {
         if (this.state.runnning) {
             this.checkResults(this.props.lanes)
         }
@@ -45,7 +51,6 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
         }
 
         if (prevProps.EventHeat.heatnr !== this.props.EventHeat.heatnr) {
-            console.log("reset ")
             this.setState({
                 state: EnumHeatState.BeforeStart,
                 finishdata: false,
@@ -53,15 +58,14 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             })
 
         }
-
         if (prevProps.EventHeat.eventnr !== this.props.EventHeat.eventnr) {
-            console.log("reset ")
             this.setState({
                 state: EnumHeatState.BeforeStart,
                 finishdata: false,
                 lapdata: false
             })
         }
+
 
     }
 
@@ -71,7 +75,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             var changesinceseconds = Date.now() - this.state.lapchangetime
             //console.log("last lap time before ms " + changesinceseconds)
             if (changesinceseconds > 10000) {
-                console.log("lap time reset " + changesinceseconds)
+                //console.log("lap time reset " + changesinceseconds)
                 this.setState({
                     lapdata: false
                 })
@@ -81,15 +85,25 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
 
 
     checkRunning() {
-        if (this.props.startdelayms === -1) {
-            this.setState({
-                runnning: false
-            })
-        } else {
-            this.setState({
-                runnning: true
-            })
+        if (true) {
+            if (this.props.startdelayms === -1) {
+                this.setState({
+                    runnning: false
+                })
+            } else {
+                this.setState({
+                    runnning: true
+                })
+            }
         }
+    }
+
+    laneInfo() {
+        console.log("laneinfo")
+        this.props.lanes.map((lane, index) => {
+            console.log("lane " + lane.lap + " " + index)
+            return null
+        })
     }
 
     checkResults(lanes: LaneData[]) {
@@ -105,30 +119,29 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
                                 lanes
                             };
                         });
-                    } else {
-                        if (stringToBoolean(lane.lap)) {
 
-                            // add if finish - no
-                            this.setState({
-                                lapdata: true,
-                                lapchangetime: Date.now()
-                            })
-                        } else {
-                            this.setState({
-                                finishdata: true
-                            })
-                        }
-
-                        // eslint-disable-next-line
-                        this.state.lanes[index] = (lane)
-
-                        //  this.setState(state => {
-                        //     const lanes = state.lanes.map(item => lane);
-                        //     return {
-                        //         lanes
-                        //     };
-                        // });
                     }
+                    if (stringToBoolean(lane.lap)) {
+                        this.setState({
+                            lapdata: true,
+                            lapchangetime: Date.now()
+                        })
+                    } else {
+                        this.setState({
+                            finishdata: true
+                        })
+                    }
+
+                    // eslint-disable-next-line
+                    this.state.lanes[index] = (lane)
+
+                    //  this.setState(state => {
+                    //     const lanes = state.lanes.map(item => lane);
+                    //     return {
+                    //         lanes
+                    //     };
+                    // });
+
 
                 }
                 return true
@@ -155,7 +168,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             runningTime={this.props.runningTime} />
     }
 
-    getFrontendStartData() {
+    getFrontendBeforeStart() {
         return <FrontendStartComponent
             startdelayms={this.props.startdelayms}
             EventHeat={this.props.EventHeat}
@@ -178,8 +191,9 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
         switch (this.state.state) {
             case EnumHeatState.BeforeStart: {
                 if (this.state.runnning) this.setState({ state: EnumHeatState.Running })
-                return this.getFrontendStartData()
+                return this.getFrontendBeforeStart()
             } case EnumHeatState.Running: {
+                //ggf start delay setzen
                 if (this.state.lapdata) this.setState({ state: EnumHeatState.LapTimes })
                 if (this.state.finishdata) this.setState({ state: EnumHeatState.Finished })
                 if (!this.state.runnning) this.setState({ state: EnumHeatState.Finished })
@@ -194,7 +208,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             } default: {
                 if (this.state.runnning) this.setState({ state: EnumHeatState.Running })
                 if (!this.state.runnning) this.setState({ state: EnumHeatState.BeforeStart })
-                return this.getFrontendStartData()
+                return this.getFrontendBeforeStart()
             }
         }
     }

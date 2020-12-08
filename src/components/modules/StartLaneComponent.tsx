@@ -39,7 +39,6 @@ export class StartLaneComponent extends React.Component<LaneInterface, LaneState
 
   componentDidMount() {
     this.updateData();
-
   }
 
   componentDidUpdate(prevProps: LaneInterface) {
@@ -101,14 +100,10 @@ export class StartLaneComponent extends React.Component<LaneInterface, LaneState
   //paste in state
 
   getRaceData() {
-    if (!this.state.islaptime) {
     return <StartStyledLane
       swimmer={this.state.swimmerData}
       lane={this.state.lane}
     />
-    } else {
-      return null
-    }
   }
 
   render() {

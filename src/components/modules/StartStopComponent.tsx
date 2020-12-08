@@ -50,7 +50,6 @@ export class StartStopComponent extends React.Component<StartStopInterface, Star
     }
 
     async stopTimer() {
-
         this.setState({
             isOn: false,
             displaytime: 0,
