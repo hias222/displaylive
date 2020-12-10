@@ -86,10 +86,10 @@ export class StartStopComponent extends React.Component<StartStopInterface, Star
         if (prevProps.startdelayms !== this.props.startdelayms) {
 
             if (this.props.startdelayms === -1) {
-                console.log("StartStopComponent: new Data stop");
+                //console.log("StartStopComponent: new Data stop " );
                 this.stopTimer()
             } else {
-                console.log("StartStopComponent: new Data start");
+                //console.log("StartStopComponent: start " + this.props.startdelayms);
                 this.startTimer()
             }
         }
@@ -108,6 +108,13 @@ export class StartStopComponent extends React.Component<StartStopInterface, Star
     componentWillUnmount() {
         if (this.clocktimerid !== undefined) {
             clearInterval(this.clocktimerid);
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.startdelayms !== -1) {
+            console.log("StartStopComponent: Mount start " + this.props.startdelayms);
+            this.startTimer()
         }
     }
 

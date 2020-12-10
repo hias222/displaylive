@@ -25,7 +25,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             lapchangetime: Date.now(),
             state: EnumHeatState.BeforeStart,
             lanes: [],
-            startdelay: -1
+            startTime: 0
         }
         this.laptimer = this.laptimer.bind(this)
         this.intervalId = setInterval(this.laptimer, 1000);
@@ -69,7 +69,6 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
 
     }
 
-
     laptimer() {
         if (this.state.lapdata) {
             var changesinceseconds = Date.now() - this.state.lapchangetime
@@ -88,11 +87,13 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
         if (true) {
             if (this.props.startdelayms === -1) {
                 this.setState({
-                    runnning: false
+                    runnning: false,
+                    startTime: 0
                 })
             } else {
                 this.setState({
-                    runnning: true
+                    runnning: true,
+                    startTime: Date.now() - this.props.startdelayms
                 })
             }
         }
@@ -152,7 +153,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
 
     getHeaderTimeData() {
         return <FrontendHeaderTimeComponent
-            startdelayms={this.props.startdelayms}
+            startdelayms={Date.now()-this.state.startTime}
             EventHeat={this.props.EventHeat}
             lanes={this.props.lanes}
             displayMode={this.props.displayMode}
@@ -161,7 +162,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
 
     getFrontendLapData() {
         return <FrontendLapComponent
-            startdelayms={this.props.startdelayms}
+            startdelayms= {-1}
             EventHeat={this.props.EventHeat}
             lanes={this.props.lanes}
             displayMode={this.props.displayMode}

@@ -15,6 +15,6 @@ export type SwitchState = {
   lapchangetime: number;
   finishdata: boolean;
   lanes: LaneData[];
-  startdelay: number;
+  startTime: number;
 };
 
