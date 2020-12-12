@@ -1,14 +1,14 @@
 import React from "react";
-import { BaseFrontendInterface } from "../interfaces/BaseFrontendInterface";
 import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
 import { Grid } from "@material-ui/core";
 import { FinishLaneComponent } from "./modules/FinishLaneComponent";
+import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
 
 //import classnames from 'classnames';
 
-export class FrontendFinishComponent extends React.Component<BaseFrontendInterface, {}> {
+export class FrontendFinishComponent extends React.Component<SimpleFrontendInterface, {}> {
 
-    componentDidUpdate(prevProps: BaseFrontendInterface) {
+    componentDidUpdate(prevProps: SimpleFrontendInterface) {
 
         if (prevProps.lanes !== this.props.lanes) {
             console.log("update BaseFrontendStaticComponent lanes")
@@ -19,6 +19,8 @@ export class FrontendFinishComponent extends React.Component<BaseFrontendInterfa
     render() {
 
         //let basefill = classnames('basefill');
+
+        this.props.lanes.sort((a, b) => ((a.place || "99") > (b.place || "99")) ? 1 : -1)
 
         return (
             <div>
@@ -34,7 +36,6 @@ export class FrontendFinishComponent extends React.Component<BaseFrontendInterfa
                                 key={index}
                                 lane={lane}
                                 index={index}
-                                displayMode={this.props.displayMode}
                             />
                         ))
                     }

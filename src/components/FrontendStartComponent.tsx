@@ -1,14 +1,14 @@
 import React from "react";
-import { BaseFrontendInterface } from "../interfaces/BaseFrontendInterface";
 import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
 import {  Grid } from "@material-ui/core";
 import { StartLaneComponent } from "./modules/StartLaneComponent";
+import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
 
 //import classnames from 'classnames';
 
-export class FrontendStartComponent extends React.Component<BaseFrontendInterface, {}> {
+export class FrontendStartComponent extends React.Component<SimpleFrontendInterface, {}> {
 
-    componentDidUpdate(prevProps: BaseFrontendInterface) {
+    componentDidUpdate(prevProps: SimpleFrontendInterface) {
 
         if (prevProps.lanes !== this.props.lanes) {
             console.log("update BaseFrontendStaticComponent lanes")
@@ -31,7 +31,6 @@ export class FrontendStartComponent extends React.Component<BaseFrontendInterfac
                                 key={index}
                                 lane={lane}
                                 index={index}
-                                displayMode={this.props.displayMode}
                             />
                         ))
                     }

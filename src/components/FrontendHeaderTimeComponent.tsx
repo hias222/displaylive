@@ -1,13 +1,13 @@
 import React from "react";
 import { StartStopComponent } from "./modules/StartStopComponent";
-import { BaseFrontendInterface } from "../interfaces/BaseFrontendInterface";
 import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
 import { Box } from "@material-ui/core";
+import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
 //import classnames from 'classnames';
 
-export class FrontendHeaderTimeComponent extends React.Component<BaseFrontendInterface, {}> {
+export class FrontendHeaderTimeComponent extends React.Component<SimpleFrontendInterface, {}> {
 
-    componentDidUpdate(prevProps: BaseFrontendInterface) {
+    componentDidUpdate(prevProps: SimpleFrontendInterface) {
 
         if (prevProps.lanes !== this.props.lanes) {
             console.log("update BaseFrontendStaticComponent lanes")

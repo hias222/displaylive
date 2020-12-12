@@ -1,9 +1,9 @@
 import React from "react";
 
 import { BaseFrontendInterface } from "../interfaces/BaseFrontendInterface";
-import { LaneData } from "../interfaces/lanedatainterface";
+
 import { EnumHeatState, SwitchState } from "../state/SwitchState";
-import stringToBoolean from "../utilities/stringToBoolean";
+
 import { FrontendFinishComponent } from "./FrontendFinishComponent";
 import { FrontendHeaderTimeComponent } from "./FrontendHeaderTimeComponent";
 import { FrontendLapComponent } from "./FrontendLapComponent";
@@ -38,16 +38,38 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
     componentDidMount() {
         console.log("state " + this.state.state)
         this.checkRunning();
-        this.checkResults(this.props.lanes)
     }
 
     componentDidUpdate(prevProps: BaseFrontendInterface) {
-        if (this.state.runnning) {
-            this.checkResults(this.props.lanes)
-        }
 
         if (prevProps.startdelayms !== this.props.startdelayms) {
             this.checkRunning();
+        }
+
+        if (prevProps.lastChangeDate !== this.props.lastChangeDate){
+            this.setState({
+                lapchangetime: Date.now()
+            })
+        }
+
+        if (prevProps.finishdata !== this.props.finishdata) {
+            if (this.props.finishdata) {
+                console.log("finish change")
+                this.setState({
+                    finishdata: true,
+                    lapdata: false
+                })
+            }
+        }
+
+        if (prevProps.lapdata !== this.props.lapdata) {
+            if (this.props.lapdata) {
+                console.log("lap change")
+                this.setState({
+                    finishdata: false,
+                    lapdata: true
+                })
+            }
         }
 
         if (prevProps.EventHeat.heatnr !== this.props.EventHeat.heatnr) {
@@ -74,7 +96,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             var changesinceseconds = Date.now() - this.state.lapchangetime
             //console.log("last lap time before ms " + changesinceseconds)
             if (changesinceseconds > 10000) {
-                //console.log("lap time reset " + changesinceseconds)
+                console.log("lap time reset " + changesinceseconds)
                 this.setState({
                     lapdata: false
                 })
@@ -107,65 +129,20 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
         })
     }
 
-    checkResults(lanes: LaneData[]) {
-
-        if (lanes !== undefined) {
-            this.props.lanes.map((lane, index) => {
-                if (lane !== this.state.lanes[index]) {
-                    var sizeLanes = this.state.lanes.length
-                    if (index > sizeLanes - 1) {
-                        this.setState(state => {
-                            const lanes = [...state.lanes, lane];
-                            return {
-                                lanes
-                            };
-                        });
-
-                    }
-                    if (stringToBoolean(lane.lap)) {
-                        this.setState({
-                            lapdata: true,
-                            lapchangetime: Date.now()
-                        })
-                    } else {
-                        this.setState({
-                            finishdata: true
-                        })
-                    }
-
-                    // eslint-disable-next-line
-                    this.state.lanes[index] = (lane)
-
-                    //  this.setState(state => {
-                    //     const lanes = state.lanes.map(item => lane);
-                    //     return {
-                    //         lanes
-                    //     };
-                    // });
-
-
-                }
-                return true
-            })
-        }
-
-    }
-
     getHeaderTimeData() {
         return <FrontendHeaderTimeComponent
-            startdelayms={Date.now()-this.state.startTime}
+            startdelayms={Date.now() - this.state.startTime}
             EventHeat={this.props.EventHeat}
             lanes={this.props.lanes}
-            displayMode={this.props.displayMode}
-            runningTime={this.props.runningTime} />
+            runningTime={this.props.runningTime}
+        />
     }
 
     getFrontendLapData() {
         return <FrontendLapComponent
-            startdelayms= {-1}
+            startdelayms={-1}
             EventHeat={this.props.EventHeat}
             lanes={this.props.lanes}
-            displayMode={this.props.displayMode}
             runningTime={this.props.runningTime} />
     }
 
@@ -174,7 +151,6 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             startdelayms={this.props.startdelayms}
             EventHeat={this.props.EventHeat}
             lanes={this.props.lanes}
-            displayMode={this.props.displayMode}
             runningTime={this.props.runningTime} />
     }
 
@@ -183,7 +159,6 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             startdelayms={this.props.startdelayms}
             EventHeat={this.props.EventHeat}
             lanes={this.props.lanes}
-            displayMode={this.props.displayMode}
             runningTime={this.props.runningTime} />
     }
 

@@ -1,5 +1,6 @@
+import { LaneData } from "./lanedatainterface";
+
 export interface LaneInterface {
-    lane: any;
+    lane: LaneData;
     index: number;
-    displayMode: string;
 }

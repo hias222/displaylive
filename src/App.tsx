@@ -43,8 +43,10 @@ export default class Lcd extends React.Component<{}, FrontendState> {
             heatnr: "0",
             eventnr: "0"
         }
-        
+
         this.state = {
+            laplanedata: false,
+            finishlanedata: false,
             startdelayms: 0,
             runningTime: "",
             racerunning: false,
@@ -53,7 +55,8 @@ export default class Lcd extends React.Component<{}, FrontendState> {
             displayMode: "race",
             MessageText: "",
             MessageTime: Date.now().toString(),
-            VideoVersion: ""
+            VideoVersion: "",
+            lastChangeDate: Date.now()
         };
 
         this.mylane = [];
@@ -70,13 +73,17 @@ export default class Lcd extends React.Component<{}, FrontendState> {
             if (this.state.racerunning) {
                 this.setState({
                     startdelayms: 0,
-                    racerunning: false
+                    racerunning: false,
+                    laplanedata: false,
+                    finishlanedata: false
                 });
             }
         }
         this.setState({
             startdelayms: startdelayms,
-            racerunning: true
+            racerunning: true,
+            laplanedata: false,
+            finishlanedata: false
         });
     }
 
@@ -91,10 +98,15 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         this.setState({
             runningTime: RunningTime
         });
-        console.log("onRunningTimeChange" + RunningTime )
+        console.log("onRunningTimeChange" + RunningTime)
     }
 
     onLaneChange(lane: number, LaneData: any) {
+        
+        this.setState({
+            lastChangeDate: Date.now()
+        })
+
         if (lane === -1) {
             console.log("+++++ clear all")
             this.correctValueForLaneNull = 0;
@@ -102,6 +114,26 @@ export default class Lcd extends React.Component<{}, FrontendState> {
                 lanes: this.mylane = []
             })
         } else {
+
+            if (LaneData.lap !== undefined) {
+                if (LaneData.lap === "true") {
+                    if (!this.state.finishlanedata) {
+                        if (!this.state.laplanedata) console.log("service change lap ")
+                        this.setState({
+                            laplanedata: true
+                        })
+                    }
+                }
+            }
+
+            if (LaneData.lap !== undefined) {
+                if (LaneData.lap === 'false') {
+                    if (!this.state.finishlanedata) console.log("servcie change to finish")
+                    this.setState({
+                        finishlanedata: true
+                    })
+                }
+            }
 
             // eslint-disable-next-line
             if (lane == 0 && this.correctValueForLaneNull != 1) {
@@ -125,7 +157,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
     }
 
     onDisplayModeChange(displaymode: string) {
-       // console.log("change to " + displaymode)
+        // console.log("change to " + displaymode)
         this.setState({
             displayMode: displaymode
         })
@@ -194,9 +226,12 @@ export default class Lcd extends React.Component<{}, FrontendState> {
                 lanes={this.state.lanes}
                 displayMode={this.state.displayMode}
                 runningTime={this.state.runningTime}
+                finishdata={this.state.finishlanedata}
+                lapdata={this.state.laplanedata}
+                lastChangeDate={this.state.lastChangeDate}
             />
         }
-        
+
         return (
             <div>
                 <Box width={this.window_width} height={this.window_height} className={basepage}>

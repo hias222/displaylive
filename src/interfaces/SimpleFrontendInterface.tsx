@@ -1,13 +1,9 @@
 import { eventHeat } from "../types/EventHeat";
 import { LaneData } from "./lanedatainterface";
 
-export interface BaseFrontendInterface {
+export interface SimpleFrontendInterface {
     startdelayms: number;
     EventHeat: eventHeat;
     lanes: LaneData[];
-    displayMode: string;
     runningTime: string;
-    finishdata: boolean;
-    lapdata: boolean;
-    lastChangeDate: number;
 }

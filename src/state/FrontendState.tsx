@@ -8,8 +8,11 @@ export type FrontendState = {
   lanes: LaneData[];
   runningTime: string;
   displayMode: string;
+  laplanedata: boolean;
+  finishlanedata: boolean;
   MessageText: string;
   MessageTime: string;
   VideoVersion: string;
+  lastChangeDate: number;
 };
 
