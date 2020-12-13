@@ -1,8 +1,10 @@
 import React from "react";
-import classnames from 'classnames';
 import { LaneData } from "../../interfaces/lanedatainterface";
 import { Grid } from "@material-ui/core";
 import PoolIcon from '@material-ui/icons/Pool';
+import LaneNumber from "./LaneNumber";
+import LaneName from "./LaneName";
+import LaneTime from "./LaneTime";
 export default class LapStyledLane extends React.Component<LaneData, {}> {
 
     box_height: number;
@@ -34,36 +36,31 @@ export default class LapStyledLane extends React.Component<LaneData, {}> {
     }
 
     render() {
-        let laplane = classnames('laplane');
-        //let correctName = this.props.swimmer.name !== undefined ? this.checkName() : "empty"
-
         let correctName = this.checkName();
-        //let lapbox = classnames('lapbox');
+        var laneTime = this.props.finishtime !== undefined ? this.props.finishtime : "-";
 
-        return <Grid container item xs={12}>
-            <Grid item xs={1}>
-                <Grid className={laplane}>
-                    {this.props.lane} 
-                </Grid>
+        return <Grid container item xs={12} spacing={0}>
+            <Grid xs={1}></Grid>
+            <Grid item xs={10}>
+                <LaneNumber
+                    laneNumber={this.props.lane}
+                />
+                <PoolIcon></PoolIcon>
+                <LaneName
+                    LaneName={correctName}>
+                </LaneName>
+                <LaneTime
+                    LaneTime={laneTime}
+                />
             </Grid>
-            <Grid item xs={1}>
-                <Grid className={laplane}>
-                    <PoolIcon></PoolIcon>
-                </Grid>
-
-            </Grid>
-            <Grid item xs={7}>
-
-                <Grid className={laplane}>
-                    {correctName}
-                </Grid>
-            </Grid>
-            <Grid item xs={3} text-align={"center"}>
-                <Grid className={laplane}>
-                    {this.props.finishtime}
-                </Grid>
-            </Grid>
+            <Grid xs={1}></Grid>
         </Grid>;
 
     }
 }
+
+/*
+                                      <LaneNumber
+                    laneNumber={this.props.lane}
+                />
+                */

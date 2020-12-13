@@ -1,7 +1,10 @@
 import React from "react";
-import classnames from 'classnames';
 import { LaneData } from "../../interfaces/lanedatainterface";
 import { Grid } from "@material-ui/core";
+import LaneNumber from "./LaneNumber";
+import LaneName from "./LaneName";
+import LaneTime from "./LaneTime";
+import LanePlace from "./LanePlace";
 export default class FinishStyledLane extends React.Component<LaneData, {}> {
 
     box_height: number;
@@ -32,33 +35,28 @@ export default class FinishStyledLane extends React.Component<LaneData, {}> {
     }
 
     render() {
-        let finishlane = classnames('finishlane');
         let correctName = this.checkName();
-        
-        return <Grid container item xs={12}>
-            <Grid item xs={1}>
-                    <Grid className={finishlane}>
-                        {this.props.lane}
-                    </Grid>
-            </Grid>
 
-            <Grid item xs={1}>
-                    <Grid className={finishlane}>
-                       {this.props.place}
-                    </Grid>
-            </Grid>
+        var laneTime = this.props.finishtime !== undefined ? this.props.finishtime : "-" ;
+        var lanePlace = this.props.place !== undefined ? this.props.place : "-" ;
 
-            <Grid item xs={7}>
-                    <Grid className={finishlane}>
-                        {correctName}
-                    </Grid>
-            
+        return <Grid container item xs={12} spacing={0} >
+            <Grid xs={1}></Grid>
+            <Grid xs={10}>
+                <LanePlace
+                    laneNumber={lanePlace}
+                />
+                <LaneNumber
+                    laneNumber={this.props.lane}
+                />
+                <LaneName
+                    LaneName={correctName}>
+                </LaneName>
+                <LaneTime
+                    LaneTime={laneTime}
+                />
             </Grid>
-            <Grid item xs={3} text-align={"center"}>
-                    <Grid className={finishlane}>
-                        {this.props.finishtime}
-                    </Grid>
-            </Grid>
+            <Grid xs={1}></Grid>
         </Grid>;
 
     }

@@ -1,0 +1,39 @@
+
+.colorTextLaneNumber{
+    font-size: 10;
+    text-align: right;
+    font-weight: bold;
+    fill: $colorLaneNumber;
+}
+  
+.colorLaneNumber {
+    stop-color: $colorLaneSVG;
+}
+
+.gridLane {
+  border-spacing: 0;
+  // background-color: $ColorLaneBackground;
+  background-color: red;
+  color: white;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.gridLaneSurround{
+    background-color: rgba(0,0,0,0);
+    border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.colorLaneName{
+  stop-color: $colorNameSVG;
+}
+
+.colorTextLaneName{
+  font-size: 10;
+  fill: $colorLaneName;
+}

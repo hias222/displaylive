@@ -254,6 +254,8 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         })
 
         this.setState({
+            finishlanedata: false,
+            laplanedata: false,
             lanes: this.resultData
         })
     }

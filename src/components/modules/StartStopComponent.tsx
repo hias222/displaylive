@@ -4,6 +4,7 @@ import { StartStopState } from "../../state/StartStopState";
 import { Container, Grid } from "@material-ui/core";
 
 import classnames from 'classnames';
+import LaneTime from "../images/LaneTime";
 
 export class StartStopComponent extends React.Component<StartStopInterface, StartStopState> {
 
@@ -119,8 +120,6 @@ export class StartStopComponent extends React.Component<StartStopInterface, Star
     }
 
     render() {
-
-        let runningtime = classnames('runningtime');
         //let runningbackground = classnames('runningbackground');
         let basepage = classnames('basepage');
 
@@ -132,9 +131,9 @@ export class StartStopComponent extends React.Component<StartStopInterface, Star
                     <Grid item xs={4}></Grid>
                     <Grid item xs={3}></Grid>
                     <Grid item xs={2}>
-                        <div className={runningtime}>
-                                 {this.format(this.state.displaytime)}
-                        </div>
+                        <LaneTime
+                            LaneTime={this.format(this.state.displaytime)}
+                        />
                     </Grid>
                 </Grid>
             </Container>

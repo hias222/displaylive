@@ -1,10 +1,7 @@
 import React from "react";
 import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
-import {  Grid } from "@material-ui/core";
 import { StartLaneComponent } from "./modules/StartLaneComponent";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
-
-//import classnames from 'classnames';
 
 export class FrontendStartComponent extends React.Component<SimpleFrontendInterface, {}> {
 
@@ -38,22 +35,19 @@ export class FrontendStartComponent extends React.Component<SimpleFrontendInterf
 
         return (
             <div>
-                <p>Start</p>
                 <HeaderEventHeatComponent
                     EventHeat={this.props.EventHeat}
                 />
 
-                <Grid container >
-                    {
-                        this.props.lanes.map((lane, index) => ( 
-                           <StartLaneComponent
-                                key={index}
-                                lane={lane}
-                                index={index}
-                            />
-                        ))
-                    }
-                </Grid>
+                {
+                    this.props.lanes.map((lane, index) => (
+                        <StartLaneComponent
+                            key={index}
+                            lane={lane}
+                            index={index}
+                        />
+                    ))
+                }
 
             </div >
         )

@@ -1,10 +1,7 @@
 import React from "react";
 import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
-import { Grid } from "@material-ui/core";
 import { FinishLaneComponent } from "./modules/FinishLaneComponent";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
-
-//import classnames from 'classnames';
 
 export class FrontendFinishComponent extends React.Component<SimpleFrontendInterface, {}> {
 
@@ -18,29 +15,22 @@ export class FrontendFinishComponent extends React.Component<SimpleFrontendInter
 
     render() {
 
-        //let basefill = classnames('basefill');
-
         //this.props.lanes.sort((a, b) => ((a.place || "99") > (b.place || "99")) ? 1 : -1)
 
         return (
             <div>
-                <p>Finish</p>
                 <HeaderEventHeatComponent
                     EventHeat={this.props.EventHeat}
                 />
-
-                <Grid container >
-                    {
-                        this.props.lanes.map((lane, index) => (
-                            <FinishLaneComponent
-                                key={index}
-                                lane={lane}
-                                index={index}
-                            />
-                        ))
-                    }
-                </Grid>
-
+                {
+                    this.props.lanes.map((lane, index) => (
+                        <FinishLaneComponent
+                            key={index}
+                            lane={lane}
+                            index={index}
+                        />
+                    ))
+                }
             </div >
         )
     }

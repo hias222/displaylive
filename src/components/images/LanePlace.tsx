@@ -5,11 +5,11 @@ interface LaneNumberInterface {
     laneNumber: string;
 }
 
-export default class LaneNumber extends React.Component<LaneNumberInterface, {}> {
+export default class LanePlace extends React.Component<LaneNumberInterface, {}> {
 
     render() {
-        let colorTextLaneName = classnames('colorTextLaneName');
-        let colorLaneName = classnames('colorLaneName');
+        let colorTextLaneNumber = classnames('colorTextLaneNumber');
+        let colorLaneNumber = classnames('colorLaneNumber');
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"
@@ -20,14 +20,14 @@ export default class LaneNumber extends React.Component<LaneNumberInterface, {}>
             width="35"
            >
             <defs>
-                <linearGradient id="laneNumberGradient" gradientTransform="rotate(0)">
+                <linearGradient id="lanePlaceGradient" gradientTransform="rotate(0)">
                     <stop
-                        className={colorLaneName}
+                        className={colorLaneNumber}
                         offset="0"
                         stopOpacity="1"
                     />
                     <stop
-                        className={colorLaneName}
+                        className={colorLaneNumber}
                         offset=""
                         stopOpacity="1"
                     />
@@ -38,8 +38,8 @@ export default class LaneNumber extends React.Component<LaneNumberInterface, {}>
                     x2="20"
                     y1="-10"
                     x1="20"
-                    id="laneNumberStyle"
-                    xlinkHref="#laneNumberGradient"
+                    id="laneGradientStyle"
+                    xlinkHref="#lanePlaceGradient"
                 />
             </defs>
             <g
@@ -48,10 +48,10 @@ export default class LaneNumber extends React.Component<LaneNumberInterface, {}>
                     transform="scale(1)"
                     //d="M 0,50 0,47 0,24 0,0 30,0 c 15,0 29,0.0 29,0 l 0.50,0 -12,23 -12,23 -10,0 c -5,0 -13,0 -17,0 z"
                     d="M 0 0 h 35 v 35 h -35 z"
-                    fill="url(#laneNumberStyle)"
+                    fill="url(#laneGradientStyle)"
                 />
                 <text
-                    className={colorTextLaneName}
+                    className={colorTextLaneNumber}
                     y="8"
                     x="2"
                     fontSize="9"

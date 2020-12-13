@@ -1,7 +1,8 @@
 import React from "react";
-import classnames from 'classnames';
 import { LaneData } from "../../interfaces/lanedatainterface";
 import { Grid } from "@material-ui/core";
+import LaneNumber from "./LaneNumber";
+import LaneName from "./LaneName";
 export default class StartStyledLane extends React.Component<LaneData, {}> {
 
     box_height: number;
@@ -32,24 +33,22 @@ export default class StartStyledLane extends React.Component<LaneData, {}> {
     }
 
     render() {
-        let finishlane = classnames('finishlane');
         let correctName = this.checkName();
 
-        return <Grid container item xs={12}>
-            <Grid item xs={1}>
-                    <Grid className={finishlane}>
-                        {this.props.lane}
-                    </Grid>
+        return <Grid container item xs={12} spacing={0}>
+            <Grid xs={1}></Grid>
+            <Grid item xs={10} >
+                <LaneNumber
+                    laneNumber={this.props.lane}
+                />
+                <LaneName
+                    LaneName={correctName}>
+                </LaneName>
+                <LaneName
+                    LaneName={this.props.swimmer.clubname}>
+                </LaneName>
             </Grid>
-
-
-            <Grid item xs={7}>
-                    <Grid className={finishlane}>
-                        {correctName}
-                    </Grid>
-            
-            </Grid>
-           
+            <Grid xs={1}></Grid>
         </Grid>;
 
     }

@@ -20,12 +20,11 @@ export class FrontendHeaderTimeComponent extends React.Component<SimpleFrontendI
 
         return (
             <div>
-                <p>HeaderTime</p>
                 <HeaderEventHeatComponent
                     EventHeat={this.props.EventHeat}
                 />
 
-                <Box m={60} />
+                <Box m={75} />
 
                 <StartStopComponent
                     startdelayms={this.props.startdelayms}
