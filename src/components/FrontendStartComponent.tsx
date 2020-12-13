@@ -15,6 +15,25 @@ export class FrontendStartComponent extends React.Component<SimpleFrontendInterf
         }
     }
 
+
+    /*
+    {
+  athleteid: "4002",
+  birthdate: "2001-01-01",
+  firstname: "Max",
+  lastname: "Mustermann",
+  lane: "2",
+  entrytime: "00:01:04.90",
+  name: "SG Mittelfranken",
+  code: "6768",
+  type: "lane",
+  event: "1",
+  place: "2",
+  finishtime: "1:19,15",
+  heat: "1",
+  lap: "false",
+}
+*/
     render() {
 
         return (
@@ -26,8 +45,8 @@ export class FrontendStartComponent extends React.Component<SimpleFrontendInterf
 
                 <Grid container >
                     {
-                        this.props.lanes.map((lane, index) => (
-                            <StartLaneComponent
+                        this.props.lanes.map((lane, index) => ( 
+                           <StartLaneComponent
                                 key={index}
                                 lane={lane}
                                 index={index}

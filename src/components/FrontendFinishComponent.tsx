@@ -20,7 +20,7 @@ export class FrontendFinishComponent extends React.Component<SimpleFrontendInter
 
         //let basefill = classnames('basefill');
 
-        this.props.lanes.sort((a, b) => ((a.place || "99") > (b.place || "99")) ? 1 : -1)
+        //this.props.lanes.sort((a, b) => ((a.place || "99") > (b.place || "99")) ? 1 : -1)
 
         return (
             <div>

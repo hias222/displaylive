@@ -18,7 +18,7 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
 
     render() {
         
-        this.props.lanes.sort((a, b) => ((a.finishtime || "0") > (b.finishtime || "0")) ? 1 : -1)
+        //  this.props.lanes.sort((a, b) => ((a.finishtime || "0") > (b.finishtime || "0")) ? 1 : -1)
 
         return (
             <div>

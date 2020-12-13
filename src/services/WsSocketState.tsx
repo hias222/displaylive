@@ -127,9 +127,7 @@ export class WsSocketState extends React.Component<WsSocketPropsInterface, WsSoc
   setHeaderInfo(jsondata: any) {
 
     if (jsondata.heat !== this.state.HeatNumber || jsondata.event !== this.state.EventNumber) {
-
       this.setDisplayMode('startlist')
-
       var swimstyle = (typeof (jsondata.name) !== "undefined" && jsondata.name)
         ? jsondata.name : jsondata.distance + "m " + getSwimStyles(jsondata.swimstyle)
       //var eventtxt = "Wettkampf " + jsondata.event + ": " + swimstyle
@@ -159,30 +157,27 @@ export class WsSocketState extends React.Component<WsSocketPropsInterface, WsSoc
   }
 
   setLaneInfo(jsondata: any) {
-    //locklanes = true;
+    
     if (jsondata.place === '0') {
       var laptime = "{ \"laptime\": \"" + Date.now() + "\",\"lap\": \"true\" }"
       var newjsondata = { ...jsondata, ...JSON.parse(laptime) }
-      //activelapdata = true;
       this.props.onLaneChange(jsondata.lane, newjsondata)
-      if (this.state.DisplayMode !== 'race') {
-        this.setDisplayMode('race')
-      }
     } else {
       var laptime2 = "{ \"lap\": \"false\" }"
       var newjsondata2 = { ...jsondata, ...JSON.parse(laptime2) }
       this.props.onLaneChange(jsondata.lane, newjsondata2)
+    }
 
-      if (jsondata.finishtime === "undefined" || !jsondata.finishtime) {
-        if (this.state.DisplayMode !== 'startlist' && this.state.DisplayMode !== 'race') {
-          this.setDisplayMode('startlist')
-        }
-      } else {
-        if (this.state.DisplayMode !== 'race') {
-          this.setDisplayMode('race')
-        }
+    if (jsondata.finishtime === "undefined" || !jsondata.finishtime) {
+      if (this.state.DisplayMode !== 'startlist' && this.state.DisplayMode !== 'race') {
+        this.setDisplayMode('startlist')
+      }
+    } else {
+      if (this.state.DisplayMode !== 'race') {
+        this.setDisplayMode('race')
       }
     }
+
   }
 
   setRunningTime(time: any) {
@@ -208,10 +203,15 @@ export class WsSocketState extends React.Component<WsSocketPropsInterface, WsSoc
     this.setDisplayMode('startlist')
     //}
     this.props.onStartStop(calcstartdelay)
+    this.clearResultLaneData();
   }
 
   clearAll() {
     this.props.onLaneChange(-1, null)
+  }
+
+  clearResultLaneData() {
+    this.props.onLaneChange(-2, null)
   }
 
   render() {

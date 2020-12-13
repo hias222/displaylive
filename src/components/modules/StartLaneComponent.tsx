@@ -1,19 +1,12 @@
 import React from "react";
 import { LaneInterface } from "../../interfaces/LaneInterface";
-import { LaneState } from "../../state/LaneState";
 
 import StartStyledLane from "../images/StartStyledLane";
 
-export class StartLaneComponent extends React.Component<LaneInterface, LaneState>{
+export class StartLaneComponent extends React.Component<LaneInterface, {}>{
 
   constructor(props: LaneInterface) {
     super(props);
-
-    this.state = {
-      laptime: "",
-      islaptime: false,
-      changed: Date.now()
-    }
 
     this.getRaceData = this.getRaceData.bind(this)
   }
@@ -21,6 +14,7 @@ export class StartLaneComponent extends React.Component<LaneInterface, LaneState
   //paste in state
 
   getRaceData() {
+    //console.log("swimmer " + this.props.lane.swimmer.name)
     return <StartStyledLane
       swimmer={this.props.lane.swimmer}
       lane={this.props.lane.lane}

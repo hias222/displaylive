@@ -15,8 +15,6 @@ export default class LapStyledLane extends React.Component<LaneData, {}> {
     checkName() {
         let namelength = 20;
 
-        console.log(this.props.swimmer.name)
-
         let sizeName = this.props.swimmer.name.length;
         let sizeLastName = (this.props.swimmer.firstName !== undefined) ? this.props.swimmer.firstName.length : 0
 
@@ -39,7 +37,7 @@ export default class LapStyledLane extends React.Component<LaneData, {}> {
         let laplane = classnames('laplane');
         //let correctName = this.props.swimmer.name !== undefined ? this.checkName() : "empty"
 
-        let correctName = "name"
+        let correctName = this.checkName();
         //let lapbox = classnames('lapbox');
 
         return <Grid container item xs={12}>

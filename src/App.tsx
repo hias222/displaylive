@@ -20,6 +20,7 @@ import { LaneData } from './interfaces/lanedatainterface';
 export default class Lcd extends React.Component<{}, FrontendState> {
 
     mylane: LaneData[];
+    resultData: LaneData[];
     correctValueForLaneNull: number;
     evenHeat: eventHeat;
 
@@ -37,12 +38,15 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         this.onDisplayModeChange = this.onDisplayModeChange.bind(this);
         this.onMessageChange = this.onMessageChange.bind(this);
         this.onRunningTimeChange = this.onRunningTimeChange.bind(this);
+        this.clearResults = this.clearResults.bind(this);
 
         this.evenHeat = {
             name: "new",
             heatnr: "0",
             eventnr: "0"
         }
+
+        this.resultData = []
 
         this.state = {
             laplanedata: false,
@@ -102,7 +106,9 @@ export default class Lcd extends React.Component<{}, FrontendState> {
     }
 
     onLaneChange(lane: number, LaneData: any) {
-        
+
+        // -1 clear All
+        // -2 Clear Result
         this.setState({
             lastChangeDate: Date.now()
         })
@@ -113,12 +119,23 @@ export default class Lcd extends React.Component<{}, FrontendState> {
             this.setState({
                 lanes: this.mylane = []
             })
-        } else {
+            return
+        }
 
-            if (LaneData.lap !== undefined) {
-                if (LaneData.lap === "true") {
-                    if (!this.state.finishlanedata) {
-                        if (!this.state.laplanedata) console.log("service change lap ")
+        if (lane === -2) {
+            this.correctValueForLaneNull = 0;
+            this.clearResults();
+            // todo
+            return
+        }
+
+        //else {
+
+        if (LaneData.lap !== undefined) {
+            if (LaneData.lap === "true") {
+                if (!this.state.finishlanedata) {
+                    if (!this.state.laplanedata) {
+                        console.log("service change lap " + this.state.laplanedata)
                         this.setState({
                             laplanedata: true
                         })
@@ -126,34 +143,56 @@ export default class Lcd extends React.Component<{}, FrontendState> {
                 }
             }
 
-            if (LaneData.lap !== undefined) {
-                if (LaneData.lap === 'false') {
-                    if (!this.state.finishlanedata) console.log("servcie change to finish")
+            if (LaneData.lap === 'false') {
+                if (!this.state.finishlanedata) {
+                    console.log("servcie change to finish")
                     this.setState({
                         finishlanedata: true
                     })
                 }
             }
-
-            // eslint-disable-next-line
-            if (lane == 0 && this.correctValueForLaneNull != 1) {
-                console.log("+++++ 0")
-                this.correctValueForLaneNull = 1;
-            }
-            var sizeLanes = this.mylane.length - this.correctValueForLaneNull
-
-            if (lane > sizeLanes) {
-                // console.log(lane + ": new (" + this.correctValueForLaneNull + ")")
-                this.mylane.push(LaneData)
-            } else {
-                this.mylane[lane - 1 + this.correctValueForLaneNull] = (LaneData)
-                //console.log(lane + ": change (" + this.correctValueForLaneNull + ")")
-            }
-
-            this.setState({
-                lanes: this.mylane
-            })
         }
+
+        // eslint-disable-next-line
+        if (lane == 0 && this.correctValueForLaneNull != 1) {
+            console.log("+++++ 0")
+            this.correctValueForLaneNull = 1;
+        }
+        var sizeLanes = this.mylane.length - this.correctValueForLaneNull
+
+        if (lane > sizeLanes) {
+            // console.log(lane + ": new (" + this.correctValueForLaneNull + ")")
+            //this.mylane.push(LaneData)
+            this.mylane.push(this.validateLaneDate(LaneData))
+        } else {
+            this.mylane[lane - 1 + this.correctValueForLaneNull] = (this.validateLaneDate(LaneData))
+            //console.log(lane + ": change (" + this.correctValueForLaneNull + ")")
+        }
+
+        this.setState({
+            lanes: this.mylane
+        })
+        //}
+    }
+    
+
+    validateLaneDate(wsLaneData: any){
+        var newlaneData: LaneData = {
+            lane: wsLaneData.lane,
+            finishtime: wsLaneData.finishtime,
+            lap: wsLaneData.lap,
+            place: wsLaneData.place,
+            entrytime: wsLaneData.entrytime,
+            swimmer: {
+                name: wsLaneData.lastname,
+                clubid: wsLaneData.code,
+                clubname: wsLaneData.name,
+                birthyear: wsLaneData.birthdate,
+                firstName: wsLaneData.firstname,
+                athleteid: wsLaneData.athleteid
+            }
+        }
+        return newlaneData;
     }
 
     onDisplayModeChange(displaymode: string) {
@@ -205,6 +244,19 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         */
     };
 
+    async clearResults() {
+        console.log("+++++ clear Results")
+        this.resultData = []
+        this.state.lanes.map((lane, index) => {
+            lane.finishtime = '';
+            this.resultData.push(lane)
+            return null
+        })
+
+        this.setState({
+            lanes: this.resultData
+        })
+    }
 
     render() {
 

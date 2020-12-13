@@ -33,10 +33,8 @@ export default class FinishStyledLane extends React.Component<LaneData, {}> {
 
     render() {
         let finishlane = classnames('finishlane');
-        //let correctName = this.checkName();
-
-        let correctName = "finsihname"
-
+        let correctName = this.checkName();
+        
         return <Grid container item xs={12}>
             <Grid item xs={1}>
                     <Grid className={finishlane}>
