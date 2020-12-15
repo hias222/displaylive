@@ -2,6 +2,8 @@ import React from "react";
 import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
 import { FinishLaneComponent } from "./modules/FinishLaneComponent";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
+import { EventNameComponent } from "./modules/EventNameComponent";
+import { EventStateComponent } from "./modules/EventStateComponent";
 
 export class FrontendFinishComponent extends React.Component<SimpleFrontendInterface, {}> {
 
@@ -19,6 +21,13 @@ export class FrontendFinishComponent extends React.Component<SimpleFrontendInter
 
         return (
             <div>
+                <EventNameComponent
+                EventName='Wettkampf'/>
+
+                <EventStateComponent
+                EventState='Finish'
+                />
+
                 <HeaderEventHeatComponent
                     EventHeat={this.props.EventHeat}
                 />

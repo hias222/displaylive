@@ -7,7 +7,7 @@
 }
   
 .colorLaneNumber {
-    stop-color: $colorLaneSVG;
+    stop-color: $colorPlaceBackground;
 }
 
 .gridLane {
@@ -21,19 +21,27 @@
   border-right: 0;
 }
 
-.gridLaneSurround{
-    background-color: rgba(0,0,0,0);
-    border-top: 0;
-  border-bottom: 0;
-  border-left: 0;
-  border-right: 0;
+.gridEventNameSurround {
+  height: 60px;
+  background-color: $colorPlaceBackground;
 }
 
+
 .colorLaneName{
-  stop-color: $colorNameSVG;
+  stop-color: $ColorLaneBackground;
 }
 
 .colorTextLaneName{
   font-size: 10;
   fill: $colorLaneName;
+}
+
+
+.colorStateGreyName{
+  stop-color: $colorStateGrey;
+}
+
+.colorStateGreyTextName{
+  font-size: 10;
+  fill: $ColorLaneBackground;
 }

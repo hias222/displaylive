@@ -5,7 +5,6 @@ import { FrontendState } from './state/FrontendState';
 
 import classnames from 'classnames';
 import { Box } from '@material-ui/core';
-import { MessageFrontendComponent } from './components/messages/MessageFrontendComponent';
 import { eventHeat } from './types/EventHeat';
 import { FrontendSwitchComponent } from './components/FrontendSwitchComponent';
 import { LaneData } from './interfaces/lanedatainterface';
@@ -51,7 +50,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         this.state = {
             laplanedata: false,
             finishlanedata: false,
-            startdelayms: 0,
+            startdelayms: -1,
             runningTime: "",
             racerunning: false,
             eventHeat: this.evenHeat,
@@ -174,9 +173,9 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         })
         //}
     }
-    
 
-    validateLaneDate(wsLaneData: any){
+
+    validateLaneDate(wsLaneData: any) {
         var newlaneData: LaneData = {
             lane: wsLaneData.lane,
             finishtime: wsLaneData.finishtime,
@@ -261,31 +260,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
     }
 
     render() {
-
-        let webcontent = <p>starting</p>;
         let basepage = classnames('basepage');
-
-        if (this.state.displayMode === 'message' || this.state.displayMode === 'clock' || this.state.displayMode === 'video') {
-            webcontent = <MessageFrontendComponent
-                diplayMode={this.state.displayMode}
-                MessageText={this.state.MessageText}
-                MessageTime={this.state.MessageTime}
-                VideoVersion={this.state.VideoVersion}
-                displayFormat={"lcd"}
-            />
-        } else {
-            webcontent = <FrontendSwitchComponent
-                startdelayms={this.state.startdelayms}
-                EventHeat={this.state.eventHeat}
-                lanes={this.state.lanes}
-                displayMode={this.state.displayMode}
-                runningTime={this.state.runningTime}
-                finishdata={this.state.finishlanedata}
-                lapdata={this.state.laplanedata}
-                lastChangeDate={this.state.lastChangeDate}
-            />
-        }
-
         return (
             <div>
                 <Box width={this.window_width} height={this.window_height} className={basepage}>
@@ -295,7 +270,17 @@ export default class Lcd extends React.Component<{}, FrontendState> {
                         onDisplayModeChange={this.onDisplayModeChange}
                         onRunningTimeChange={this.onRunningTimeChange}
                         onMessageChange={this.onMessageChange} />
-                    {webcontent}
+
+                    <FrontendSwitchComponent
+                        startdelayms={this.state.startdelayms}
+                        EventHeat={this.state.eventHeat}
+                        lanes={this.state.lanes}
+                        displayMode={this.state.displayMode}
+                        runningTime={this.state.runningTime}
+                        finishdata={this.state.finishlanedata}
+                        lapdata={this.state.laplanedata}
+                        lastChangeDate={this.state.lastChangeDate}
+                    />
                 </Box>
             </div>
         );
