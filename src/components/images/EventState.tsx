@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 interface EventStateInterface {
     EventState: string;
+    EventName: string;
 }
 
 export default class EventState extends React.Component<EventStateInterface, {}> {
@@ -12,14 +13,14 @@ export default class EventState extends React.Component<EventStateInterface, {}>
         let colorStateGreyName = classnames('colorStateGreyName');
 
         return (<svg
-            xmlns="http://www.w3.org/2000/svg" 
+            xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 200 10"
-            height="50"
+            viewBox="0 0 200 20"
+            height="100"
             width="1000"
-            >
+        >
             <defs>
                 <linearGradient id="StartEventState" gradientTransform="rotate(0)">
                     <stop
@@ -52,12 +53,21 @@ export default class EventState extends React.Component<EventStateInterface, {}>
                 />
                 <text
                     className={colorStateGreyTextName}
-                    y="9"
+                    y="17"
                     x="100"
-                    fontSize="9"
+                    fontSize="8"
                     text-anchor="middle"
                 >
                     {this.props.EventState}</text>
+
+                <text
+                    className={colorStateGreyTextName}
+                    y="8"
+                    x="100"
+                    fontSize="10"
+                    text-anchor="middle"
+                >
+                    {this.props.EventName}</text>
             </g>
         </svg>
         );

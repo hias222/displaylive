@@ -35,21 +35,16 @@ export default class StartStyledLane extends React.Component<LaneData, {}> {
     render() {
         let correctName = this.checkName();
 
-        return <Grid container item xs={12} spacing={0}>
-            <Grid xs={1}></Grid>
-            <Grid item xs={10} >
-                <LaneNumber
-                    laneNumber={this.props.lane}
-                />
-                <LaneName
-                    LaneName={correctName}>
-                </LaneName>
-                <LaneName
-                    LaneName={this.props.swimmer.clubname}>
-                </LaneName>
-            </Grid>
-            <Grid xs={1}></Grid>
-        </Grid>;
-
+        return <Grid item xs={12} >
+            <LaneNumber
+                laneNumber={this.props.lane}
+            />
+            <LaneName
+                LaneName={correctName}>
+            </LaneName>
+            <LaneName
+                LaneName={this.props.swimmer.clubname}>
+            </LaneName>
+        </Grid>
     }
 }

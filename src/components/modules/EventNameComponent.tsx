@@ -13,17 +13,11 @@ export class EventNameComponent extends React.Component<EventNameInterface, {}>{
 
         //eventName
         let gridEventNameSurround = classnames('gridEventNameSurround');
-
         return (
-            <Grid container item xs={12} spacing={0} >
-                <Grid spacing={0} xs={1}></Grid>
-                <Grid spacing={0} item xs={10} className={gridEventNameSurround}>
+                <Grid spacing={0} item xs={12} className={gridEventNameSurround}>
                     <EventName
                     EventName='Wettkampf'/>
                 </Grid>
-                <Grid spacing={0} xs={1}></Grid>
-            </Grid>
-
         )
     }
 

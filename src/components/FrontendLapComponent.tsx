@@ -1,6 +1,6 @@
 import React from "react";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
-import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
+import { EventStateComponent } from "./modules/EventStateComponent";
 import { LapLaneSmallComponent } from "./modules/LapLaneSmallComponent";
 
 
@@ -18,8 +18,9 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
         //  this.props.lanes.sort((a, b) => ((a.finishtime || "0") > (b.finishtime || "0")) ? 1 : -1)
         return (
             <div>
-                <HeaderEventHeatComponent
-                    EventHeat={this.props.EventHeat}
+                <EventStateComponent
+                    Event={this.props.EventHeat}
+                    EventState="Zwischenzeit"
                 />
                 {
                     this.props.lanes.map((lane, index) => (

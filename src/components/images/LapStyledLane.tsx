@@ -39,21 +39,17 @@ export default class LapStyledLane extends React.Component<LaneData, {}> {
         let correctName = this.checkName();
         var laneTime = this.props.finishtime !== undefined ? this.props.finishtime : "-";
 
-        return <Grid container item xs={12} spacing={0}>
-            <Grid xs={1}></Grid>
-            <Grid item xs={10}>
-                <LaneNumber
-                    laneNumber={this.props.lane}
-                />
-                <PoolIcon></PoolIcon>
-                <LaneName
-                    LaneName={correctName}>
-                </LaneName>
-                <LaneTime
-                    LaneTime={laneTime}
-                />
-            </Grid>
-            <Grid xs={1}></Grid>
+        return <Grid item xs={12}>
+            <LaneNumber
+                laneNumber={this.props.lane}
+            />
+            <PoolIcon></PoolIcon>
+            <LaneName
+                LaneName={correctName}>
+            </LaneName>
+            <LaneTime
+                LaneTime={laneTime}
+            />
         </Grid>;
 
     }

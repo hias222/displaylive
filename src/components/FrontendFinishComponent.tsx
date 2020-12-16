@@ -1,5 +1,4 @@
 import React from "react";
-import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
 import { FinishLaneComponent } from "./modules/FinishLaneComponent";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
 import { EventNameComponent } from "./modules/EventNameComponent";
@@ -25,12 +24,10 @@ export class FrontendFinishComponent extends React.Component<SimpleFrontendInter
                 EventName='Wettkampf'/>
 
                 <EventStateComponent
-                EventState='Finish'
+                Event={this.props.EventHeat}
+                EventState='Ziel'
                 />
 
-                <HeaderEventHeatComponent
-                    EventHeat={this.props.EventHeat}
-                />
                 {
                     this.props.lanes.map((lane, index) => (
                         <FinishLaneComponent

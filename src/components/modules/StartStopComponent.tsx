@@ -4,7 +4,7 @@ import { StartStopState } from "../../state/StartStopState";
 import { Container, Grid } from "@material-ui/core";
 
 import classnames from 'classnames';
-import LaneTime from "../images/LaneTime";
+import LapTime from "../images/LapTime";
 
 export class StartStopComponent extends React.Component<StartStopInterface, StartStopState> {
 
@@ -131,8 +131,9 @@ export class StartStopComponent extends React.Component<StartStopInterface, Star
                     <Grid item xs={4}></Grid>
                     <Grid item xs={3}></Grid>
                     <Grid item xs={2}>
-                        <LaneTime
-                            LaneTime={this.format(this.state.displaytime)}
+                        <LapTime
+                            LapTime={this.format(this.state.displaytime)}
+                            EventName={this.props.EventHeat.name}
                         />
                     </Grid>
                 </Grid>

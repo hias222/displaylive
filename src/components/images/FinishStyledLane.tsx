@@ -37,26 +37,22 @@ export default class FinishStyledLane extends React.Component<LaneData, {}> {
     render() {
         let correctName = this.checkName();
 
-        var laneTime = this.props.finishtime !== undefined ? this.props.finishtime : "-" ;
-        var lanePlace = this.props.place !== undefined ? this.props.place : "-" ;
+        var laneTime = this.props.finishtime !== undefined ? this.props.finishtime : "-";
+        var lanePlace = this.props.place !== undefined ? this.props.place : "-";
 
-        return <Grid container item xs={12} spacing={0} >
-            <Grid xs={1}></Grid>
-            <Grid xs={10}>
-                <LanePlace
-                    laneNumber={lanePlace}
-                />
-                <LaneNumber
-                    laneNumber={this.props.lane}
-                />
-                <LaneName
-                    LaneName={correctName}>
-                </LaneName>
-                <LaneTime
-                    LaneTime={laneTime}
-                />
-            </Grid>
-            <Grid xs={1}></Grid>
+        return <Grid xs={12}>
+            <LanePlace
+                laneNumber={lanePlace}
+            />
+            <LaneNumber
+                laneNumber={this.props.lane}
+            />
+            <LaneName
+                LaneName={correctName}>
+            </LaneName>
+            <LaneTime
+                LaneTime={laneTime}
+            />
         </Grid>;
 
     }

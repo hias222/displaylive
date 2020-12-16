@@ -4,7 +4,7 @@ import { WsSocketState } from './services/WsSocketState';
 import { FrontendState } from './state/FrontendState';
 
 import classnames from 'classnames';
-import { Box } from '@material-ui/core';
+import { Box, Container, Grid } from '@material-ui/core';
 import { eventHeat } from './types/EventHeat';
 import { FrontendSwitchComponent } from './components/FrontendSwitchComponent';
 import { LaneData } from './interfaces/lanedatainterface';
@@ -264,25 +264,31 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         return (
             <div>
                 <Box width={this.window_width} height={this.window_height} className={basepage}>
-                    <WsSocketState onStartStop={this.onStartStop}
-                        onEventHeatChange={this.onEventHeatChange}
-                        onLaneChange={this.onLaneChange}
-                        onDisplayModeChange={this.onDisplayModeChange}
-                        onRunningTimeChange={this.onRunningTimeChange}
-                        onMessageChange={this.onMessageChange} />
+                    <Container>
+                        <Grid container item xs={12} spacing={0} >
+                        <Grid spacing={0} item xs={12}> . </Grid>
+                            <WsSocketState onStartStop={this.onStartStop}
+                                onEventHeatChange={this.onEventHeatChange}
+                                onLaneChange={this.onLaneChange}
+                                onDisplayModeChange={this.onDisplayModeChange}
+                                onRunningTimeChange={this.onRunningTimeChange}
+                                onMessageChange={this.onMessageChange} />
 
-                    <FrontendSwitchComponent
-                        startdelayms={this.state.startdelayms}
-                        EventHeat={this.state.eventHeat}
-                        lanes={this.state.lanes}
-                        displayMode={this.state.displayMode}
-                        runningTime={this.state.runningTime}
-                        finishdata={this.state.finishlanedata}
-                        lapdata={this.state.laplanedata}
-                        lastChangeDate={this.state.lastChangeDate}
-                    />
+                            <FrontendSwitchComponent
+                                startdelayms={this.state.startdelayms}
+                                EventHeat={this.state.eventHeat}
+                                lanes={this.state.lanes}
+                                displayMode={this.state.displayMode}
+                                runningTime={this.state.runningTime}
+                                finishdata={this.state.finishlanedata}
+                                lapdata={this.state.laplanedata}
+                                lastChangeDate={this.state.lastChangeDate}
+                            />
+                        </Grid>
+                    </Container>
                 </Box>
-            </div>
+
+            </div >
         );
     }
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import { StartStopComponent } from "./modules/StartStopComponent";
-import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
 import { Box } from "@material-ui/core";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
+import { EventStateComponent } from "./modules/EventStateComponent";
 //import classnames from 'classnames';
 
 export class FrontendHeaderTimeComponent extends React.Component<SimpleFrontendInterface, {}> {
@@ -20,9 +20,6 @@ export class FrontendHeaderTimeComponent extends React.Component<SimpleFrontendI
 
         return (
             <div>
-                <HeaderEventHeatComponent
-                    EventHeat={this.props.EventHeat}
-                />
 
                 <Box m={75} />
 

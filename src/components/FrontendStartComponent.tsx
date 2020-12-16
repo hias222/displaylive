@@ -1,5 +1,4 @@
 import React from "react";
-import { HeaderEventHeatComponent } from "./modules/HeaderEventHeatComponent";
 import { StartLaneComponent } from "./modules/StartLaneComponent";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
 import { EventNameComponent } from "./modules/EventNameComponent";
@@ -41,11 +40,8 @@ export class FrontendStartComponent extends React.Component<SimpleFrontendInterf
                 EventName={this.props.EventHeat.competition !== undefined ? this.props.EventHeat.competition : 'undefinend'}/>
 
                 <EventStateComponent
-                EventState='Startlist'/>
-
-                <HeaderEventHeatComponent
-                    EventHeat={this.props.EventHeat}
-                />
+                Event={this.props.EventHeat}
+                EventState="Start"/>
 
                 {
                     this.props.lanes.map((lane, index) => (
