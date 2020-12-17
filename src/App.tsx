@@ -134,7 +134,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
             if (LaneData.lap === "true") {
                 if (!this.state.finishlanedata) {
                     if (!this.state.laplanedata) {
-                        console.log("service change lap " + this.state.laplanedata)
+                        console.log("service change lap " + this.state.laplanedata + " finish " + this.state.finishlanedata)
                         this.setState({
                             laplanedata: true
                         })
@@ -142,12 +142,14 @@ export default class Lcd extends React.Component<{}, FrontendState> {
                 }
             }
 
-            if (LaneData.lap === 'false') {
-                if (!this.state.finishlanedata) {
-                    console.log("servcie change to finish")
-                    this.setState({
-                        finishlanedata: true
-                    })
+            if (LaneData.finish !== undefined) {
+                if (LaneData.finish === "true") {
+                    if (!this.state.finishlanedata) {
+                        console.log("service change to finish + " + LaneData.finish)
+                        this.setState({
+                            finishlanedata: true
+                        })
+                    }
                 }
             }
         }
@@ -266,7 +268,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
                 <Box width={this.window_width} height={this.window_height} className={basepage}>
                     <Container>
                         <Grid container item xs={12} spacing={0} >
-                        <Grid spacing={0} item xs={12}> . </Grid>
+                            <Grid spacing={0} item xs={12}> . </Grid>
                             <WsSocketState onStartStop={this.onStartStop}
                                 onEventHeatChange={this.onEventHeatChange}
                                 onLaneChange={this.onLaneChange}

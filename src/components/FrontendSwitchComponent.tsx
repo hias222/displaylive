@@ -36,7 +36,6 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
     }
 
     componentDidMount() {
-        console.log("state " + this.state.state)
         this.checkRunning();
     }
 
@@ -54,7 +53,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
 
         if (prevProps.finishdata !== this.props.finishdata) {
             if (this.props.finishdata) {
-                console.log("finish change")
+                console.log("switch to finish")
                 this.setState({
                     finishdata: true,
                     lapdata: false
@@ -62,17 +61,18 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             }
         }
 
+        // wrong
         if (prevProps.lapdata !== this.props.lapdata) {
             if (this.props.lapdata) {
-                console.log("lap change")
+                console.log("switch to lap")
                 this.setState({
-                    finishdata: false,
                     lapdata: true
                 })
             }
         }
 
         if (prevProps.EventHeat.heatnr !== this.props.EventHeat.heatnr) {
+            console.log("heat change reset - running " + this.state.runnning)
             this.setState({
                 state: EnumHeatState.BeforeStart,
                 finishdata: false,
@@ -180,6 +180,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
                 if (!this.state.lapdata) this.setState({ state: EnumHeatState.Running })
                 return this.getFrontendLapData()
             } case EnumHeatState.Finished: {
+                // reset by stop over properties
                 return this.getFrontendFinishData()
             } default: {
                 if (this.state.runnning) this.setState({ state: EnumHeatState.Running })

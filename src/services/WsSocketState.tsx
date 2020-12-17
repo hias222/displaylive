@@ -157,15 +157,21 @@ export class WsSocketState extends React.Component<WsSocketPropsInterface, WsSoc
   }
 
   setLaneInfo(jsondata: any) {
-    
+
     if (jsondata.place === '0') {
-      var laptime = "{ \"laptime\": \"" + Date.now() + "\",\"lap\": \"true\" }"
+      var laptime = "{ \"laptime\": \"" + Date.now() + "\",\"lap\": \"true\",\"finish\": \"false\" }"
       var newjsondata = { ...jsondata, ...JSON.parse(laptime) }
       this.props.onLaneChange(jsondata.lane, newjsondata)
     } else {
-      var laptime2 = "{ \"lap\": \"false\" }"
-      var newjsondata2 = { ...jsondata, ...JSON.parse(laptime2) }
-      this.props.onLaneChange(jsondata.lane, newjsondata2)
+      if (jsondata.place === "undefined") {
+        var laptime3 = "{ \"lap\": \"false\", \"finish\": \"false\"}"
+        var newjsondata3 = { ...jsondata, ...JSON.parse(laptime3) }
+        this.props.onLaneChange(jsondata.lane, newjsondata3)
+      } else {
+        var laptime2 = "{ \"lap\": \"false\",\"finish\": \"true\" }"
+        var newjsondata2 = { ...jsondata, ...JSON.parse(laptime2) }
+        this.props.onLaneChange(jsondata.lane, newjsondata2)
+      }
     }
 
     if (jsondata.finishtime === "undefined" || !jsondata.finishtime) {
