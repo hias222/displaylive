@@ -172,6 +172,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
                 //ggf start delay setzen
                 if (this.state.lapdata) this.setState({ state: EnumHeatState.LapTimes })
                 if (this.state.finishdata) this.setState({ state: EnumHeatState.Finished })
+                // restart vergessen
                 if (!this.state.runnning) this.setState({ state: EnumHeatState.Finished })
                 return this.getHeaderTimeData()
             } case EnumHeatState.LapTimes: {
@@ -181,6 +182,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
                 return this.getFrontendLapData()
             } case EnumHeatState.Finished: {
                 // reset by stop over properties
+                if (!this.state.finishdata && !this.state.lapdata) this.setState({ state: EnumHeatState.BeforeStart })
                 return this.getFrontendFinishData()
             } default: {
                 if (this.state.runnning) this.setState({ state: EnumHeatState.Running })

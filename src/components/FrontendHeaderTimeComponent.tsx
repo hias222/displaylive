@@ -2,7 +2,6 @@ import React from "react";
 import { StartStopComponent } from "./modules/StartStopComponent";
 import { Box } from "@material-ui/core";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
-import { EventStateComponent } from "./modules/EventStateComponent";
 //import classnames from 'classnames';
 
 export class FrontendHeaderTimeComponent extends React.Component<SimpleFrontendInterface, {}> {
