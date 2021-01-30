@@ -56,7 +56,7 @@ export default class EventState extends React.Component<EventStateInterface, {}>
                     y="17"
                     x="100"
                     fontSize="8"
-                    text-anchor="middle"
+                    textAnchor="middle"
                 >
                     {this.props.EventState}</text>
 
@@ -65,7 +65,7 @@ export default class EventState extends React.Component<EventStateInterface, {}>
                     y="8"
                     x="100"
                     fontSize="10"
-                    text-anchor="middle"
+                    textAnchor="middle"
                 >
                     {this.props.EventName}</text>
             </g>

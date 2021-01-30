@@ -56,7 +56,7 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
                     y="8"
                     x="100"
                     fontSize="9"
-                    text-anchor="middle"
+                    textAnchor="middle"
                 >
                     {this.props.EventName}</text>
             </g>

@@ -267,8 +267,8 @@ export default class Lcd extends React.Component<{}, FrontendState> {
             <div>
                 <Box width={this.window_width} height={this.window_height} className={basepage}>
                     <Container>
-                        <Grid container item xs={12} spacing={0} >
-                            <Grid spacing={0} item xs={12}> . </Grid>
+                        <Grid container item xs={12} spacing={0}>
+                            <Grid item xs={12}> . </Grid>
                             <WsSocketState onStartStop={this.onStartStop}
                                 onEventHeatChange={this.onEventHeatChange}
                                 onLaneChange={this.onLaneChange}

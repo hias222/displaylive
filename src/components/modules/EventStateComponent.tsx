@@ -13,7 +13,7 @@ export class EventStateComponent extends React.Component<EventStateInterface, {}
     render() {
 
         return (
-                <Grid spacing={0} item xs={12}>
+                <Grid item xs={12}>
                     <EventState
                     EventState={"Wettkampf " + this.props.Event.eventnr + " Lauf " + this.props.Event.heatnr}
                     EventName={this.props.EventState + ": " + this.props.Event.name}/>

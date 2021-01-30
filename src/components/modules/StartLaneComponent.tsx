@@ -7,7 +7,6 @@ export class StartLaneComponent extends React.Component<LaneInterface, {}>{
 
   constructor(props: LaneInterface) {
     super(props);
-
     this.getRaceData = this.getRaceData.bind(this)
   }
 

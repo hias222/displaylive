@@ -3,7 +3,7 @@ import { LaneData } from "../../interfaces/lanedatainterface";
 import { Grid } from "@material-ui/core";
 import LaneNumber from "./LaneNumber";
 import LaneName from "./LaneName";
-import checkName from "../../utilities/checkNames";
+import getSwimmerLongName from "../../utilities/getSwimmerLongName";
 export default class StartStyledLane extends React.Component<LaneData, {}> {
 
     box_height: number;
@@ -14,7 +14,7 @@ export default class StartStyledLane extends React.Component<LaneData, {}> {
     }
 
     render() {
-        let correctName = checkName(20,this.props.swimmer)
+        let correctName = getSwimmerLongName(58,this.props.swimmer)
 
         return <Grid item xs={12} >
             <LaneNumber
@@ -22,9 +22,6 @@ export default class StartStyledLane extends React.Component<LaneData, {}> {
             />
             <LaneName
                 LaneName={correctName}>
-            </LaneName>
-            <LaneName
-                LaneName={this.props.swimmer.clubname}>
             </LaneName>
         </Grid>
     }

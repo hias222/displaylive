@@ -56,7 +56,7 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
                     y="9"
                     x="50"
                     fontSize="9"
-                    text-anchor="end"
+                    textAnchor="end"
                 >
                     {this.props.LapTime}</text>
                     <text
@@ -64,7 +64,7 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
                     y="17"
                     x="50"
                     fontSize="8"
-                    text-anchor="end"
+                    textAnchor="end"
                 >
                     {this.props.EventName}</text>
             </g>

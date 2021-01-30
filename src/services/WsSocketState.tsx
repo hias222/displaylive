@@ -11,13 +11,11 @@ export class WsSocketState extends React.Component<WsSocketPropsInterface, WsSoc
   backend_url: string;
   context_path: string;
 
-  //var backend_url = process.env.REACT_APP_BACKEND_DIRECT === "true" ? "http://" + window.location.hostname + ":4001" : process.env.REACT_APP_BACKEND_URL
-
   constructor(props: WsSocketPropsInterface) {
     super(props);
     this.context_path = process.env.REACT_APP_BACKEND_CONTEX_PATH === undefined ? "/socket.io" : "/" + process.env.REACT_APP_BACKEND_CONTEX_PATH + "/socket.io"
     var get_backend_port = process.env.REACT_APP_BACKEND_PORT === undefined ? "4001" : process.env.REACT_APP_BACKEND_PORT
-    var get_backend_url = process.env.REACT_APP_BACKEND_DIRECT === "true" ?   window.location.protocol + "//" +  window.location.hostname + ":" + get_backend_port : process.env.REACT_APP_BACKEND_URL
+    var get_backend_url = process.env.REACT_APP_BACKEND_DIRECT === "true" ? window.location.protocol + "//" + window.location.hostname + ":" + get_backend_port : process.env.REACT_APP_BACKEND_URL
     this.backend_url = get_backend_url === undefined ? window.location.protocol + "//" + window.location.hostname + ":" + get_backend_port : get_backend_url
     this.state = {
       WsConnected: false,
@@ -30,7 +28,7 @@ export class WsSocketState extends React.Component<WsSocketPropsInterface, WsSoc
 
   componentDidMount() {
 
-    console.log("WsSocketState: connect to " + this.backend_url + " path " +  this.context_path + " for /socket-io");
+    console.log("WsSocketState: connect to " + this.backend_url + " path " + this.context_path + " for socket-io");
 
     const socket = socketIOClient(this.backend_url,
       {
@@ -38,14 +36,14 @@ export class WsSocketState extends React.Component<WsSocketPropsInterface, WsSoc
       });
 
     socket.on('connect', () => {
-      console.log("WsSocketState: connected " + this.backend_url + " socket-io");
+      console.log("WsSocketState: connected " + this.backend_url + " path " + this.context_path);
       this.setState({
         WsConnected: true
       })
     });
 
     socket.on('disconnect', () => {
-      console.log("WsSocketState: disconnected " + this.backend_url + " socket-io");
+      console.log("WsSocketState: disconnected " + this.backend_url + " path " + this.context_path);
       this.setState({
         WsConnected: false
       })

@@ -13,12 +13,12 @@ export default class LaneName extends React.Component<LaneNameInterface, {}> {
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg" 
-            preserveAspectRatio="xMidYMax meet"
+            preserveAspectRatio="xMaxYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 142 10"
+            viewBox="0 0 965 35"
             height="35"
-            width="500"
+            width="965"
             >
             <defs>
                 <linearGradient id="LaneNameGradient" gradientTransform="rotate(0)">
@@ -36,7 +36,7 @@ export default class LaneName extends React.Component<LaneNameInterface, {}> {
                 <linearGradient
                     gradientUnits="userSpaceOnUse"
                     y2="10"
-                    x2="1000"
+                    x2="1500"
                     y1="0"
                     x1="0"
                     id="laneNameStyle"
@@ -46,15 +46,15 @@ export default class LaneName extends React.Component<LaneNameInterface, {}> {
             <g
                 id="layer1">
                 <path
-                    transform="scale(0.3)"
-                    d="M 0 0 h 500 v 35 h -500 z"
+                    transform="scale(1)"
+                    d="M 0 0 h 965 v 35 h -965 z"
                     fill="url(#laneNameStyle)"
                 />
                 <text
                     className={colorTextLaneName}
-                    y="9"
-                    x="2"
-                    fontSize="9"
+                    y="27"
+                    x="3"
+                    fontSize="30"
                 >
                     {this.props.LaneName}</text>
             </g>

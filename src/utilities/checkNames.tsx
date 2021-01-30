@@ -1,7 +1,7 @@
 import { swimmerData } from "../types/SwimmerData";
 
 export default function checkName(length: number, swimmer: swimmerData) {
-    let namelength = 20;
+    let namelength = length;
 
     let sizeName = swimmer.name !== undefined ? swimmer.name.length : 0;
     let sizeLastName = (swimmer.firstName !== undefined) ? swimmer.firstName.length : 0

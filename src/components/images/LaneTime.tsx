@@ -55,7 +55,7 @@ export default class LaneTime extends React.Component<LaneNameInterface, {}> {
                     y="9"
                     x="50"
                     fontSize="9"
-                    text-anchor="end"
+                    textAnchor="end"
                 >
                     {this.props.LaneTime}</text>
             </g>
