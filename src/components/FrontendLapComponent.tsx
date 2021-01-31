@@ -1,4 +1,3 @@
-import { timeStamp } from "console";
 import React from "react";
 import { LaneData } from "../interfaces/lanedatainterface";
 import { LapInterface } from "../interfaces/LapData";
@@ -10,30 +9,44 @@ import { LapLaneSmallComponent } from "./modules/LapLaneSmallComponent";
 export class FrontendLapComponent extends React.Component<SimpleFrontendInterface, LapInterface> {
 
     lapData: LaneData[];
-    lapStatus: boolean[];
+    lapStoredTime: string[];
+    laneRefresh: number[];
+    emptylane: LaneData;
 
     constructor(props: SimpleFrontendInterface) {
         super(props);
 
         this.state = {
             lanes: [],
-            lapStatus: [],
-            lastRefresh: Date.now()
+            lapStoredTime: [],
+            lastRefresh: Date.now(),
+            LaneRefresh: []
         }
 
         this.lapData = []
-        this.lapStatus = []
+        this.lapStoredTime = []
+        this.laneRefresh = []
+        this.emptylane = {
+            lane: '0',
+            finishtime: 'undefined',
+            swimmer: {
+                clubid: '',
+                clubname: '',
+                name: ''
+            }
+
+        }
     }
 
     componentDidMount() {
         // frist fill
         this.props.lanes.map((lane, index) => {
-            this.lapData.push(lane)
-            this.lapStatus.push(false)
+            this.lapStoredTime.push('')
             this.setState(
                 {
                     lanes: this.lapData,
-                    lapStatus: this.lapStatus,
+                    lapStoredTime: this.lapStoredTime,
+                    LaneRefresh: this.laneRefresh
                 }
             )
             return null
@@ -43,16 +56,15 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
     }
 
     componentDidUpdate(prevProps: SimpleFrontendInterface) {
-
-        console.log("update BaseFrontendStaticComponent lanes ")
-
+        // store new data
         this.props.lanes.map((lane, index) => {
-            if (!this.lapStatus[index]) {
-                if (lane.finishtime !== 'undefined') {
+            if (lane.finishtime !== 'undefined') {
+                if (this.lapStoredTime[index] !== lane.finishtime) {
                     console.log(lane.lane + ' ' + lane.finishtime)
                     this.lapData.push(lane)
-                    this.lapData.shift()
-                    this.lapStatus[index] = true
+                    this.laneRefresh.push(Date.now())
+                    var finishtime = lane.finishtime !== undefined ? lane.finishtime : ''
+                    this.lapStoredTime[index] = finishtime
                     this.setState(
                         {
                             lastRefresh: Date.now(),
@@ -62,11 +74,22 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
             }
             return null
         })
-        //if (prevProps.lanes !== this.props.lanes) {
-        //    console.log("update BaseFrontendStaticComponent lanes ")
 
-            //console.log("update " + JSON.stringify(this.props.lanes))
-        //}
+        
+        // in ticker 
+        // todo
+
+        this.state.LaneRefresh.map((refresh, index) => {
+            var diff = Date.now() - refresh;
+            if (diff > 15000) {
+                this.lapData.shift()
+                this.laneRefresh.shift()
+            }
+
+        })
+
+        
+
     }
 
     render() {
