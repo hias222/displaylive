@@ -1,21 +1,76 @@
+import { timeStamp } from "console";
 import React from "react";
+import { LaneData } from "../interfaces/lanedatainterface";
+import { LapInterface } from "../interfaces/LapData";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
 import { EventStateComponent } from "./modules/EventStateComponent";
 import { LapLaneSmallComponent } from "./modules/LapLaneSmallComponent";
 
 
-export class FrontendLapComponent extends React.Component<SimpleFrontendInterface, {}> {
+export class FrontendLapComponent extends React.Component<SimpleFrontendInterface, LapInterface> {
+
+    lapData: LaneData[];
+    lapStatus: boolean[];
+
+    constructor(props: SimpleFrontendInterface) {
+        super(props);
+
+        this.state = {
+            lanes: [],
+            lapStatus: [],
+            lastRefresh: Date.now()
+        }
+
+        this.lapData = []
+        this.lapStatus = []
+    }
+
+    componentDidMount() {
+        // frist fill
+        this.props.lanes.map((lane, index) => {
+            this.lapData.push(lane)
+            this.lapStatus.push(false)
+            this.setState(
+                {
+                    lanes: this.lapData,
+                    lapStatus: this.lapStatus,
+                }
+            )
+            return null
+        })
+
+
+    }
 
     componentDidUpdate(prevProps: SimpleFrontendInterface) {
 
-        if (prevProps.lanes !== this.props.lanes) {
-            console.log("update BaseFrontendStaticComponent lanes")
+        console.log("update BaseFrontendStaticComponent lanes ")
+
+        this.props.lanes.map((lane, index) => {
+            if (!this.lapStatus[index]) {
+                if (lane.finishtime !== 'undefined') {
+                    console.log(lane.lane + ' ' + lane.finishtime)
+                    this.lapData.push(lane)
+                    this.lapData.shift()
+                    this.lapStatus[index] = true
+                    this.setState(
+                        {
+                            lastRefresh: Date.now(),
+                        }
+                    )
+                }
+            }
+            return null
+        })
+        //if (prevProps.lanes !== this.props.lanes) {
+        //    console.log("update BaseFrontendStaticComponent lanes ")
+
             //console.log("update " + JSON.stringify(this.props.lanes))
-        }
+        //}
     }
 
     render() {
-        //  this.props.lanes.sort((a, b) => ((a.finishtime || "0") > (b.finishtime || "0")) ? 1 : -1)
+        //this.state.lanes.sort((a, b) => ((a.finishtime || "0") > (b.finishtime || "0")) ? 1 : -1)
         return (
             <div>
                 <EventStateComponent
@@ -23,7 +78,7 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
                     EventState="Zwischenzeit"
                 />
                 {
-                    this.props.lanes.map((lane, index) => (
+                    this.state.lanes.map((lane, index) => (
                         <LapLaneSmallComponent
                             key={index}
                             lane={lane}
