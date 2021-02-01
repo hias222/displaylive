@@ -1,12 +1,9 @@
 import React from "react";
 
 import { BaseFrontendInterface } from "../interfaces/BaseFrontendInterface";
-
 import { EnumHeatState, SwitchState } from "../state/SwitchState";
-
 import { FrontendFinishComponent } from "./FrontendFinishComponent";
-import { FrontendHeaderTimeComponent } from "./FrontendHeaderTimeComponent";
-import { FrontendLapComponent } from "./FrontendLapComponent";
+import { FrontendRunningComponent } from "./FrontendRunningComponent";
 import { FrontendStartComponent } from "./FrontendStartComponent";
 
 //import classnames from 'classnames';
@@ -45,7 +42,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             this.checkRunning();
         }
 
-        if (prevProps.lastChangeDate !== this.props.lastChangeDate){
+        if (prevProps.lastChangeDate !== this.props.lastChangeDate) {
             this.setState({
                 lapchangetime: Date.now()
             })
@@ -100,7 +97,6 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
                 this.setState({
                     lapdata: false
                 })
-                this.props.onLapReset(false)
             }
         }
     }
@@ -130,18 +126,9 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
         })
     }
 
-    getHeaderTimeData() {
-        return <FrontendHeaderTimeComponent
+    getFrontendRunningData() {
+        return <FrontendRunningComponent
             startdelayms={Date.now() - this.state.startTime}
-            EventHeat={this.props.EventHeat}
-            lanes={this.props.lanes}
-            runningTime={this.props.runningTime}
-        />
-    }
-
-    getFrontendLapData() {
-        return <FrontendLapComponent
-            startdelayms={-1}
             EventHeat={this.props.EventHeat}
             lanes={this.props.lanes}
             runningTime={this.props.runningTime} />
@@ -171,16 +158,9 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
                 return this.getFrontendBeforeStart()
             } case EnumHeatState.Running: {
                 //ggf start delay setzen
-                if (this.state.lapdata) this.setState({ state: EnumHeatState.LapTimes })
                 if (this.state.finishdata) this.setState({ state: EnumHeatState.Finished })
-                // restart vergessen
                 if (!this.state.runnning) this.setState({ state: EnumHeatState.Finished })
-                return this.getHeaderTimeData()
-            } case EnumHeatState.LapTimes: {
-                if (!this.state.runnning) this.setState({ state: EnumHeatState.Finished })
-                if (this.state.finishdata) this.setState({ state: EnumHeatState.Finished })
-                if (!this.state.lapdata) this.setState({ state: EnumHeatState.Running })
-                return this.getFrontendLapData()
+                return this.getFrontendRunningData()
             } case EnumHeatState.Finished: {
                 // reset by stop over properties
                 if (!this.state.finishdata && !this.state.lapdata) this.setState({ state: EnumHeatState.BeforeStart })

@@ -1,12 +1,13 @@
+import { Box, Grid } from "@material-ui/core";
 import React from "react";
 import { LaneData } from "../interfaces/lanedatainterface";
 import { LapInterface } from "../interfaces/LapData";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
-import { EventStateComponent } from "./modules/EventStateComponent";
 import { LapLaneSmallComponent } from "./modules/LapLaneSmallComponent";
+import { StartStopComponent } from "./modules/StartStopComponent";
 
 
-export class FrontendLapComponent extends React.Component<SimpleFrontendInterface, LapInterface> {
+export class FrontendRunningComponent extends React.Component<SimpleFrontendInterface, LapInterface> {
 
     lapData: LaneData[];
     lapStoredTime: string[];
@@ -59,11 +60,6 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
 
     componentWillUnmount() {
         console.log('going sleep lap')
-        // clear
-
-        //this.lapData = []
-        //this.lapStoredTime = []
-        //this.laneRefresh = []
     }
 
     componentDidUpdate(prevProps: SimpleFrontendInterface) {
@@ -107,49 +103,32 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
         //this.state.lanes.sort((a, b) => ((a.finishtime || "0") > (b.finishtime || "0")) ? 1 : -1)
         return (
             <div>
-                <EventStateComponent
-                    Event={this.props.EventHeat}
-                    EventState="Zwischenzeit"
-                />
-                {
-                    this.state.lanes.map((lane, index) => (
-                        <div>
-                            <LapLaneSmallComponent
-                                key={index}
-                                lane={lane}
-                                index={index} />
-                        </div>
-                    ))
-                }
+                <Grid container>
+                    <Grid item xs={6}>
+                        {
+                            this.state.lanes.map((lane, index) => (
+                                <div>
+                                    <LapLaneSmallComponent
+                                        key={index}
+                                        lane={lane}
+                                        index={index} />
+                                </div>
+                            ))
+                        }
+                    </Grid>
+
+                    <Grid item xs={6}>
+                        <Box m={75} />
+                        <StartStopComponent
+                            startdelayms={this.props.startdelayms}
+                            EventHeat={this.props.EventHeat}
+                            runningTime={this.props.runningTime}
+                        />
+                    </Grid>
+
+                </Grid>
 
             </div >
         )
     }
 }
-
-
-/*
-<Grid container >
-                    {
-                        this.props.lanes.map((lane, index) => (
-                            <SingleLaneStaticComponent
-                                key={index}
-                                lane={lane}
-                                index={index}
-                                displayMode={this.props.displayMode}
-                            />
-                        ))
-                    }
-                    <Grid item xs={12}>
-
-                            <Box
-                                borderTop={1} borderLeft={0} borderBottom={0} className={staticbox}>
-                                    <Grid className={staticlaneeven}>
-                                    {this.props.EventHeat.competition}
-                                    </Grid>
-
-                            </Box>
-
-                    </Grid>
-                </Grid>
-                */

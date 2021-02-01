@@ -38,7 +38,6 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         this.onMessageChange = this.onMessageChange.bind(this);
         this.onRunningTimeChange = this.onRunningTimeChange.bind(this);
         this.clearResults = this.clearResults.bind(this);
-        this.onLapReset = this.onLapReset.bind(this);
 
         this.evenHeat = {
             name: "new",
@@ -89,19 +88,6 @@ export default class Lcd extends React.Component<{}, FrontendState> {
             laplanedata: false,
             finishlanedata: false
         });
-    }
-
-    onLapReset(lap: boolean){
-        if(!lap){
-            this.clearResults()
-            
-            console.log("lapreset in app")
-            /*
-            this.setState({
-                laplanedata: false,
-            })
-            */
-        }
     }
 
     onEventHeatChange(EventHeat: eventHeat) {
@@ -291,7 +277,6 @@ export default class Lcd extends React.Component<{}, FrontendState> {
                                 onMessageChange={this.onMessageChange} />
 
                             <FrontendSwitchComponent
-                                onLapReset={this.onLapReset}
                                 startdelayms={this.state.startdelayms}
                                 EventHeat={this.state.eventHeat}
                                 lanes={this.state.lanes}
