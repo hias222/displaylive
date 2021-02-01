@@ -43,20 +43,20 @@ sleep 2
 send_raw_message "lane 4 00:29,22 0"
 sleep 2
 send_raw_message "lane 2 00:30,99 0"
-sleep 7
+sleep 1
 send_raw_message "lane 5 00:31,22 0"
-sleep 8
+sleep 1
 send_raw_message "lane 6 00:31,99 0"
 sleep 1
 send_raw_message "lane 7 00:33,99 0"
-sleep 5
+sleep 1
 send_raw_message "lane 1 00:35,99 0"
 sleep 2
 send_raw_message "lane 8 00:36,10 0"
 sleep 2
 
 
-sleep 5
+sleep 20
 
 
 send_raw_message "lane 3 01:28,99 0"

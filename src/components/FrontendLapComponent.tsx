@@ -16,6 +16,8 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
     constructor(props: SimpleFrontendInterface) {
         super(props);
 
+        console.log('init')
+
         this.state = {
             lanes: [],
             lapStoredTime: [],
@@ -55,12 +57,22 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
 
     }
 
+    componentWillUnmount() {
+        console.log('going sleep lap')
+        // clear
+
+        //this.lapData = []
+        //this.lapStoredTime = []
+        //this.laneRefresh = []
+    }
+
     componentDidUpdate(prevProps: SimpleFrontendInterface) {
         // store new data
         this.props.lanes.map((lane, index) => {
             if (lane.finishtime !== 'undefined') {
                 if (this.lapStoredTime[index] !== lane.finishtime) {
                     console.log(lane.lane + ' ' + lane.finishtime)
+                    console.log(lane)
                     this.lapData.push(lane)
                     this.laneRefresh.push(Date.now())
                     var finishtime = lane.finishtime !== undefined ? lane.finishtime : ''
@@ -75,7 +87,7 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
             return null
         })
 
-        
+
         // in ticker 
         // todo
 
@@ -85,12 +97,11 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
                 this.lapData.shift()
                 this.laneRefresh.shift()
             }
+            return null;
 
         })
-
-        
-
     }
+
 
     render() {
         //this.state.lanes.sort((a, b) => ((a.finishtime || "0") > (b.finishtime || "0")) ? 1 : -1)
@@ -102,11 +113,12 @@ export class FrontendLapComponent extends React.Component<SimpleFrontendInterfac
                 />
                 {
                     this.state.lanes.map((lane, index) => (
-                        <LapLaneSmallComponent
-                            key={index}
-                            lane={lane}
-                            index={index}
-                        />
+                        <div>
+                            <LapLaneSmallComponent
+                                key={index}
+                                lane={lane}
+                                index={index} />
+                        </div>
                     ))
                 }
 

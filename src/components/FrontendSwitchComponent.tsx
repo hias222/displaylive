@@ -100,6 +100,7 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
                 this.setState({
                     lapdata: false
                 })
+                this.props.onLapReset(false)
             }
         }
     }
