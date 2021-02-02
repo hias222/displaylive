@@ -112,7 +112,8 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             startdelayms={this.props.startdelayms}
             EventHeat={this.props.EventHeat}
             lanes={this.props.lanes}
-            runningTime={this.props.runningTime} />
+            runningTime={this.props.runningTime} 
+            active={this.state.runnning}/>
     }
 
     getSwitchData() {

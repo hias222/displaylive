@@ -42,8 +42,6 @@ send_raw_message "lane 3 00:28,77 0"
 sleep 5
 send_raw_message "lane 3 00:28,99 1"
 sleep 1
-send_raw_message "lane 4 00:29,23 0"
-sleep 0
 send_raw_message "lane 4 00:29,22 2"
 sleep 0
 send_raw_message "lane 2 00:30,99 3"

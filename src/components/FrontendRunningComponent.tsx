@@ -41,7 +41,6 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
             }
 
         }
-
         this.laptimer = this.laptimer.bind(this)
         this.intervalId = setInterval(this.laptimer, 1000);
     }
@@ -59,8 +58,6 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
             )
             return null
         })
-
-
     }
 
     componentWillUnmount() {

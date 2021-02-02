@@ -4,34 +4,20 @@ import { LaneInterface } from "../../interfaces/LaneInterface";
 import { LaneState } from "../../state/LaneState";
 
 import FinishStyledLane from "../images/FinishStyledLane";
-
 export class FinishLaneComponent extends React.Component<LaneInterface, LaneState>{
-
-  constructor(props: LaneInterface) {
-    super(props);
-
-    this.state = {
-      laptime: "",
-      islaptime: false,
-      changed: Date.now()
-    }
-
-    this.getRaceData = this.getRaceData.bind(this)
-  }
 
   //paste in state
 
   getRaceData() {
-    if (!this.state.islaptime) {
+
+    var place = this.props.lane.place !== '0' ? this.props.lane.place : ''
+    
     return <FinishStyledLane
       swimmer={this.props.lane.swimmer}
       lane={this.props.lane.lane}
-      place={this.props.lane.place}
+      place={place}
       finishtime={this.props.lane.finishtime}
     />
-    } else {
-      return null
-    }
   }
 
   render() {

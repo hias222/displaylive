@@ -1,11 +1,11 @@
 import React from "react";
 import { LaneData } from "../../interfaces/lanedatainterface";
 import { Grid } from "@material-ui/core";
-import LaneNumber from "./LaneNumber";
-import LaneName from "./LaneName";
-import LaneTime from "./LaneTime";
 import LanePlace from "./LanePlace";
 import checkName from "../../utilities/checkNames";
+import LaneNameAtFinish from "./LaneNameAtFinish";
+import LaneTimeAtFinish from "./LaneTimeAtFinish";
+import LaneNumberAtFinish from "./LaneNumberAtFinish";
 export default class FinishStyledLane extends React.Component<LaneData, {}> {
 
     box_height: number;
@@ -16,7 +16,7 @@ export default class FinishStyledLane extends React.Component<LaneData, {}> {
     }
 
     render() {
-        let correctName = checkName(20,this.props.swimmer);
+        let correctName = checkName(35,this.props.swimmer);
 
         var laneTime = this.props.finishtime !== undefined ? this.props.finishtime : "-";
         var lanePlace = this.props.place !== undefined ? this.props.place : "-";
@@ -25,13 +25,13 @@ export default class FinishStyledLane extends React.Component<LaneData, {}> {
             <LanePlace
                 laneNumber={lanePlace}
             />
-            <LaneNumber
+            <LaneNumberAtFinish
                 laneNumber={this.props.lane}
             />
-            <LaneName
+            <LaneNameAtFinish
                 LaneName={correctName}>
-            </LaneName>
-            <LaneTime
+            </LaneNameAtFinish>
+            <LaneTimeAtFinish
                 LaneTime={laneTime}
             />
         </Grid>;
