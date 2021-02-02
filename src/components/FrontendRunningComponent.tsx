@@ -14,6 +14,8 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
     laneRefresh: number[];
     emptylane: LaneData;
 
+    intervalId: NodeJS.Timeout;
+
     constructor(props: SimpleFrontendInterface) {
         super(props);
 
@@ -39,6 +41,9 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
             }
 
         }
+
+        this.laptimer = this.laptimer.bind(this)
+        this.intervalId = setInterval(this.laptimer, 1000);
     }
 
     componentDidMount() {
@@ -60,6 +65,7 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
 
     componentWillUnmount() {
         console.log('going sleep lap')
+        clearInterval(this.intervalId);
     }
 
     componentDidUpdate(prevProps: SimpleFrontendInterface) {
@@ -67,8 +73,6 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
         this.props.lanes.map((lane, index) => {
             if (lane.finishtime !== 'undefined') {
                 if (this.lapStoredTime[index] !== lane.finishtime) {
-                    console.log(lane.lane + ' ' + lane.finishtime)
-                    console.log(lane)
                     this.lapData.push(lane)
                     this.laneRefresh.push(Date.now())
                     var finishtime = lane.finishtime !== undefined ? lane.finishtime : ''
@@ -83,10 +87,9 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
             return null
         })
 
+    }
 
-        // in ticker 
-        // todo
-
+    laptimer() {
         this.state.LaneRefresh.map((refresh, index) => {
             var diff = Date.now() - refresh;
             if (diff > 15000) {
@@ -94,8 +97,12 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
                 this.laneRefresh.shift()
             }
             return null;
-
         })
+        this.setState(
+            {
+                lastRefresh: Date.now(),
+            }
+        )
     }
 
 

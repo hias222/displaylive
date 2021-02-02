@@ -39,13 +39,13 @@ sleep 3
 # laps
 
 send_raw_message "lane 3 00:28,99 0"
-sleep 2
+sleep 1
 send_raw_message "lane 4 00:29,22 0"
-sleep 2
+sleep 0
 send_raw_message "lane 2 00:30,99 0"
 sleep 1
 send_raw_message "lane 5 00:31,22 0"
-sleep 1
+sleep 0
 send_raw_message "lane 6 00:31,99 0"
 sleep 1
 send_raw_message "lane 7 00:33,99 0"
@@ -64,18 +64,18 @@ sleep 2
 send_raw_message "lane 4 01:29,22 0"
 sleep 2
 send_raw_message "lane 2 01:30,99 0"
-sleep 3
+sleep 0
 send_raw_message "lane 5 01:31,22 0"
-sleep 5
+sleep 0
 send_raw_message "lane 6 01:31,99 0"
-sleep 6
+sleep 0
 send_raw_message "lane 7 01:33,99 0"
-sleep 8
+sleep 2
 send_raw_message "lane 1 01:35,99 0"
 sleep 2
 send_raw_message "lane 8 01:36,10 0"
 sleep 2
-exit 0
+# exit 0
 
 for (( i=1; i<=$NUMBER_LANES; i++ ))
 do

@@ -8,6 +8,5 @@ export interface BaseFrontendInterface {
     displayMode: string;
     runningTime: string;
     finishdata: boolean;
-    lapdata: boolean;
     lastChangeDate: number;
 }

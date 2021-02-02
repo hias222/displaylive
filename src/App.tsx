@@ -283,7 +283,6 @@ export default class Lcd extends React.Component<{}, FrontendState> {
                                 displayMode={this.state.displayMode}
                                 runningTime={this.state.runningTime}
                                 finishdata={this.state.finishlanedata}
-                                lapdata={this.state.laplanedata}
                                 lastChangeDate={this.state.lastChangeDate}
                             />
                         </Grid>
