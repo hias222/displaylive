@@ -65,6 +65,20 @@ sleep 2
 
 send_raw_message stop
 
+sleep 5
+
+send_raw_message start
+
+sleep 10
+
+send_raw_message "header 1 2"
+sleep 5
+send_raw_message "lane 3 00:22,99 1"
+sleep 1
+send_raw_message "lane 4 00:23,23 0"
+sleep 0
+send_raw_message "lane 4 00:24,22 8"
+sleep 0
 
 exit 0
 

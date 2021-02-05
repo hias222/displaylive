@@ -249,16 +249,15 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         console.log("+++++ clear Results")
         this.resultData = []
         this.state.lanes.map((lane, index) => {
-            lane.finishtime = '';
-            this.resultData.push(lane)
+            var lanedata: LaneData = {
+                lane: lane.lane,
+                swimmer: lane.swimmer,
+                place: '0'
+            }
+            this.resultData.push(lanedata)
             return null
         })
 
-        this.setState({
-            finishlanedata: false,
-            laplanedata: false,
-            lanes: this.resultData
-        })
     }
 
     render() {

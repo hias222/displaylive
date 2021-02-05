@@ -28,7 +28,7 @@ sleep 1
 create_random_time
      
 send_raw_message "header 0 0"
-sleep 5
+sleep 1
 
 send_raw_message "header 1 1"
 sleep 5
