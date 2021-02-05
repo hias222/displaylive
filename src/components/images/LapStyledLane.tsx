@@ -1,6 +1,5 @@
 import React from "react";
 import { LaneData } from "../../interfaces/lanedatainterface";
-import { Grid } from "@material-ui/core";
 import LaneNumber from "./LaneNumber";
 import LaneTime from "./LaneTime";
 export default class LapStyledLane extends React.Component<LaneData, {}> {
@@ -21,14 +20,14 @@ export default class LapStyledLane extends React.Component<LaneData, {}> {
             //console.log(this.props.lane + ' empty')
             return null;
         } else {
-            return <Grid item xs={12}>
+            return <div>
                 <LaneNumber
                     laneNumber={this.props.lane}
                 />
                 <LaneTime
                     LaneTime={lapTime}
                 />
-            </Grid>;
+            </div>
         }
     }
 

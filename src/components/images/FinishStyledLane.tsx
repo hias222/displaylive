@@ -1,6 +1,5 @@
 import React from "react";
 import { LaneData } from "../../interfaces/lanedatainterface";
-import { Grid } from "@material-ui/core";
 import LanePlace from "./LanePlace";
 import checkName from "../../utilities/checkNames";
 import LaneNameAtFinish from "./LaneNameAtFinish";
@@ -16,12 +15,12 @@ export default class FinishStyledLane extends React.Component<LaneData, {}> {
     }
 
     render() {
-        let correctName = checkName(35,this.props.swimmer);
+        let correctName = checkName(35, this.props.swimmer);
 
         var laneTime = this.props.finishtime !== undefined ? this.props.finishtime : "-";
         var lanePlace = this.props.place !== undefined ? this.props.place : "-";
 
-        return <Grid xs={12}>
+        return <div>
             <LanePlace
                 laneNumber={lanePlace}
             />
@@ -34,7 +33,7 @@ export default class FinishStyledLane extends React.Component<LaneData, {}> {
             <LaneTimeAtFinish
                 LaneTime={laneTime}
             />
-        </Grid>;
+        </div>
 
     }
 }

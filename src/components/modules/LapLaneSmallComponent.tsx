@@ -1,3 +1,4 @@
+import { Grid } from "@material-ui/core";
 import React from "react";
 
 import { LaneInterface } from "../../interfaces/LaneInterface";
@@ -22,11 +23,15 @@ export class LapLaneSmallComponent extends React.Component<LaneInterface, LaneSt
   }
 
   getRaceData() {
-    return <LapStyledLane
-      swimmer={this.props.lane.swimmer}
-      lane={this.props.lane.lane}
-      finishtime={this.props.lane.finishtime}
-    ></LapStyledLane>
+    return <Grid item key={this.props.index} xs={12}>
+      <LapStyledLane
+        swimmer={this.props.lane.swimmer}
+        lane={this.props.lane.lane}
+        finishtime={this.props.lane.finishtime}
+      />
+    </Grid>
+
+
   }
 
   render() {

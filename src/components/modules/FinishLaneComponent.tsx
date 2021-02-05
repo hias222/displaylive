@@ -1,3 +1,4 @@
+import { Grid } from "@material-ui/core";
 import React from "react";
 
 import { LaneInterface } from "../../interfaces/LaneInterface";
@@ -11,13 +12,15 @@ export class FinishLaneComponent extends React.Component<LaneInterface, LaneStat
   getRaceData() {
 
     var place = this.props.lane.place !== '0' ? this.props.lane.place : ''
-    
-    return <FinishStyledLane
-      swimmer={this.props.lane.swimmer}
-      lane={this.props.lane.lane}
-      place={place}
-      finishtime={this.props.lane.finishtime}
-    />
+
+    return <Grid item key={this.props.index} xs={12}>
+      <FinishStyledLane
+        swimmer={this.props.lane.swimmer}
+        lane={this.props.lane.lane}
+        place={place}
+        finishtime={this.props.lane.finishtime}
+      />
+    </Grid>
   }
 
   render() {
