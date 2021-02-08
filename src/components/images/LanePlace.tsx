@@ -8,8 +8,8 @@ interface LaneNumberInterface {
 export default class LanePlace extends React.Component<LaneNumberInterface, {}> {
 
     render() {
-        let colorTextLaneNumber = classnames('colorTextLaneNumber');
-        let colorLaneNumber = classnames('colorLaneNumber');
+        let colorTextFinishPlace = classnames('colorTextFinishPlace');
+        let colorFinishPlace = classnames('colorFinishPlace');
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"
@@ -22,12 +22,12 @@ export default class LanePlace extends React.Component<LaneNumberInterface, {}> 
             <defs>
                 <linearGradient id="lanePlaceGradient" gradientTransform="rotate(0)">
                     <stop
-                        className={colorLaneNumber}
+                        className={colorFinishPlace}
                         offset="0"
                         stopOpacity="1"
                     />
                     <stop
-                        className={colorLaneNumber}
+                        className={colorFinishPlace}
                         offset=""
                         stopOpacity="1"
                     />
@@ -38,7 +38,7 @@ export default class LanePlace extends React.Component<LaneNumberInterface, {}> 
                     x2="20"
                     y1="-10"
                     x1="20"
-                    id="laneGradientStyle"
+                    id="lanePlaceGradientStyle"
                     xlinkHref="#lanePlaceGradient"
                 />
             </defs>
@@ -48,10 +48,10 @@ export default class LanePlace extends React.Component<LaneNumberInterface, {}> 
                     transform="scale(1)"
                     //d="M 0,50 0,47 0,24 0,0 30,0 c 15,0 29,0.0 29,0 l 0.50,0 -12,23 -12,23 -10,0 c -5,0 -13,0 -17,0 z"
                     d="M 0 0 h 35 v 35 h -35 z"
-                    fill="url(#laneGradientStyle)"
+                    fill="url(#lanePlaceGradientStyle)"
                 />
                 <text
-                    className={colorTextLaneNumber}
+                    className={colorTextFinishPlace}
                     y="8"
                     x="2"
                     fontSize="9"

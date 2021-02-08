@@ -5,7 +5,7 @@ import { Container, Grid } from "@material-ui/core";
 
 import classnames from 'classnames';
 import LapTime from "../images/LapTime";
-import checkName from "../../utilities/checkNames";
+
 
 export class StartStopComponent extends React.Component<StartStopInterface, StartStopState> {
 
@@ -127,9 +127,9 @@ export class StartStopComponent extends React.Component<StartStopInterface, Star
 
         return (
             <Container className={basepage}>
-                <Grid container spacing={3}>
-                    <Grid item xs={8}></Grid>
-                    <Grid item xs={4}>
+                <Grid container spacing={1}>
+                    <Grid item xs={4}></Grid>
+                    <Grid item xs={8}>
                         <LapTime
                             LapTime={this.format(this.state.displaytime)}
                             EventNr={this.props.EventHeat.eventnr}

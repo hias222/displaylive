@@ -1,6 +1,6 @@
 import React from "react";
 import { LaneData } from "../../interfaces/lanedatainterface";
-import LaneNumber from "./LaneNumber";
+import LapNumber from "./LapNumber";
 import LaneTime from "./LaneTime";
 export default class LapStyledLane extends React.Component<LaneData, {}> {
 
@@ -21,7 +21,7 @@ export default class LapStyledLane extends React.Component<LaneData, {}> {
             return null;
         } else {
             return <div>
-                <LaneNumber
+                <LapNumber
                     laneNumber={this.props.lane}
                 />
                 <LaneTime
@@ -40,7 +40,7 @@ export default class LapStyledLane extends React.Component<LaneData, {}> {
 }
 
 /*
-                                      <LaneNumber
-                    laneNumber={this.props.lane}
+                                      <LapNumber
+                    LapNumber={this.props.lane}
                 />
                 */

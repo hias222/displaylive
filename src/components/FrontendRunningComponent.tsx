@@ -122,7 +122,7 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
                     </Grid>
 
                     <Grid item xs={6}>
-                        <Box m={75} />
+                        <Box m={65} />
                         <StartStopComponent
                             startdelayms={this.props.startdelayms}
                             EventHeat={this.props.EventHeat}

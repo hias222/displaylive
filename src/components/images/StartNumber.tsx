@@ -1,34 +1,34 @@
-import React from 'react';
 import classnames from 'classnames';
+import React from 'react';
 
 interface LaneNumberInterface {
     laneNumber: string;
 }
 
-export default class LaneNumber extends React.Component<LaneNumberInterface, {}> {
+export default class StartNumber extends React.Component<LaneNumberInterface, {}> {
 
     render() {
-        let colorTextLaneName = classnames('colorTextLaneName');
-        let colorLaneName = classnames('colorLaneName');
+        let colorTextNumber = classnames('colorTextNumber');
+        let colorNumber = classnames('colorNumber');
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 10 10"
+            viewBox="0 0 35 35"
             height="35"
             width="35"
            >
             <defs>
-                <linearGradient id="laneNumberGradient" gradientTransform="rotate(0)">
+                <linearGradient id="laneStartNumberGradient" gradientTransform="rotate(0)">
                     <stop
-                        className={colorLaneName}
+                        className={colorNumber}
                         offset="0"
                         stopOpacity="1"
                     />
                     <stop
-                        className={colorLaneName}
-                        offset=""
+                        className={colorNumber}
+                        offset="1"
                         stopOpacity="1"
                     />
                 </linearGradient>
@@ -38,8 +38,8 @@ export default class LaneNumber extends React.Component<LaneNumberInterface, {}>
                     x2="20"
                     y1="-10"
                     x1="20"
-                    id="laneNumberStyle"
-                    xlinkHref="#laneNumberGradient"
+                    id="laneStartNumberStyle"
+                    xlinkHref="#laneStartNumberGradient"
                 />
             </defs>
             <g
@@ -48,13 +48,13 @@ export default class LaneNumber extends React.Component<LaneNumberInterface, {}>
                     transform="scale(1)"
                     //d="M 0,50 0,47 0,24 0,0 30,0 c 15,0 29,0.0 29,0 l 0.50,0 -12,23 -12,23 -10,0 c -5,0 -13,0 -17,0 z"
                     d="M 0 0 h 35 v 35 h -35 z"
-                    fill="url(#laneNumberStyle)"
+                    fill="url(#laneStartNumberStyle)"
                 />
                 <text
-                    className={colorTextLaneName}
-                    y="8"
-                    x="2"
-                    fontSize="9"
+                    className={colorTextNumber}
+                    y="26"
+                    x="7"
+                    fontSize="30"
                 >
                     {this.props.laneNumber}</text>
             </g>

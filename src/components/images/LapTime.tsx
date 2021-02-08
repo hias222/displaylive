@@ -12,7 +12,8 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
 
     render() {
         let colorTextLaneName = classnames('colorTextLaneName');
-        let colorLaneName = classnames('colorLaneName');
+        let colorLapTimeStart = classnames('colorLapTimeStart');
+        let colorLapTimeEnd = classnames('colorLapTimeEnd');
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,26 +25,24 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
             width="250"
         >
             <defs>
-                <linearGradient id="LaneNameGradient" gradientTransform="rotate(0)">
+                <linearGradient id="LapTimeGradient" gradientTransform="rotate(0)">
                     <stop
-                        className={colorLaneName}
+                        className={colorLapTimeStart}
                         offset="0"
-                        stopOpacity="1"
                     />
                     <stop
-                        className={colorLaneName}
+                        className={colorLapTimeEnd}
                         offset="1"
-                        stopOpacity="0"
                     />
                 </linearGradient>
                 <linearGradient
                     gradientUnits="userSpaceOnUse"
-                    y2="50"
+                    y2="0"
                     x2="400"
                     y1="0"
                     x1="0"
-                    id="laneNameStyle"
-                    xlinkHref="#LaneNameGradient"
+                    id="lapTimeStyle"
+                    xlinkHref="#LapTimeGradient"
                 />
             </defs>
             <g
@@ -51,7 +50,7 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
                 <path
                     transform="scale(1)"
                     d="M 0 0 h 250 v 50 h -250 z"
-                    fill="url(#laneNameStyle)"
+                    fill="url(#lapTimeStyle)"
                 />
                 <text
                     className={colorTextLaneName}

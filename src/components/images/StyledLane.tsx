@@ -2,9 +2,8 @@ import React from "react";
 import classnames from 'classnames';
 import { LaneData } from "../../interfaces/lanedatainterface";
 import { Grid, Box } from "@material-ui/core";
-
-import LaneNumber from "./LaneNumber";
 import checkName from "../../utilities/checkNames";
+import LaneNumberAtFinish from "./LaneNumberAtFinish";
 
 export default class StyledLane extends React.Component<LaneData, {}> {
 
@@ -32,7 +31,7 @@ export default class StyledLane extends React.Component<LaneData, {}> {
         return <Grid container >
             <Grid item xs={1} >
                 <Box text-align={"center"} height={this.box_height} borderTop={1} borderLeft={0} borderBottom={0} className={staticbox}>
-                    <Grid className={staticlaneeven}>  <LaneNumber
+                    <Grid className={staticlaneeven}>  <LaneNumberAtFinish
                         laneNumber={this.props.lane} />
                     </Grid>
                 </Box>

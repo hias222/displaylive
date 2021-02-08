@@ -1,14 +1,16 @@
 
 .colorTextLaneNumber{
-    font-size: 10;
+   //font-size: 10;
     text-align: right;
     font-weight: bold;
     fill: $colorLaneNumber;
 }
-  
-.colorLaneNumber {
-    stop-color: $colorPlaceBackground;
+
+
+.colorTextLaneName{
+  fill: $colorLaneName;
 }
+
 
 .gridLane {
   border-spacing: 0;
@@ -31,11 +33,35 @@
   stop-color: $ColorLaneBackground;
 }
 
-.colorTextLaneName{
-  font-size: 10;
-  fill: $colorLaneName;
+.colorLapTimeStart{
+  stop-color: $ColorLaneBackground;
+  stop-opacity: 1;
 }
 
+.colorLapTimeEnd{
+  stop-color: $ColorLaneBackgroundEnd;
+  stop-opacity: 1;
+}
+
+// lane number style
+
+.colorNumber{
+  stop-color: $colorPlaceBackground;
+}
+
+.colorTextNumber{
+  stop-color: $colorLaneNumber;
+}
+
+// Finish Place style
+
+.colorTextFinishPlace{
+  stop-color: $colorLaneNumber;
+}
+
+.colorFinishPlace{
+  stop-color: $colorLaneName;
+}
 
 .colorStateGreyName{
   stop-color: $colorStateGrey;
