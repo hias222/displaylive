@@ -7,12 +7,6 @@
   box-shadow: 0px 2px 1px -1px $farbeback,0px 1px 1px 0px $farbeback,0px 1px 3px 0px $farbeback;
 }
 
-$farbegeradeschrift: white;
-$farbegerade:  rgba(194, 211, 215, 0);
-$lanesize: 2em; 
-$farbehintergrund:   rgba(196, 196, 196, 0.1);
-$laneborder: rgb(87, 179, 228);
-
 .staticlaneeven {
   color: $farbegeradeschrift;
   background: $farbegerade;

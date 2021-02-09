@@ -9,27 +9,23 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
 
     render() {
         let colorTextLaneName = classnames('colorTextLaneName');
-        let colorLaneName = classnames('colorLaneName');
+        let colorEventName = classnames('colorEventName');
+        let buttonEventName = classnames('buttonEventName');
 
         return (<svg
-            xmlns="http://www.w3.org/2000/svg" 
+            xmlns="http://www.w3.org/2000/svg"
             //preserveAspectRatio="xMidYMax meet"
             preserveAspectRatio="xMaxYMax slice"
             id="svg8"
             version="1.1"
-            viewBox="0 0 200 10"
-            height="50"
+            viewBox="0 0 1000 58"
+            height="58"
             width="1000"
-            >
+        >
             <defs>
                 <linearGradient id="StartEventName" gradientTransform="rotate(0)">
                     <stop
-                        className={colorLaneName}
-                        offset="0"
-                        stopOpacity="1"
-                    />
-                    <stop
-                        className={colorLaneName}
+                        className={colorEventName}
                         offset="0"
                         stopOpacity="1"
                     />
@@ -43,22 +39,43 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
                     id="EventNameHeaderStyle"
                     xlinkHref="#StartEventName"
                 />
+                <linearGradient id="ButtonEventName" gradientTransform="rotate(0)">
+                    <stop
+                        className={buttonEventName}
+                        offset="0"
+                        stopOpacity="1"
+                    />
+                </linearGradient>
+                <linearGradient
+                    gradientUnits="userSpaceOnUse"
+                    y2="10"
+                    x2="1000"
+                    y1="0"
+                    x1="0"
+                    id="ButtonNameHeaderStyle"
+                    xlinkHref="#ButtonEventName"
+                />
             </defs>
             <g
                 id="layer1">
                 <path
-                    transform="scale(0.3)"
+                    transform="scale(1)"
                     d="M 0 0 h 1000 v 50 h -1000 z"
                     fill="url(#EventNameHeaderStyle)"
                 />
                 <text
                     className={colorTextLaneName}
-                    y="8"
-                    x="100"
-                    fontSize="9"
+                    y="38"
+                    x="500"
+                    fontSize="40"
                     textAnchor="middle"
                 >
                     {this.props.EventName}</text>
+                <path
+                    transform="scale(1)"
+                    d="M 0 50 h 1000 v 8 h -1000 z"
+                    fill="url(#ButtonNameHeaderStyle)"
+                />
             </g>
         </svg>
         );

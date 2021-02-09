@@ -1,11 +1,13 @@
 
-.colorTextLaneNumber{
-   //font-size: 10;
-    text-align: right;
-    font-weight: bold;
-    fill: $colorLaneNumber;
+
+
+.colorLaneName{
+  stop-color: $ColorSwimmerBackground;
 }
 
+.colorEventName{
+  stop-color: $ColorSwimmerBackground;
+}
 
 .colorTextLaneName{
   fill: $colorLaneName;
@@ -14,7 +16,6 @@
 
 .gridLane {
   border-spacing: 0;
-  // background-color: $ColorLaneBackground;
   background-color: red;
   color: white;
   border-top: 0;
@@ -25,43 +26,46 @@
 
 .gridEventNameSurround {
   height: 60px;
-  background-color: $colorPlaceBackground;
+  background-color: $colorLaneBackground;
 }
 
-
-.colorLaneName{
-  stop-color: $ColorLaneBackground;
+.buttonEventName {
+  //height: 60px;
+  stop-color: $colorLaneBackground;
 }
 
 .colorLapTimeStart{
-  stop-color: $ColorLaneBackground;
+  stop-color: $ColorTimeBackground;
   stop-opacity: 1;
 }
 
 .colorLapTimeEnd{
-  stop-color: $ColorLaneBackgroundEnd;
+  stop-color: $ColorTimeBackgroundEnd;
   stop-opacity: 1;
 }
 
 // lane number style
 
+
 .colorNumber{
-  stop-color: $colorPlaceBackground;
+  stop-color: $colorLaneBackground;
 }
 
 .colorTextNumber{
-  stop-color: $colorLaneNumber;
+  fill: $colorLaneNumber;
 }
 
 // Finish Place style
 
 .colorTextFinishPlace{
-  stop-color: $colorLaneNumber;
+  fill: $colorLaneName;
 }
 
 .colorFinishPlace{
-  stop-color: $colorLaneName;
+  stop-color: $ColorPlaceBackground;
 }
+
+// 
 
 .colorStateGreyName{
   stop-color: $colorStateGrey;
@@ -69,5 +73,5 @@
 
 .colorStateGreyTextName{
   font-size: 10;
-  fill: $ColorLaneBackground;
+  fill: $ColorSwimmerBackground;
 }

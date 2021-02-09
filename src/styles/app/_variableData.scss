@@ -1,12 +1,32 @@
 $colorLaneNumber: black;
 $colorLaneName: white;
-$colorPlaceBackground: rgba(219, 239, 43, 1);
 
-// color for lanes - transission from start to end
-$ColorLaneBackground: rgba(6, 71, 101, 1);
+//$ColorSwimmerBackground: rgba(6, 71, 101, 1);
+
+$ColorSwimmerBackground: rgba(29, 139, 198, 0.795);
+$laneborder: rgb(87, 179, 228);
+
+
+// time
+//$ColorTimeBackground: rgba(6, 71, 101, 1);
+//$ColorTimeBackgroundEnd:  rgba(98, 100, 98, 0.575);
+$ColorTimeBackground: rgba(29,139,198,1);
+$ColorTimeBackgroundEnd:  rgba(29,139,198,0.5);
+
+
+// color lane number - transission from start to end
+$colorLaneBackground: rgba(219, 239, 43, 1);
 $ColorLaneBackgroundEnd:  rgba(98, 100, 98, 0.575);
+
+// color place
+$ColorPlaceBackground: rgba(198,4,36, 1);
 
 $colorStateGrey: rgba(220, 235, 243, 1);
 $farbehintergrund: rgba(0, 0, 0,0);
-$clorlaneback1: rgba(72, 118, 255, 0.8);
+
 $farbeback: rgba(72, 255, 87, 0.6);
+
+$farbegeradeschrift: white;
+$farbegerade:  rgba(194, 211, 215, 0);
+$lanesize: 2em; 
+$farbehintergrund:   rgba(0, 0, 0, 0);

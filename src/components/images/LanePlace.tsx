@@ -15,7 +15,7 @@ export default class LanePlace extends React.Component<LaneNumberInterface, {}> 
             xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 10 10"
+            viewBox="0 0 35 35"
             height="35"
             width="35"
            >
@@ -52,9 +52,9 @@ export default class LanePlace extends React.Component<LaneNumberInterface, {}> 
                 />
                 <text
                     className={colorTextFinishPlace}
-                    y="8"
+                    y="27"
                     x="2"
-                    fontSize="9"
+                    fontSize="30"
                 >
                     {this.props.laneNumber}</text>
             </g>

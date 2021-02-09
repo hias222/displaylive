@@ -1,5 +1,4 @@
 import { Grid } from "@material-ui/core";
-import classnames from 'classnames';
 import React from "react";
 import EventName from "../images/EventName";
 
@@ -12,12 +11,15 @@ export class EventNameComponent extends React.Component<EventNameInterface, {}>{
     render() {
 
         //eventName
-        let gridEventNameSurround = classnames('gridEventNameSurround');
+        //let gridEventNameSurround = classnames('gridEventNameSurround');
+        //className={gridEventNameSurround}
         return (
-                <Grid item xs={12} className={gridEventNameSurround}>
+            <div > 
+                <Grid item xs={12}>
                     <EventName
-                    EventName='Wettkampf'/>
+                        EventName='Wettkampf' />
                 </Grid>
+            </div>
         )
     }
 
