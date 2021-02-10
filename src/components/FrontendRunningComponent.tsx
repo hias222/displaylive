@@ -3,6 +3,7 @@ import React from "react";
 import { LaneData } from "../interfaces/lanedatainterface";
 import { LapInterface } from "../interfaces/LapData";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
+import BoxEmpty from "./images/BoxEmpty";
 import { LapLaneSmallComponent } from "./modules/LapLaneSmallComponent";
 import { StartStopComponent } from "./modules/StartStopComponent";
 
@@ -109,6 +110,7 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
             <div>
                 <Grid container>
                     <Grid item xs={6}>
+                        <BoxEmpty></BoxEmpty>
                         {
                             this.state.lanes.map((lane, index) => (
                                 <div>
@@ -122,16 +124,14 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
                     </Grid>
 
                     <Grid item xs={6}>
-                        <Box m={65} />
+                        <Box m={55} />
                         <StartStopComponent
                             startdelayms={this.props.startdelayms}
                             EventHeat={this.props.EventHeat}
                             runningTime={this.props.runningTime}
                         />
                     </Grid>
-
                 </Grid>
-
             </div >
         )
     }

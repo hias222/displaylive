@@ -53,7 +53,7 @@ export default class LanePlace extends React.Component<LaneNumberInterface, {}> 
                 <text
                     className={colorTextFinishPlace}
                     y="27"
-                    x="2"
+                    x="7"
                     fontSize="30"
                 >
                     {this.props.laneNumber}</text>
