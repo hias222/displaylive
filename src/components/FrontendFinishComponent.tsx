@@ -5,6 +5,8 @@ import { EventStateComponent } from "./modules/EventStateComponent";
 import { FinishInterface } from "../interfaces/FinishData";
 import { LaneData } from "../interfaces/lanedatainterface";
 import { FinishFrontendInterface } from "../interfaces/FinishFrontendInterface";
+import { Grid } from "@material-ui/core";
+import BoxEmpty from "./images/BoxEmpty";
 
 export class FrontendFinishComponent extends React.Component<FinishFrontendInterface, FinishInterface> {
 
@@ -142,25 +144,33 @@ export class FrontendFinishComponent extends React.Component<FinishFrontendInter
         //this.props.lanes.sort((a, b) => ((a.place || "99") > (b.place || "99")) ? 1 : -1)
 
         return (
-            <div>
-                <EventNameComponent
-                    EventName='Wettkampf' />
-
-                <EventStateComponent
-                    Event={this.props.EventHeat}
-                    EventState='Ziel'
-                />
-
-                {
-                    this.state.lanes.map((lane, index) => (
-                        <FinishLaneComponent
-                            key={index}
-                            lane={lane}
-                            index={index}
+            <Grid container>
+                <Grid item xs={12}><BoxEmpty></BoxEmpty></Grid>
+                <Grid item xs={12}><BoxEmpty></BoxEmpty></Grid>
+                <Grid item xs={1}></Grid>
+                <Grid item xs={10}>
+                    <Grid container xs={12}>
+                        <EventNameComponent
+                             EventName={this.props.EventHeat.competition !== undefined ? this.props.EventHeat.competition : 'undefinend'} />
+                
+                        <EventStateComponent
+                            Event={this.props.EventHeat}
+                            EventState='Ziel'
                         />
-                    ))
-                }
-            </div >
+
+                        {
+                            this.state.lanes.map((lane, index) => (
+                                <FinishLaneComponent
+                                    key={index}
+                                    lane={lane}
+                                    index={index}
+                                />
+                            ))
+                        }
+                    </Grid>
+                </Grid>
+                <Grid item xs={1}></Grid>
+            </Grid>
         )
     }
 }

@@ -16,9 +16,9 @@ export default class LaneTime extends React.Component<LaneNameInterface, {}> {
             preserveAspectRatio="xMidYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 57 10"
-            height="35"
-            width="200"
+            viewBox="0 0 100 25"
+            height="25"
+            width="100"
             >
             <defs>
                 <linearGradient id="LaneNameGradient" gradientTransform="rotate(0)">
@@ -46,15 +46,15 @@ export default class LaneTime extends React.Component<LaneNameInterface, {}> {
             <g
                 id="layer1">
                 <path
-                    transform="scale(0.3)"
-                    d="M 0 0 h 200 v 35 h -200 z"
+                    transform="scale(1)"
+                    d="M 0 0 h 100 v 25 h -200 z"
                     fill="url(#laneNameStyle)"
                 />
                 <text
                     className={colorTextLaneName}
-                    y="9"
-                    x="50"
-                    fontSize="9"
+                    y="18"
+                    x="90"
+                    fontSize="18"
                     textAnchor="end"
                 >
                     {this.props.LaneTime}</text>

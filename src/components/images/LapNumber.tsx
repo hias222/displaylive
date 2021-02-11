@@ -15,9 +15,9 @@ export default class LapNumber extends React.Component<LaneNumberInterface, {}> 
             xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 35 35"
-            height="35"
-            width="35"
+            viewBox="0 0 25 25"
+            height="25"
+            width="25"
            >
             <defs>
                 <linearGradient id="laneNumberGradient" gradientTransform="rotate(0)">
@@ -47,14 +47,14 @@ export default class LapNumber extends React.Component<LaneNumberInterface, {}> 
                 <path
                     transform="scale(1)"
                     //d="M 0,50 0,47 0,24 0,0 30,0 c 15,0 29,0.0 29,0 l 0.50,0 -12,23 -12,23 -10,0 c -5,0 -13,0 -17,0 z"
-                    d="M 0 0 h 35 v 35 h -35 z"
+                    d="M 0 0 h 25 v 25 h -25 z"
                     fill="url(#laneNumberStyle)"
                 />
                 <text
                     className={colorTextNumber}
-                    y="27"
+                    y="20"
                     x="8"
-                    fontSize="30"
+                    fontSize="24"
                 >
                     {this.props.laneNumber}</text>
             </g>

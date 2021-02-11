@@ -109,7 +109,7 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
         return (
             <div>
                 <Grid container>
-                    <Grid item xs={6}>
+                    <Grid item xs={9}>
                         <BoxEmpty></BoxEmpty>
                         {
                             this.state.lanes.map((lane, index) => (
@@ -123,8 +123,8 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
                         }
                     </Grid>
 
-                    <Grid item xs={6}>
-                        <Box m={55} />
+                    <Grid item xs={3}>
+                        <Box m={75} />
                         <StartStopComponent
                             startdelayms={this.props.startdelayms}
                             EventHeat={this.props.EventHeat}

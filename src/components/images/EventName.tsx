@@ -18,9 +18,9 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
             preserveAspectRatio="xMaxYMax slice"
             id="svg8"
             version="1.1"
-            viewBox="0 0 1000 58"
+            viewBox="0 0 935 58"
             height="58"
-            width="1000"
+            width="935"
         >
             <defs>
                 <linearGradient id="StartEventName" gradientTransform="rotate(0)">
@@ -60,20 +60,20 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
                 id="layer1">
                 <path
                     transform="scale(1)"
-                    d="M 0 0 h 1000 v 50 h -1000 z"
+                    d="M 0 0 h 935 v 50 h -935 z"
                     fill="url(#EventNameHeaderStyle)"
                 />
                 <text
                     className={colorTextLaneName}
                     y="38"
-                    x="500"
+                    x="460"
                     fontSize="40"
                     textAnchor="middle"
                 >
                     {this.props.EventName}</text>
                 <path
                     transform="scale(1)"
-                    d="M 0 50 h 1000 v 8 h -1000 z"
+                    d="M 0 50 h 935 v 8 h -935 z"
                     fill="url(#ButtonNameHeaderStyle)"
                 />
             </g>

@@ -71,38 +71,25 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
             </defs>
             <g
                 id="layer1">
-                <path
-                    transform="scale(1)"
-                    d="M 0 26 h 180 v 30 h -250 z"
-                    fill="url(#lapTimeStyle)"
-                />
-                <text
-                    className={colorTextLaneName}
-                    y="54"
-                    x="178"
-                    fontSize="26"
-                    textAnchor="end"
-                >
-                    {this.props.LapTime}</text>
 
                 <path
                     transform="scale(1)"
-                    d="M 0 0 h 180 v 26 h -250 z"
+                    d="M 0 0 h 180 v 22 h -250 z"
                     fill="url(#lanePlaceGradientStyle)"
                 />
 
                 <text
                     className={colorTextFinishPlace}
-                    y="20"
+                    y="16"
                     x="3"
                     fontSize="14"
                     textAnchor="start"
                 >
                     Wettkampf: {this.props.EventNr}</text>
                 <text
-                   className={colorTextFinishPlace}
-                    y="20"
-                    x="178"
+                    className={colorTextFinishPlace}
+                    y="16"
+                    x="174"
                     fontSize="14"
                     textAnchor="end"
                 >
@@ -110,15 +97,29 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
 
                 <path
                     transform="scale(1)"
-                    d="M 0 56 h 180 a 25 25 0 0 1 -25 25 h -225 z"
+                    d="M 0 24 h 180 v 26 h -250 z"
                     fill="url(#lapTimeStyle)"
                 />
                 <text
                     className={colorTextLaneName}
-                    y="73"
-                    x="3"
-                    fontSize="18"
-                    textAnchor="start"
+                    y="44"
+                    x="178"
+                    fontSize="20"
+                    textAnchor="end"
+                >
+                    {this.props.LapTime}</text>
+
+                <path
+                    transform="scale(1)"
+                    d="M 0 52 h 180 a 20 20 0 0 1 -20 20 h -160 z"
+                    fill="url(#lapTimeStyle)"
+                />
+                <text
+                    className={colorTextLaneName}
+                    y="68"
+                    x="90"
+                    fontSize="16"
+                    textAnchor="middle"
                 >
                     {this.props.EventName}</text>
             </g>

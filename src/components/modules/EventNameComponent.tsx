@@ -17,7 +17,7 @@ export class EventNameComponent extends React.Component<EventNameInterface, {}>{
             <div > 
                 <Grid item xs={12}>
                     <EventName
-                        EventName='Wettkampf' />
+                        EventName={this.props.EventName} />
                 </Grid>
             </div>
         )

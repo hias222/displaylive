@@ -16,9 +16,9 @@ export default class LaneName extends React.Component<LaneNameInterface, {}> {
             preserveAspectRatio="xMaxYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 965 35"
+            viewBox="0 0 900 35"
             height="35"
-            width="965"
+            width="900"
             >
             <defs>
                 <linearGradient id="LaneNameGradient" gradientTransform="rotate(0)">
@@ -47,7 +47,7 @@ export default class LaneName extends React.Component<LaneNameInterface, {}> {
                 id="layer1">
                 <path
                     transform="scale(1)"
-                    d="M 0 0 h 965 v 35 h -965 z"
+                    d="M 0 0 h 900 v 35 h -900 z"
                     fill="url(#laneNameStyle)"
                 />
                 <text

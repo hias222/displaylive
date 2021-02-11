@@ -2,15 +2,15 @@ $colorLaneNumber: black;
 $colorLaneName: white;
 
 //$ColorSwimmerBackground: rgba(6, 71, 101, 1);
-
-$ColorSwimmerBackground: rgba(29, 139, 198, 0.795);
+$ColorSwimmerBackground: rgba(29,49,89,1);
+//$ColorSwimmerBackground: rgba(29, 139, 198, 0.795);
 $laneborder: rgb(87, 179, 228);
 
 
 // time
 //$ColorTimeBackground: rgba(6, 71, 101, 1);
 //$ColorTimeBackgroundEnd:  rgba(98, 100, 98, 0.575);
-$ColorTimeBackground: rgba(29,139,198,1);
+$ColorTimeBackground:$ColorSwimmerBackground;
 $ColorTimeBackgroundEnd:  rgba(29,139,198,0.5);
 
 

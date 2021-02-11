@@ -1,11 +1,9 @@
 import React from 'react';
-import classnames from 'classnames';
 
 
 export default class BoxEmpty extends React.Component<{}, {}> {
 
     render() {
-        let colorLaneName = classnames('colorLaneName');
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg" 

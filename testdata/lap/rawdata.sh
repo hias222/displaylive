@@ -31,10 +31,10 @@ send_raw_message "header 0 0"
 sleep 1
 
 send_raw_message "header 1 1"
-sleep 5
+sleep 1
 
 send_raw_message start
-sleep 4
+sleep 1
 
 # laps
 for (( i=1; i<=$NUMBER_LANES; i++ ))

@@ -128,9 +128,7 @@ export class WsSocketState extends React.Component<WsSocketPropsInterface, WsSoc
       this.setDisplayMode('startlist')
       var swimstyle = (typeof (jsondata.name) !== "undefined" && jsondata.name)
         ? jsondata.name : jsondata.distance + "m " + getSwimStyles(jsondata.swimstyle)
-      //var eventtxt = "Wettkampf " + jsondata.event + ": " + swimstyle
-      //var heattxt = "Lauf " + jsondata.heat + ":"
-
+     
       this.props.onEventHeatChange({
         name: swimstyle,
         eventnr: jsondata.event,
