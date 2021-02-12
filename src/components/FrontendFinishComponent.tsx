@@ -149,7 +149,7 @@ export class FrontendFinishComponent extends React.Component<FinishFrontendInter
                 <Grid item xs={12}><BoxEmpty></BoxEmpty></Grid>
                 <Grid item xs={1}></Grid>
                 <Grid item xs={10}>
-                    <Grid container xs={12}>
+                    <Grid container>
                         <EventNameComponent
                              EventName={this.props.EventHeat.competition !== undefined ? this.props.EventHeat.competition : 'undefinend'} />
                 
