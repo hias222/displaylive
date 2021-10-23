@@ -6,6 +6,7 @@ interface LaneNameInterface {
     EventName: string;
     EventNr: string;
     HeatNr: string;
+    spaceFromTop: number;
 }
 
 export default class LapTime extends React.Component<LaneNameInterface, {}> {
@@ -18,13 +19,16 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
         let colorTextFinishPlace = classnames('colorTextFinishPlace');
         let colorFinishPlace = classnames('colorFinishPlace');
 
+        let viewBoxSize="0 0 250 100"
+        let boxRed="M 0 0 h 180 v 22 h -250 z"
+
         return (<svg
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 250 100"
-            height="100"
+            viewBox={viewBoxSize}
+            height={this.props.spaceFromTop}
             width="250"
         >
             <defs>
@@ -71,13 +75,11 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
             </defs>
             <g
                 id="layer1">
-
                 <path
                     transform="scale(1)"
-                    d="M 0 0 h 180 v 22 h -250 z"
+                    d={boxRed}
                     fill="url(#lanePlaceGradientStyle)"
                 />
-
                 <text
                     className={colorTextFinishPlace}
                     y="16"

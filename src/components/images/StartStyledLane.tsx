@@ -1,6 +1,5 @@
 import React from "react";
 import { LaneData } from "../../interfaces/lanedatainterface";
-import { Grid } from "@material-ui/core";
 import LaneName from "./LaneName";
 import getSwimmerLongName from "../../utilities/getSwimmerLongName";
 import StartNumber from "./StartNumber";
@@ -16,13 +15,15 @@ export default class StartStyledLane extends React.Component<LaneData, {}> {
     render() {
         let correctName = getSwimmerLongName(58,this.props.swimmer)
 
-        return <Grid item xs={12} >
+        return <div>
             <StartNumber
                 laneNumber={this.props.lane}
+                laneStartPoint={250}
             />
             <LaneName
-                LaneName={correctName}>
+                LaneName={correctName}
+                laneStartPoint={250}>
             </LaneName>
-        </Grid>
+        </div>
     }
 }

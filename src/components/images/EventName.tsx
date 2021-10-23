@@ -10,7 +10,18 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
     render() {
         let colorTextLaneName = classnames('colorTextLaneName');
         let colorEventName = classnames('colorEventName');
+        let colorEventNameEnd = classnames('colorEventNameEnd');
         let buttonEventName = classnames('buttonEventName');
+
+        let boxheight = 20
+        let buttonheight = 4
+
+        let startPoint = 250
+
+        let eventNamebox = "M " + startPoint + " 0 h 935 v " + boxheight + " h -935 z"
+        let buttonNameBox = "M " + startPoint + " " + boxheight + " h 935 v " + buttonheight + "  h -935 z"
+        let fontSize = 16
+
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg"
@@ -18,8 +29,8 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
             preserveAspectRatio="xMaxYMax slice"
             id="svg8"
             version="1.1"
-            viewBox="0 0 935 58"
-            height="58"
+            viewBox="0 0 1240 {boxheight + buttonheight}"
+            height={boxheight + buttonheight}
             width="935"
         >
             <defs>
@@ -27,12 +38,15 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
                     <stop
                         className={colorEventName}
                         offset="0"
-                        stopOpacity="1"
+                    />
+                    <stop
+                        className={colorEventNameEnd}
+                        offset="1"
                     />
                 </linearGradient>
                 <linearGradient
                     gradientUnits="userSpaceOnUse"
-                    y2="10"
+                    y2="0"
                     x2="1000"
                     y1="0"
                     x1="0"
@@ -48,7 +62,7 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
                 </linearGradient>
                 <linearGradient
                     gradientUnits="userSpaceOnUse"
-                    y2="10"
+                    y2="0"
                     x2="1000"
                     y1="0"
                     x1="0"
@@ -60,24 +74,24 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
                 id="layer1">
                 <path
                     transform="scale(1)"
-                    d="M 0 0 h 935 v 50 h -935 z"
+                    d={eventNamebox}
                     fill="url(#EventNameHeaderStyle)"
                 />
                 <text
                     className={colorTextLaneName}
-                    y="38"
-                    x="460"
-                    fontSize="40"
-                    textAnchor="middle"
+                    y={fontSize - 2}
+                    x={startPoint + 10}
+                    fontSize={fontSize}
+                    textAnchor="right"
                 >
                     {this.props.EventName}</text>
                 <path
                     transform="scale(1)"
-                    d="M 0 50 h 935 v 8 h -935 z"
+                    d={buttonNameBox}
                     fill="url(#ButtonNameHeaderStyle)"
                 />
             </g>
         </svg>
         );
     }
-} 
+}

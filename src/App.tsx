@@ -4,11 +4,10 @@ import { WsSocketState } from './services/WsSocketState';
 import { FrontendState } from './state/FrontendState';
 
 import classnames from 'classnames';
-import { Box, Container, Grid } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import { eventHeat } from './types/EventHeat';
 import { FrontendSwitchComponent } from './components/FrontendSwitchComponent';
 import { LaneData } from './interfaces/lanedatainterface';
-import BoxEmpty from './components/images/BoxEmpty';
 
 // https://towardsdatascience.com/passing-data-between-react-components-parent-children-siblings-a64f89e24ecf
 // https://medium.com/@RupaniChirag/parent-child-communication-in-vue-angular-and-react-all-in-typescript-9a47c75cbf74
@@ -266,9 +265,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         return (
             <div>
                 <Box width={this.window_width} height={this.window_height} className={basepage}>
-                    <Container>
-                        <Grid container spacing={0}>
-                            <Grid item xs={12}><BoxEmpty></BoxEmpty></Grid>
+                   
                             <WsSocketState onStartStop={this.onStartStop}
                                 onEventHeatChange={this.onEventHeatChange}
                                 onLaneChange={this.onLaneChange}
@@ -285,8 +282,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
                                 finishdata={this.state.finishlanedata}
                                 lastChangeDate={this.state.lastChangeDate}
                             />
-                        </Grid>
-                    </Container>
+                  
                 </Box>
 
             </div >

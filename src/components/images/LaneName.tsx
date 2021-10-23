@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 interface LaneNameInterface {
     LaneName: string;
+    laneStartPoint: number;
 }
 
 export default class LaneName extends React.Component<LaneNameInterface, {}> {
@@ -11,12 +12,17 @@ export default class LaneName extends React.Component<LaneNameInterface, {}> {
         let colorTextLaneName = classnames('colorTextLaneName');
         let colorLaneName = classnames('colorLaneName');
 
+        let length = 900 - this.props.laneStartPoint
+
+        let viewBoxSize="0 0 900 35"
+        let boxSize="M 0 0 h " + length + " v 35 h -" + length + " z"
+
         return (<svg
             xmlns="http://www.w3.org/2000/svg" 
             preserveAspectRatio="xMaxYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 900 35"
+            viewBox={viewBoxSize}
             height="35"
             width="900"
             >
@@ -47,7 +53,7 @@ export default class LaneName extends React.Component<LaneNameInterface, {}> {
                 id="layer1">
                 <path
                     transform="scale(1)"
-                    d="M 0 0 h 900 v 35 h -900 z"
+                    d={boxSize}
                     fill="url(#laneNameStyle)"
                 />
                 <text

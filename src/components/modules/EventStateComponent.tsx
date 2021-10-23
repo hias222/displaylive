@@ -1,4 +1,3 @@
-import { Grid } from "@material-ui/core";
 import React from "react";
 import { eventHeat } from "../../types/EventHeat";
 import EventState from "../images/EventState";
@@ -13,12 +12,9 @@ export class EventStateComponent extends React.Component<EventStateInterface, {}
     render() {
 
         return (
-                <Grid item xs={12}>
                     <EventState
-                    EventState={"Wettkampf " + this.props.Event.eventnr + " Lauf " + this.props.Event.heatnr}
-                    EventName={this.props.EventState + ": " + this.props.Event.name}/>
-                </Grid>
-
+                    EventState={"Wettkampf " + this.props.Event.eventnr + " Lauf " + this.props.Event.heatnr + " " + this.props.Event.name}
+                    EventName={this.props.EventState}/>
         )
     }
 

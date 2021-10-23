@@ -1,9 +1,6 @@
 import React from "react";
 import { StartStopInterface } from "../../interfaces/StartStopInterface";
 import { StartStopState } from "../../state/StartStopState";
-import { Container, Grid } from "@material-ui/core";
-
-import classnames from 'classnames';
 import LapTime from "../images/LapTime";
 
 
@@ -122,23 +119,19 @@ export class StartStopComponent extends React.Component<StartStopInterface, Star
 
     render() {
         //let runningbackground = classnames('runningbackground');
-        let basepage = classnames('basepage');
+        //let basepage = classnames('basepage');
         let eventname = this.props.EventHeat.name.substr(0, 13);
 
         return (
-            <Container className={basepage}>
-                <Grid container spacing={1}>
-                    <Grid item xs={4}></Grid>
-                    <Grid item xs={8}>
-                        <LapTime
-                            LapTime={this.format(this.state.displaytime)}
-                            EventNr={this.props.EventHeat.eventnr}
-                            HeatNr={this.props.EventHeat.heatnr}
-                            EventName={eventname}
-                        />
-                    </Grid>
-                </Grid>
-            </Container>
+            <div>
+                <LapTime
+                    LapTime={this.format(this.state.displaytime)}
+                    EventNr={this.props.EventHeat.eventnr}
+                    HeatNr={this.props.EventHeat.heatnr}
+                    EventName={eventname}
+                    spaceFromTop={this.props.spaceFromTop}
+                />
+            </div> 
         );
     }
 }

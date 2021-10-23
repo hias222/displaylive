@@ -1,7 +1,10 @@
 import React from 'react';
 
+interface BoxEmptyInterface {
+    boxSizeHeight: number;
+}
 
-export default class BoxEmpty extends React.Component<{}, {}> {
+export default class BoxEmpty extends React.Component<BoxEmptyInterface, {}> {
 
     render() {
 
@@ -10,9 +13,9 @@ export default class BoxEmpty extends React.Component<{}, {}> {
             preserveAspectRatio="xMidYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 235 4"
-            height="4   "
-            width="235"
+            viewBox="0 0 100 4"
+            height={this.props.boxSizeHeight}
+            width="950"
             >
             <defs>
                 <linearGradient id="EmptyBox" gradientTransform="rotate(0)">

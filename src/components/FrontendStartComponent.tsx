@@ -1,11 +1,10 @@
 import React from "react";
 import { StartLaneComponent } from "./modules/StartLaneComponent";
 import { SimpleFrontendInterface } from "../interfaces/SimpleFrontendInterface";
-import { EventNameComponent } from "./modules/EventNameComponent";
 import { EventStateComponent } from "./modules/EventStateComponent";
-import { Grid } from "@material-ui/core";
+import EventName from "./images/EventName";
+import classnames from "classnames";
 import BoxEmpty from "./images/BoxEmpty";
-
 export class FrontendStartComponent extends React.Component<SimpleFrontendInterface, {}> {
 
     componentDidUpdate(prevProps: SimpleFrontendInterface) {
@@ -36,40 +35,35 @@ export class FrontendStartComponent extends React.Component<SimpleFrontendInterf
 */
     render() {
 
+        let noSpaceContainer = classnames('noSpaceContainer');
+
         return (
-            <Grid container>
-                <Grid item xs={12}><BoxEmpty></BoxEmpty></Grid>
-                <Grid item xs={12}><BoxEmpty></BoxEmpty></Grid>
-                <Grid item xs={1}></Grid>
-                <Grid item xs={10}>
-                    <Grid container >
-                        <EventNameComponent
-                            EventName={this.props.EventHeat.competition !== undefined ? this.props.EventHeat.competition : 'undefinend'} />
+            <div className={noSpaceContainer}>
+                <BoxEmpty boxSizeHeight={300}/>
+                    <EventName
+                        EventName={this.props.EventHeat.competition !== undefined ? this.props.EventHeat.competition : 'undefinend'} />
 
-                        <EventStateComponent
-                            Event={this.props.EventHeat}
-                            EventState="Start" />
+                    <EventStateComponent
+                        Event={this.props.EventHeat}
+                        EventState="Start" />
 
-                        {
-                            this.props.lanes.map((lane, index) => (
-                                <StartLaneComponent
-                                    key={index}
-                                    lane={lane}
-                                    index={index}
-                                />
-                            ))
-                        }
-                    </Grid>
-                </Grid>
-                <Grid item xs={1}></Grid>
-            </Grid>
+                    {
+                        this.props.lanes.map((lane, index) => (
+                            <StartLaneComponent
+                                key={index}
+                                lane={lane}
+                                index={index}
+                            />
+                        ))
+                    }
+            </div>
         )
     }
 }
 
 
 /*
-<Grid container >
+<Grid noSpaceContainer >
                     {
                         this.props.lanes.map((lane, index) => (
                             <SingleLaneStaticComponent

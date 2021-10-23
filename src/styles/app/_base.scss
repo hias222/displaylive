@@ -9,10 +9,24 @@ code {
       monospace;
   }
 
+// to avoid space between svg - not with flex
+
+.noSpaceContainer{
+  font-size: 0;
+  display: flex;
+  flex-direction: column; 
+}
+
+.noSpaceContainerHorizontal{
+  font-size: 0;
+  display: flex;
+  flex-direction: row; 
+}
+
 .basepage {
   margin: 0;
     border-spacing: 0;
-    background-color: $farbehintergrund;
+    background-color: $colorEmptyBackground;
     border-top: 0;
     border-bottom: 0;
     border-left: 0;
@@ -21,7 +35,7 @@ code {
 
 .basefill {
   border-spacing: 0;
-  background-color: $farbehintergrund;
+  background-color: $colorEmptyBackground;
   border-top: 0;
   border-bottom: 0;
   border-left: 0;

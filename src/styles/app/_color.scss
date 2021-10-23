@@ -1,0 +1,53 @@
+.colorLaneName{
+    stop-color: $colorBackNormal;
+}
+
+.colorTextLaneName{
+    fill: $colorBackTextNormal;
+  }
+
+
+  
+  // Finish Place style
+  
+  .colorTextFinishPlace{
+    fill: $colorTextHighlight;
+  }
+  
+  .colorFinishPlace{
+    stop-color: $colorBackHighlight;
+  }
+  
+
+  .colorLapTimeStart{
+    stop-color: $colorBackNormal;
+    stop-opacity: 1;
+  }
+  
+  .colorLapTimeEnd{
+    stop-color: $colorBackNormalEnd;
+    stop-opacity: 1;
+  }
+  
+.colorEventName{
+    stop-color: $colorBackNormal;
+    stop-opacity: 1;
+}
+
+.colorEventNameEnd{
+    stop-color: $colorBackNormalEnd;
+    stop-opacity: 1;
+}
+
+.buttonEventName {
+    //height: 60px;
+    stop-color: $colorBackHighlight;
+}
+
+.colorNumber{
+    stop-color: $colorBackHighlight;
+}
+  
+.colorTextNumber{
+    fill: $colorTextHighlight;
+}

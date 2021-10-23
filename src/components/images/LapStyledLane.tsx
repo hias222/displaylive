@@ -32,9 +32,7 @@ export default class LapStyledLane extends React.Component<LaneData, {}> {
     }
 
     render() {
-
         return this.checkShowLane()
-
     }
 }
 

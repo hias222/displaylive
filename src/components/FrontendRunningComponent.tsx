@@ -1,4 +1,5 @@
-import { Box, Grid } from "@material-ui/core";
+import { Box } from "@material-ui/core";
+import classnames from "classnames";
 import React from "react";
 import { LaneData } from "../interfaces/lanedatainterface";
 import { LapInterface } from "../interfaces/LapData";
@@ -106,32 +107,29 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
 
     render() {
         //this.state.lanes.sort((a, b) => ((a.finishtime || "0") > (b.finishtime || "0")) ? 1 : -1)
+        // noSpaceContainerHorizontal
+        let noSpaceContainerHorizontal = classnames('noSpaceContainerHorizontal');
         return (
-            <div>
-                <Grid container>
-                    <Grid item xs={9}>
-                        <BoxEmpty></BoxEmpty>
-                        {
-                            this.state.lanes.map((lane, index) => (
-                                <div>
-                                    <LapLaneSmallComponent
-                                        key={index}
-                                        lane={lane}
-                                        index={index} />
-                                </div>
-                            ))
-                        }
-                    </Grid>
-
-                    <Grid item xs={3}>
-                        <Box m={75} />
-                        <StartStopComponent
-                            startdelayms={this.props.startdelayms}
-                            EventHeat={this.props.EventHeat}
-                            runningTime={this.props.runningTime}
-                        />
-                    </Grid>
-                </Grid>
+            <div className={noSpaceContainerHorizontal}>
+                <Box>
+                <BoxEmpty boxSizeHeight={20}/>
+                {
+                    this.state.lanes.map((lane, index) => (
+                        <div>
+                            <LapLaneSmallComponent
+                                key={index}
+                                lane={lane}
+                                index={index} />
+                        </div>
+                    ))
+                }
+                </Box>
+                <StartStopComponent
+                    startdelayms={this.props.startdelayms}
+                    EventHeat={this.props.EventHeat}
+                    runningTime={this.props.runningTime}
+                    spaceFromTop={650}
+                />
             </div >
         )
     }

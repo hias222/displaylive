@@ -1,12 +1,12 @@
 import React from "react";
 import { FinishLaneComponent } from "./modules/FinishLaneComponent";
-import { EventNameComponent } from "./modules/EventNameComponent";
 import { EventStateComponent } from "./modules/EventStateComponent";
 import { FinishInterface } from "../interfaces/FinishData";
 import { LaneData } from "../interfaces/lanedatainterface";
 import { FinishFrontendInterface } from "../interfaces/FinishFrontendInterface";
 import { Grid } from "@material-ui/core";
 import BoxEmpty from "./images/BoxEmpty";
+import EventName from "./images/EventName";
 
 export class FrontendFinishComponent extends React.Component<FinishFrontendInterface, FinishInterface> {
 
@@ -145,12 +145,12 @@ export class FrontendFinishComponent extends React.Component<FinishFrontendInter
 
         return (
             <Grid container>
-                <Grid item xs={12}><BoxEmpty></BoxEmpty></Grid>
-                <Grid item xs={12}><BoxEmpty></BoxEmpty></Grid>
+                <Grid item xs={12}><BoxEmpty boxSizeHeight={20}></BoxEmpty></Grid>
+                <Grid item xs={12}><BoxEmpty boxSizeHeight={20}></BoxEmpty></Grid>
                 <Grid item xs={1}></Grid>
                 <Grid item xs={10}>
                     <Grid container>
-                        <EventNameComponent
+                        <EventName
                              EventName={this.props.EventHeat.competition !== undefined ? this.props.EventHeat.competition : 'undefinend'} />
                 
                         <EventStateComponent

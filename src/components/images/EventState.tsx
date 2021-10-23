@@ -9,34 +9,39 @@ interface EventStateInterface {
 export default class EventState extends React.Component<EventStateInterface, {}> {
 
     render() {
-        let colorStateGreyTextName = classnames('colorStateGreyTextName');
-        let colorStateGreyName = classnames('colorStateGreyName');
+        let colorTextLaneName = classnames('colorTextLaneName');
+        let colorEventName = classnames('colorEventName');
+        let colorEventNameEnd = classnames('colorEventNameEnd');
+
+        let boxHeight=40
+        let startPoint = 250
+        let textBoxSize="M " + startPoint + "  0 h 935 v " + boxHeight + "h -935 z"
+        let textStart = startPoint /2 + 460
+
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 935 80"
-            height="80"
+            viewBox="0 0 935 {boxHeight}"
+            height={boxHeight}
             width="935"
         >
             <defs>
                 <linearGradient id="StartEventState" gradientTransform="rotate(0)">
                     <stop
-                        className={colorStateGreyName}
+                        className={colorEventName}
                         offset="0"
-                        stopOpacity="1"
                     />
                     <stop
-                        className={colorStateGreyName}
-                        offset="0"
-                        stopOpacity="1"
+                        className={colorEventNameEnd}
+                        offset="1"
                     />
                 </linearGradient>
                 <linearGradient
                     gradientUnits="userSpaceOnUse"
-                    y2="10"
+                    y2="0"
                     x2="1000"
                     y1="0"
                     x1="0"
@@ -48,24 +53,24 @@ export default class EventState extends React.Component<EventStateInterface, {}>
                 id="layer1">
                 <path
                     transform="scale(1)"
-                    d="M 0 0 h 935 v 80 h -935 z"
+                    d={textBoxSize}
                     fill="url(#EventStateHeaderStyle)"
                 />
                 <text
-                    className={colorStateGreyTextName}
-                    y="35"
-                    x="460"
-                    fontSize="32"
+                    className={colorTextLaneName}
+                    y="25"
+                    x={textStart}
+                    fontSize="28"
                     textAnchor="middle"
                 >
                     {this.props.EventState}</text>
 
                 <text
-                    className={colorStateGreyTextName}
-                    y="75"
-                    x="460"
-                    fontSize="32"
-                    textAnchor="middle"
+                    className={colorTextLaneName}
+                    y={boxHeight-4}
+                    x={startPoint + 40}
+                    fontSize="16"
+                    textAnchor="right"
                 >
                     {this.props.EventName}</text>
             </g>

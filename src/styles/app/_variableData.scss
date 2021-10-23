@@ -1,32 +1,19 @@
-$colorLaneNumber: black;
-$colorLaneName: white;
+// Hervorrhebung
 
-//$ColorSwimmerBackground: rgba(6, 71, 101, 1);
-$ColorSwimmerBackground: rgba(29,49,89,1);
-//$ColorSwimmerBackground: rgba(29, 139, 198, 0.795);
-$laneborder: rgb(87, 179, 228);
+$colorBackHighlight: rgba(198,4,36, 1);
+// gelb rgba(219, 239, 43, 1);
+$colorTextHighlight: white;
 
+// normal für Header etc
 
-// time
-//$ColorTimeBackground: rgba(6, 71, 101, 1);
-//$ColorTimeBackgroundEnd:  rgba(98, 100, 98, 0.575);
-$ColorTimeBackground:$ColorSwimmerBackground;
-$ColorTimeBackgroundEnd:  rgba(29,139,198,0.5);
+$colorBackNormal:  rgba(58,95,205, 1);
+$colorBackNormalEnd: $colorBackNormal;
+$colorBackTextNormal: white;
 
+// Farbe 2 für Bahnen etc 
 
-// color lane number - transission from start to end
-$colorLaneBackground: rgba(219, 239, 43, 1);
-$ColorLaneBackgroundEnd:  rgba(98, 100, 98, 0.575);
+$colorFrontNormal:  rgba(58,95,205, 1);
+$colorFrontNormalEnd: $colorBackNormal;
+$colorFrontNormal: white;
 
-// color place
-$ColorPlaceBackground: rgba(198,4,36, 1);
-
-$colorStateGrey: rgba(220, 235, 243, 1);
-$farbehintergrund: rgba(0, 0, 0,0);
-
-$farbeback: rgba(72, 255, 87, 0.6);
-
-$farbegeradeschrift: white;
-$farbegerade:  rgba(194, 211, 215, 0);
-$lanesize: 2em; 
-$farbehintergrund:   rgba(0, 0, 0, 0);
+$colorEmptyBackground: rgba(0, 0, 0,0);
