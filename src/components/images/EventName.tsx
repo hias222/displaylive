@@ -11,15 +11,13 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
         let colorTextLaneName = classnames('colorTextLaneName');
         let colorEventName = classnames('colorEventName');
         let colorEventNameEnd = classnames('colorEventNameEnd');
-        let buttonEventName = classnames('buttonEventName');
 
         let boxheight = 20
-        let buttonheight = 4
+        let buttonheight = 0
 
-        let startPoint = 250
+        let startPoint = 275
 
-        let eventNamebox = "M " + startPoint + " 0 h 935 v " + boxheight + " h -935 z"
-        let buttonNameBox = "M " + startPoint + " " + boxheight + " h 935 v " + buttonheight + "  h -935 z"
+        let eventNamebox = "M " + startPoint + " 0 h 300 v " + boxheight + " h -300 z"
         let fontSize = 16
 
 
@@ -53,22 +51,6 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
                     id="EventNameHeaderStyle"
                     xlinkHref="#StartEventName"
                 />
-                <linearGradient id="ButtonEventName" gradientTransform="rotate(0)">
-                    <stop
-                        className={buttonEventName}
-                        offset="0"
-                        stopOpacity="1"
-                    />
-                </linearGradient>
-                <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    y2="0"
-                    x2="1000"
-                    y1="0"
-                    x1="0"
-                    id="ButtonNameHeaderStyle"
-                    xlinkHref="#ButtonEventName"
-                />
             </defs>
             <g
                 id="layer1">
@@ -85,11 +67,6 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
                     textAnchor="right"
                 >
                     {this.props.EventName}</text>
-                <path
-                    transform="scale(1)"
-                    d={buttonNameBox}
-                    fill="url(#ButtonNameHeaderStyle)"
-                />
             </g>
         </svg>
         );

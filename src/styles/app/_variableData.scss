@@ -6,14 +6,14 @@ $colorTextHighlight: white;
 
 // normal für Header etc
 
-$colorBackNormal:  rgba(58,95,205, 1);
+$colorBackNormal:  	rgba(16,78,139,0.9);
 $colorBackNormalEnd: $colorBackNormal;
 $colorBackTextNormal: white;
 
 // Farbe 2 für Bahnen etc 
 
-$colorFrontNormal:  white;
-$colorFrontNormalEnd: $colorBackNormal;
+$colorFrontNormal:  rgba(255, 255, 255, 0.612);
+$colorFrontNormalEnd: $colorFrontNormal;
 $colorFrontTextNormal: black;
 
 $colorEmptyBackground: rgba(0, 0, 0,0);

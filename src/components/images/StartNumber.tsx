@@ -14,15 +14,15 @@ export default class StartNumber extends React.Component<LaneNumberInterface, {}
 
         let startBoxValue =this.props.laneStartPoint + 35 
 
-        let sizeViewBox = "0 0 " + startBoxValue + " 35"
-        let boxSize = "M " + this.props.laneStartPoint + " 0 h 35 v 35 h -35 z"
+        let sizeViewBox = "0 0 " + startBoxValue + " 40"
+        let boxSize = "M " + this.props.laneStartPoint + " 0 h 35 v 30 h -35 z"
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"
             id="svg8"
             version="1.1"
             viewBox={sizeViewBox}
-            height="35"
+            height="40"
             width={this.props.laneStartPoint + 35 }
         >
             <defs>
