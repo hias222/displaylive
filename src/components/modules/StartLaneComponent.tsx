@@ -1,6 +1,5 @@
 import React from "react";
 import { LaneInterface } from "../../interfaces/LaneInterface";
-
 import StartStyledLane from "../images/StartStyledLane";
 
 export class StartLaneComponent extends React.Component<LaneInterface, {}>{

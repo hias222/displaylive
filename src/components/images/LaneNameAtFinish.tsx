@@ -3,34 +3,41 @@ import classnames from 'classnames';
 
 interface LaneNameInterface {
     LaneName: string;
+    laneStartPoint: number;
 }
 
 export default class LaneNameAtFinish extends React.Component<LaneNameInterface, {}> {
 
     render() {
-        let colorTextLaneName = classnames('colorTextLaneName');
-        let colorLaneName = classnames('colorLaneName');
+
+        let colorFrontTextNormal = classnames('colorFrontTextNormal');
+        let colorFrontNormal = classnames('colorFrontNormal');
+        let colorFrontNormalEnd = classnames('colorFrontNormalEnd');
+
+        let nameLength = 900 - 235 - this.props.laneStartPoint
+
+        //665
+        let viewBoxSize = "0 0 " + nameLength + " 35"
+        let boxSize = "M 0 0 h " + nameLength + " v 35 h -" + nameLength + " z"
 
         return (<svg
-            xmlns="http://www.w3.org/2000/svg" 
+            xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMaxYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 665 35"
+            viewBox={viewBoxSize}
             height="35"
-            width="665"
-            >
+            width={nameLength}
+        >
             <defs>
                 <linearGradient id="LaneNameGradient" gradientTransform="rotate(0)">
                     <stop
-                        className={colorLaneName}
+                        className={colorFrontNormal}
                         offset="0"
-                        stopOpacity="1"
                     />
                     <stop
-                        className={colorLaneName}
+                        className={colorFrontNormalEnd}
                         offset="1"
-                        stopOpacity="0"
                     />
                 </linearGradient>
                 <linearGradient
@@ -47,11 +54,11 @@ export default class LaneNameAtFinish extends React.Component<LaneNameInterface,
                 id="layer1">
                 <path
                     transform="scale(1)"
-                    d="M 0 0 h 665 v 35 h -665 z"
+                    d={boxSize}
                     fill="url(#laneNameStyle)"
                 />
                 <text
-                    className={colorTextLaneName}
+                    className={colorFrontTextNormal}
                     y="27"
                     x="3"
                     fontSize="30"
@@ -61,4 +68,4 @@ export default class LaneNameAtFinish extends React.Component<LaneNameInterface,
         </svg>
         );
     }
-} 
+}

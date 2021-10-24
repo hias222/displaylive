@@ -23,12 +23,14 @@ export default class FinishStyledLane extends React.Component<LaneData, {}> {
         return <div>
             <LanePlace
                 laneNumber={lanePlace}
+                laneStartPoint={250}
             />
             <LaneNumberAtFinish
                 laneNumber={this.props.lane}
             />
             <LaneNameAtFinish
-                LaneName={correctName}>
+                LaneName={correctName}
+                laneStartPoint={250}>
             </LaneNameAtFinish>
             <LaneTimeAtFinish
                 LaneTime={laneTime}

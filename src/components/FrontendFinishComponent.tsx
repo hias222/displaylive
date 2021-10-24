@@ -4,9 +4,9 @@ import { EventStateComponent } from "./modules/EventStateComponent";
 import { FinishInterface } from "../interfaces/FinishData";
 import { LaneData } from "../interfaces/lanedatainterface";
 import { FinishFrontendInterface } from "../interfaces/FinishFrontendInterface";
-import { Grid } from "@material-ui/core";
-import BoxEmpty from "./images/BoxEmpty";
 import EventName from "./images/EventName";
+import classnames from "classnames";
+import BoxEmpty from "./images/BoxEmpty";
 
 export class FrontendFinishComponent extends React.Component<FinishFrontendInterface, FinishInterface> {
 
@@ -142,35 +142,29 @@ export class FrontendFinishComponent extends React.Component<FinishFrontendInter
     render() {
 
         //this.props.lanes.sort((a, b) => ((a.place || "99") > (b.place || "99")) ? 1 : -1)
+        let noSpaceContainer = classnames('noSpaceContainer');
 
         return (
-            <Grid container>
-                <Grid item xs={12}><BoxEmpty boxSizeHeight={20}></BoxEmpty></Grid>
-                <Grid item xs={12}><BoxEmpty boxSizeHeight={20}></BoxEmpty></Grid>
-                <Grid item xs={1}></Grid>
-                <Grid item xs={10}>
-                    <Grid container>
-                        <EventName
-                             EventName={this.props.EventHeat.competition !== undefined ? this.props.EventHeat.competition : 'undefinend'} />
-                
-                        <EventStateComponent
-                            Event={this.props.EventHeat}
-                            EventState='Ziel'
-                        />
+            <div className={noSpaceContainer}>
+                <BoxEmpty boxSizeHeight={300}/>
+                <EventName
+                    EventName={this.props.EventHeat.competition !== undefined ? this.props.EventHeat.competition : 'undefinend'} />
 
-                        {
-                            this.state.lanes.map((lane, index) => (
-                                <FinishLaneComponent
-                                    key={index}
-                                    lane={lane}
-                                    index={index}
-                                />
-                            ))
-                        }
-                    </Grid>
-                </Grid>
-                <Grid item xs={1}></Grid>
-            </Grid>
+                <EventStateComponent
+                    Event={this.props.EventHeat}
+                    EventState='Ziel'
+                />
+
+                {
+                    this.state.lanes.map((lane, index) => (
+                        <FinishLaneComponent
+                            key={index}
+                            lane={lane}
+                            index={index}
+                        />
+                    ))
+                }
+            </div>
         )
     }
 }

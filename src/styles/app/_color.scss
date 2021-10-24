@@ -51,3 +51,17 @@
 .colorTextNumber{
     fill: $colorTextHighlight;
 }
+
+.colorFrontNormal{
+  stop-color: $colorFrontNormal;
+  stop-opacity: 1;
+}
+
+.colorFrontNormalEnd{
+  stop-color: $colorFrontNormalEnd;
+  stop-opacity: 1;
+}
+
+.colorFrontTextNormal{
+  fill: $colorFrontTextNormal;
+}

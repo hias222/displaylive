@@ -8,29 +8,29 @@ interface LaneNameInterface {
 export default class LaneTimeAtFinish extends React.Component<LaneNameInterface, {}> {
 
     render() {
-        let colorTextLaneName = classnames('colorTextLaneName');
-        let colorLaneName = classnames('colorLaneName');
+
+        let colorFrontTextNormal = classnames('colorFrontTextNormal');
+        let colorFrontNormal = classnames('colorFrontNormal');
+        let colorFrontNormalEnd = classnames('colorFrontNormalEnd');
 
         return (<svg
-            xmlns="http://www.w3.org/2000/svg" 
+            xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMax meet"
             id="svg8"
             version="1.1"
             viewBox="0 0 200 35"
             height="35"
             width="200"
-            >
+        >
             <defs>
                 <linearGradient id="LaneNameGradient" gradientTransform="rotate(0)">
                     <stop
-                        className={colorLaneName}
+                        className={colorFrontNormal}
                         offset="0"
-                        stopOpacity="1"
                     />
                     <stop
-                        className={colorLaneName}
+                        className={colorFrontNormalEnd}
                         offset="0"
-                        stopOpacity="1"
                     />
                 </linearGradient>
                 <linearGradient
@@ -51,7 +51,7 @@ export default class LaneTimeAtFinish extends React.Component<LaneNameInterface,
                     fill="url(#laneNameStyle)"
                 />
                 <text
-                    className={colorTextLaneName}
+                    className={colorFrontTextNormal}
                     y="27"
                     x="182"
                     fontSize="30"
@@ -62,4 +62,4 @@ export default class LaneTimeAtFinish extends React.Component<LaneNameInterface,
         </svg>
         );
     }
-} 
+}
