@@ -15,7 +15,7 @@ export default class BoxEmpty extends React.Component<BoxEmptyInterface, {}> {
             version="1.1"
             viewBox="0 0 100 4"
             height={this.props.boxSizeHeight}
-            width="950"
+            width="1000"
             >
             <defs>
                 <linearGradient id="EmptyBox" gradientTransform="rotate(0)">

@@ -8,16 +8,22 @@ interface LaneNameInterface {
 export default class LaneTime extends React.Component<LaneNameInterface, {}> {
 
     render() {
-        let colorTextLaneName = classnames('colorTextLaneName');
+        let colorFrontTextNormal = classnames('colorFrontTextNormal');
         let colorLaneName = classnames('colorLaneName');
+        let colorNumber = classnames('colorNumber');
+
+        let boxTop = "M 0 3 h 100 v 27 h -200 z"
+        let boxTopLine = "M 0 0 h 90 v 3 h -200 z"
+
+        
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg" 
             preserveAspectRatio="xMidYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 100 25"
-            height="25"
+            viewBox="0 0 100 30"
+            height="30"
             width="100"
             >
             <defs>
@@ -42,19 +48,44 @@ export default class LaneTime extends React.Component<LaneNameInterface, {}> {
                     id="laneNameStyle"
                     xlinkHref="#LaneNameGradient"
                 />
+                                <linearGradient id="laneNumberGradient" gradientTransform="rotate(0)">
+                    <stop
+                        className={colorNumber}
+                        offset="0"
+                    />
+                    <stop
+                        className={colorNumber}
+                        offset="1"
+                    />
+                </linearGradient>
+                <linearGradient
+                    gradientUnits="userSpaceOnUse"
+                    y2="2"
+                    x2="20"
+                    y1="-10"
+                    x1="20"
+                    id="laneNumberStyle"
+                    xlinkHref="#laneNumberGradient"
+                />
             </defs>
             <g
                 id="layer1">
                 <path
                     transform="scale(1)"
-                    d="M 0 0 h 100 v 25 h -200 z"
+                    d={boxTop}
                     fill="url(#laneNameStyle)"
                 />
+                <path
+                    transform="scale(1)"
+                    d={boxTopLine}
+                    fill="url(#laneNumberStyle)"
+                />
+
                 <text
-                    className={colorTextLaneName}
-                    y="18"
+                    className={colorFrontTextNormal}
+                    y="22"
                     x="90"
-                    fontSize="18"
+                    fontSize="22"
                     textAnchor="end"
                 >
                     {this.props.LaneTime}</text>

@@ -13,7 +13,7 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
         let colorEventNameEnd = classnames('colorEventNameEnd');
 
         let boxheight = 20
-        let buttonheight = 0
+        let buttonheight = 2
 
         let startPoint = 275
 

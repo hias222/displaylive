@@ -13,14 +13,24 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
 
     render() {
         let colorTextLaneName = classnames('colorTextLaneName');
-        let colorLapTimeStart = classnames('colorLapTimeStart');
-        let colorLapTimeEnd = classnames('colorLapTimeEnd');
+        let colorEventName = classnames('colorEventName');
+        let colorEventNameEnd = classnames('colorEventNameEnd');
 
-        let colorTextFinishPlace = classnames('colorTextFinishPlace');
-        let colorFinishPlace = classnames('colorFinishPlace');
+        let colorFrontTextNormal = classnames('colorFrontTextNormal');
+        let colorFrontNormal = classnames('colorFrontNormal');
+        let colorFrontNormalEnd = classnames('colorFrontNormalEnd');
 
-        let viewBoxSize="0 0 250 100"
-        let boxRed="M 0 0 h 180 v 22 h -250 z"
+        let colorNumber = classnames('colorNumber');
+
+        let length = 180
+        let lengthShort = length - 25;
+
+        let viewBoxSize = "0 0 250 100"
+        let boxTopEventName = "M 0 0 h 180 v 22 h -250 z"
+        let boxTimeFrame = "M 0 24 h 180 v 26 h -250 z"
+        let boxSizeTop = "M 0 22 h " + lengthShort + " v 3 h -" + length + " z"
+        let boxEventTitle = "M 0 52 h 180 a 20 20 0 0 1 -20 20 h -160 z"
+        let boxSizeButton = "M 0 50 h " + lengthShort + " v 3 h -" + length + " z"
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,13 +42,32 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
             width="250"
         >
             <defs>
-                <linearGradient id="LapTimeGradient" gradientTransform="rotate(0)">
+                <linearGradient id="laneRedTopLineGradient" gradientTransform="rotate(0)">
                     <stop
-                        className={colorLapTimeStart}
+                        className={colorNumber}
                         offset="0"
                     />
                     <stop
-                        className={colorLapTimeEnd}
+                        className={colorNumber}
+                        offset="1"
+                    />
+                </linearGradient>
+                <linearGradient
+                    gradientUnits="userSpaceOnUse"
+                    y2="2"
+                    x2="20"
+                    y1="-10"
+                    x1="20"
+                    id="laneRedTopLineStyle"
+                    xlinkHref="#laneRedTopLineGradient"
+                />
+                <linearGradient id="LapTimeGradient" gradientTransform="rotate(0)">
+                    <stop
+                        className={colorEventName}
+                        offset="0"
+                    />
+                    <stop
+                        className={colorEventNameEnd}
                         offset="1"
                     />
                 </linearGradient>
@@ -53,14 +82,12 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
                 />
                 <linearGradient id="lanePlaceGradient" gradientTransform="rotate(0)">
                     <stop
-                        className={colorFinishPlace}
+                        className={colorFrontNormal}
                         offset="0"
-                        stopOpacity="1"
                     />
                     <stop
-                        className={colorFinishPlace}
-                        offset=""
-                        stopOpacity="1"
+                        className={colorFrontNormalEnd}
+                        offset="0"
                     />
                 </linearGradient>
                 <linearGradient
@@ -69,7 +96,7 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
                     x2="20"
                     y1="-10"
                     x1="20"
-                    id="lanePlaceGradientStyle"
+                    id="laneWhiteGradientStyle"
                     xlinkHref="#lanePlaceGradient"
                 />
             </defs>
@@ -77,47 +104,61 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
                 id="layer1">
                 <path
                     transform="scale(1)"
-                    d={boxRed}
-                    fill="url(#lanePlaceGradientStyle)"
+                    d={boxTopEventName}
+                    fill="url(#lapTimeStyle)"
                 />
                 <text
-                    className={colorTextFinishPlace}
+                    className={colorTextLaneName}
                     y="16"
                     x="3"
-                    fontSize="14"
+                    fontSize="16"
                     textAnchor="start"
                 >
                     Wettkampf: {this.props.EventNr}</text>
                 <text
-                    className={colorTextFinishPlace}
+                    className={colorTextLaneName}
                     y="16"
                     x="174"
-                    fontSize="14"
+                    fontSize="16"
                     textAnchor="end"
                 >
                     Lauf: {this.props.HeatNr}</text>
 
                 <path
                     transform="scale(1)"
-                    d="M 0 24 h 180 v 26 h -250 z"
-                    fill="url(#lapTimeStyle)"
+                    d={boxTimeFrame}
+                    fill="url(#laneWhiteGradientStyle)"
                 />
+
+                <path
+                    transform="scale(1)"
+                    d={boxSizeTop}
+                    fill="url(#laneRedTopLineStyle)"
+                />
+
                 <text
-                    className={colorTextLaneName}
+                    className={colorFrontTextNormal}
                     y="44"
-                    x="178"
+                    x="90"
                     fontSize="20"
-                    textAnchor="end"
+                    textAnchor="middle"
                 >
                     {this.props.LapTime}</text>
 
                 <path
                     transform="scale(1)"
-                    d="M 0 52 h 180 a 20 20 0 0 1 -20 20 h -160 z"
-                    fill="url(#lapTimeStyle)"
+                    d={boxEventTitle}
+                    fill="url(#laneWhiteGradientStyle)"
                 />
+
+                <path
+                    transform="scale(1)"
+                    d={boxSizeButton}
+                    fill="url(#laneRedTopLineStyle)"
+                />
+
                 <text
-                    className={colorTextLaneName}
+                    className={colorFrontTextNormal}
                     y="68"
                     x="90"
                     fontSize="16"
@@ -128,4 +169,4 @@ export default class LapTime extends React.Component<LaneNameInterface, {}> {
         </svg>
         );
     }
-} 
+}

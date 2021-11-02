@@ -38,12 +38,10 @@ export default class LaneName extends React.Component<LaneNameInterface, {}> {
                     <stop
                         className={colorNumber}
                         offset="0"
-                        stopOpacity="1"
                     />
                     <stop
                         className={colorNumber}
                         offset="1"
-                        stopOpacity="1"
                     />
                 </linearGradient>
                 <linearGradient
