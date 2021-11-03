@@ -11,12 +11,24 @@ export default class LaneNumberAtFinish extends React.Component<LaneNumberInterf
         let colorTextNumber = classnames('colorTextNumber');
         let colorNumber = classnames('colorNumber');
 
+        let colorFrontTextNormal = classnames('colorFrontTextNormal');
+        let colorFrontNormal = classnames('colorFrontNormal');
+        let colorFrontNormalEnd = classnames('colorFrontNormalEnd');
+
+        let nameLength = 35
+        let viewHeight = 40
+
+        let viewBoxSize = "0 0 35" +  viewHeight
+
+        let boxSize = "M 0 0 h 35 v 35 h -35 z"
+        let boxSizeTop = "M 0 0 h " + nameLength + " v 3 h -" + nameLength + " z"
+
         return (<svg
             xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 35 35"
-            height="35"
+            viewBox={viewBoxSize}
+            height={viewHeight}
             width="35"
            >
             <defs>
@@ -41,18 +53,41 @@ export default class LaneNumberAtFinish extends React.Component<LaneNumberInterf
                     id="laneNumberStyle"
                     xlinkHref="#laneNumberGradient"
                 />
+                <linearGradient id="LaneNameGradient" gradientTransform="rotate(0)">
+                    <stop
+                        className={colorFrontNormal}
+                        offset="0"
+                    />
+                    <stop
+                        className={colorFrontNormalEnd}
+                        offset="1"
+                    />
+                </linearGradient>
+                <linearGradient
+                    gradientUnits="userSpaceOnUse"
+                    y2="10"
+                    x2="1500"
+                    y1="0"
+                    x1="0"
+                    id="laneNameStyle"
+                    xlinkHref="#LaneNameGradient"
+                />
             </defs>
             <g
                 id="layer1">
                 <path
                     transform="scale(1)"
-                    //d="M 0,50 0,47 0,24 0,0 30,0 c 15,0 29,0.0 29,0 l 0.50,0 -12,23 -12,23 -10,0 c -5,0 -13,0 -17,0 z"
-                    d="M 0 0 h 35 v 35 h -35 z"
+                    d={boxSize}
+                    fill="url(#laneNameStyle)"
+                />
+                <path
+                    transform="scale(1)"
+                    d={boxSizeTop}
                     fill="url(#laneNumberStyle)"
                 />
                 <text
-                    className={colorTextNumber}
-                    y="27"
+                    className={colorFrontTextNormal}
+                    y="30"
                     x="7"
                     fontSize="30"
                 >

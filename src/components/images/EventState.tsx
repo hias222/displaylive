@@ -68,7 +68,7 @@ export default class EventState extends React.Component<EventStateInterface, {}>
                 <text
                     className={colorTextLaneName}
                     y={boxHeight-4}
-                    x={startPoint + 40}
+                    x={startPoint + 4}
                     fontSize="16"
                     textAnchor="right"
                 >

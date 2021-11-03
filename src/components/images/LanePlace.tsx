@@ -10,12 +10,14 @@ export default class LanePlace extends React.Component<LaneNumberInterface, {}> 
 
     render() {
         let colorTextFinishPlace = classnames('colorTextFinishPlace');
-        let colorFinishPlace = classnames('colorFinishPlace');
+        let colorNumber = classnames('colorNumber');
 
         let startBoxValue =this.props.laneStartPoint + 35 
 
-        let sizeViewBox = "0 0 " + startBoxValue + " 35"
-        let boxSize = "M " + this.props.laneStartPoint + " 0 h 35 v 35 h -35 z"
+        let viewHeight = 40
+
+        let sizeViewBox = "0 0 " + startBoxValue + " " + viewHeight
+        let boxSize = "M " + this.props.laneStartPoint + " 0 h 35 v 30 h -35 z"
 
 
         return (<svg
@@ -23,18 +25,18 @@ export default class LanePlace extends React.Component<LaneNumberInterface, {}> 
             id="svg8"
             version="1.1"
             viewBox={sizeViewBox}
-            height="35"
+            height={viewHeight}
             width={this.props.laneStartPoint + 35 }
            >
             <defs>
                 <linearGradient id="lanePlaceGradient" gradientTransform="rotate(0)">
                     <stop
-                        className={colorFinishPlace}
+                        className={colorNumber}
                         offset="0"
                         stopOpacity="1"
                     />
                     <stop
-                        className={colorFinishPlace}
+                        className={colorNumber}
                         offset=""
                         stopOpacity="1"
                     />
@@ -58,9 +60,9 @@ export default class LanePlace extends React.Component<LaneNumberInterface, {}> 
                 />
                 <text
                     className={colorTextFinishPlace}
-                    y="27"
+                    y="25"
                     x={this.props.laneStartPoint + 7}
-                    fontSize="30"
+                    fontSize="28"
                 >
                     {this.props.laneNumber}</text>
             </g>

@@ -14,6 +14,7 @@ export default class LapNumber extends React.Component<LaneNumberInterface, {}> 
         let colorFrontNormal = classnames('colorFrontNormal');
         let colorFrontNormalEnd = classnames('colorFrontNormalEnd');
 
+        let viewHeight = 40
         let startpoint = 15
         let endPoint = startpoint + 25;
         let textPoint = startpoint + 8
@@ -21,14 +22,14 @@ export default class LapNumber extends React.Component<LaneNumberInterface, {}> 
         let boxSize = "M " + startpoint + " 3 h 25 v 25 h -25 z"
         let boxSizeTop = "M " + startpoint + " 0 h  25 v 3 h -25 z"
 
-        let vieBox = "0 0 " + endPoint + "  30"
+        let viewBox = "0 0 " + endPoint + "  " + viewHeight
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"
             id="svg8"
             version="1.1"
-            viewBox={vieBox}
-            height="30"
+            viewBox={viewBox}
+            height={viewHeight}
             width={endPoint}
         >
             <defs>

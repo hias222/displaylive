@@ -18,7 +18,7 @@ export default class LaneName extends React.Component<LaneNameInterface, {}> {
         let length = 900 - this.props.laneStartPoint
         let viewHeight = 40
 
-        let lengthShort = length -25;
+        let lengthShort = length - 25;
 
         let viewBoxSize = "0 0 900 " + viewHeight
         let boxSize = "M 0 3 h " + length + " v 42 h -" + length + " z"

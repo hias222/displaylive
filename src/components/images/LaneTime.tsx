@@ -12,31 +12,31 @@ export default class LaneTime extends React.Component<LaneNameInterface, {}> {
         let colorLaneName = classnames('colorLaneName');
         let colorNumber = classnames('colorNumber');
 
-        let boxTop = "M 0 3 h 100 v 27 h -200 z"
+        let viewHeight = 40
+
+        let boxTop = "M 0 3 h 100 v 30 h -200 z"
         let boxTopLine = "M 0 0 h 90 v 3 h -200 z"
 
-        
+        let viewBoxSize ="0 0 100 " + viewHeight
 
         return (<svg
-            xmlns="http://www.w3.org/2000/svg" 
+            xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 100 30"
-            height="30"
+            viewBox={viewBoxSize}
+            height={viewHeight}
             width="100"
-            >
+        >
             <defs>
                 <linearGradient id="LaneNameGradient" gradientTransform="rotate(0)">
                     <stop
                         className={colorLaneName}
                         offset="0"
-                        stopOpacity="1"
                     />
                     <stop
                         className={colorLaneName}
-                        offset="0"
-                        stopOpacity="1"
+                        offset="1"
                     />
                 </linearGradient>
                 <linearGradient
@@ -48,7 +48,7 @@ export default class LaneTime extends React.Component<LaneNameInterface, {}> {
                     id="laneNameStyle"
                     xlinkHref="#LaneNameGradient"
                 />
-                                <linearGradient id="laneNumberGradient" gradientTransform="rotate(0)">
+                <linearGradient id="laneNumberGradient" gradientTransform="rotate(0)">
                     <stop
                         className={colorNumber}
                         offset="0"
@@ -93,4 +93,4 @@ export default class LaneTime extends React.Component<LaneNameInterface, {}> {
         </svg>
         );
     }
-} 
+}
