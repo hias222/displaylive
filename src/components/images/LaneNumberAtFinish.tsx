@@ -8,7 +8,6 @@ interface LaneNumberInterface {
 export default class LaneNumberAtFinish extends React.Component<LaneNumberInterface, {}> {
 
     render() {
-        let colorTextNumber = classnames('colorTextNumber');
         let colorNumber = classnames('colorNumber');
 
         let colorFrontTextNormal = classnames('colorFrontTextNormal');

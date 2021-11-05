@@ -13,13 +13,17 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
         let colorEventNameEnd = classnames('colorEventNameEnd');
 
         let boxheight = 20
-        let buttonheight = 2
+        let buttonheight = 3
 
         let startPoint = 275
+ 
+        let wholeHeight = boxheight + buttonheight
+        let wholeWidth = startPoint + 300
 
+        let viewBox = "0 0 " + wholeWidth + " " + wholeHeight
+        
         let eventNamebox = "M " + startPoint + " 0 h 300 v " + boxheight + " h -300 z"
         let fontSize = 16
-
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg"
@@ -27,9 +31,9 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
             preserveAspectRatio="xMaxYMax slice"
             id="svg8"
             version="1.1"
-            viewBox="0 0 1240 {boxheight + buttonheight}"
-            height={boxheight + buttonheight}
-            width="935"
+            viewBox={viewBox}
+            height={wholeHeight}
+            width={wholeWidth}
         >
             <defs>
                 <linearGradient id="StartEventName" gradientTransform="rotate(0)">
@@ -61,7 +65,7 @@ export default class EventName extends React.Component<EventNameInterface, {}> {
                 />
                 <text
                     className={colorTextLaneName}
-                    y={fontSize - 2}
+                    y={fontSize - 1}
                     x={startPoint + 10}
                     fontSize={fontSize}
                     textAnchor="right"

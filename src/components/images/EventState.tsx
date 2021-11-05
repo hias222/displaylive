@@ -18,13 +18,15 @@ export default class EventState extends React.Component<EventStateInterface, {}>
         let textBoxSize="M " + startPoint + "  0 h 935 v " + boxHeight + "h -935 z"
         let textStart = startPoint /2 + 460
 
+        let viewBox= "0 0 935 " + boxHeight
+
 
         return (<svg
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMax meet"
             id="svg8"
             version="1.1"
-            viewBox="0 0 935 {boxHeight}"
+            viewBox={viewBox}
             height={boxHeight}
             width="935"
         >
