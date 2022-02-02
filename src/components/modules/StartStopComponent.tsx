@@ -44,9 +44,9 @@ export class StartStopComponent extends React.Component<StartStopInterface, Star
         this.clocktimerid = setInterval(this.clocktimer, 100);
     }
 
-    correctTimer(newTime: string) {
-        console.log(newTime + " " + this.format(this.state.displaytime))
-    }
+    //correctTimer(newTime: string) {
+    //    console.log(newTime + " " + this.format(this.state.displaytime))
+    //}
 
     async stopTimer() {
         this.setState({
@@ -95,7 +95,7 @@ export class StartStopComponent extends React.Component<StartStopInterface, Star
 
         if (prevProps.runningTime !== this.props.runningTime) {
 
-            this.correctTimer(this.props.runningTime);
+            //this.correctTimer(this.props.runningTime);
             this.setState({
                 runningTime: this.props.runningTime
             })

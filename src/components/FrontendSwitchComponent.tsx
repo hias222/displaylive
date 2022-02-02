@@ -42,7 +42,6 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
 
         if (prevProps.finishdata !== this.props.finishdata) {
             if (this.props.finishdata) {
-                console.log("switch to finish")
                 this.setState({
                     finishdata: true,
                 })
@@ -50,7 +49,6 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
         }
 
         if (prevProps.EventHeat.heatnr !== this.props.EventHeat.heatnr) {
-            console.log("heat change reset - running " + this.state.runnning)
             this.setState({
                 state: EnumHeatState.BeforeStart,
                 finishdata: false,
@@ -72,9 +70,22 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             if (this.props.startdelayms === -1) {
                 this.setState({
                     runnning: false,
-                    startTime: 0
+                    startTime: 0,
+                    finishdata:false
                 })
-            } else {
+            }
+
+            // start without stop
+            if (this.props.startdelayms === 0) {
+                this.setState({
+                    runnning: false,
+                    startTime: 0,
+                    finishdata: false
+                })
+            }
+
+            if (this.props.startdelayms !== 0 && this.props.startdelayms !== -1) {
+                console.log("start delay " + this.props.startdelayms)
                 this.setState({
                     runnning: true,
                     startTime: Date.now() - this.props.startdelayms
@@ -112,8 +123,8 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
             startdelayms={this.props.startdelayms}
             EventHeat={this.props.EventHeat}
             lanes={this.props.lanes}
-            runningTime={this.props.runningTime} 
-            active={this.state.runnning}/>
+            runningTime={this.props.runningTime}
+            active={this.state.runnning} />
     }
 
     getSwitchData() {
@@ -124,12 +135,16 @@ export class FrontendSwitchComponent extends React.Component<BaseFrontendInterfa
                 return this.getFrontendBeforeStart()
             } case EnumHeatState.Running: {
                 //ggf start delay setzen
+                //console.log("State Running")
                 if (this.state.finishdata) this.setState({ state: EnumHeatState.Finished })
-                if (!this.state.runnning) this.setState({ state: EnumHeatState.Finished })
+                if (!this.state.runnning) this.setState({ state: EnumHeatState.BeforeStart })
                 return this.getFrontendRunningData()
             } case EnumHeatState.Finished: {
                 // reset by stop over properties
-                if (!this.state.finishdata) this.setState({ state: EnumHeatState.BeforeStart })
+                if (!this.state.runnning) this.setState({ state: EnumHeatState.Ended })
+                return this.getFrontendFinishData()
+            } case EnumHeatState.Ended: {
+                if (this.state.runnning) this.setState({ state: EnumHeatState.Running })
                 return this.getFrontendFinishData()
             } default: {
                 if (this.state.runnning) this.setState({ state: EnumHeatState.Running })

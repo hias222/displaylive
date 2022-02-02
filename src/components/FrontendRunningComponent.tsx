@@ -1,5 +1,6 @@
 import { Box } from "@material-ui/core";
 import classnames from "classnames";
+import { timeStamp } from "console";
 import React from "react";
 import { LaneData } from "../interfaces/lanedatainterface";
 import { LapInterface } from "../interfaces/LapData";
@@ -63,16 +64,32 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
     }
 
     componentWillUnmount() {
-        console.log('going sleep lap')
+        this.setState(
+            {
+                lanes: [],
+                lapStoredTime: [],
+                lastRefresh: Date.now(),
+                LaneRefresh: []
+            }
+        )
+        this.lapData = []
+        this.laneRefresh = []
         clearInterval(this.intervalId);
     }
 
     componentDidUpdate(prevProps: SimpleFrontendInterface) {
         // store new data
+        var numberlanes = this.props.lanes.length;
         this.props.lanes.map((lane, index) => {
             if (lane.finishtime !== 'undefined') {
                 if (this.lapStoredTime[index] !== lane.finishtime) {
+                    if (this.lapData.length >= numberlanes) {
+                        this.lapData.shift()
+                    }
                     this.lapData.push(lane)
+                    if (this.laneRefresh.length >= numberlanes) {
+                        this.laneRefresh.shift()
+                    }
                     this.laneRefresh.push(Date.now())
                     var finishtime = lane.finishtime !== undefined ? lane.finishtime : ''
                     this.lapStoredTime[index] = finishtime
@@ -90,6 +107,7 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
 
     laptimer() {
         this.state.LaneRefresh.map((refresh, index) => {
+            //console.log("shift " + index)
             var diff = Date.now() - refresh;
             if (diff > 15000) {
                 this.lapData.shift()
@@ -112,17 +130,17 @@ export class FrontendRunningComponent extends React.Component<SimpleFrontendInte
         return (
             <div className={noSpaceContainerHorizontal}>
                 <Box>
-                <BoxEmpty boxSizeHeight={20}/>
-                {
-                    this.state.lanes.map((lane, index) => (
-                        <div>
-                            <LapLaneSmallComponent
-                                key={index}
-                                lane={lane}
-                                index={index} />
-                        </div>
-                    ))
-                }
+                    <BoxEmpty boxSizeHeight={20} />
+                    {
+                        this.state.lanes.map((lane, index) => (
+                            <div>
+                                <LapLaneSmallComponent
+                                    key={index}
+                                    lane={lane}
+                                    index={index} />
+                            </div>
+                        ))
+                    }
                 </Box>
                 <StartStopComponent
                     startdelayms={this.props.startdelayms}

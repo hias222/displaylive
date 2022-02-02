@@ -21,6 +21,12 @@ export class LapLaneSmallComponent extends React.Component<LaneInterface, LaneSt
 
   }
 
+  /*
+  componentDidUpdate(){
+    console.log(this.props.lane.finishtime + " " + this.props.index)
+  }
+  */
+
   getRaceData() {
     return <div>
       <LapStyledLane

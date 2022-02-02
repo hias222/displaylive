@@ -101,7 +101,15 @@ export default class Lcd extends React.Component<{}, FrontendState> {
         this.setState({
             runningTime: RunningTime
         });
-        console.log("onRunningTimeChange" + RunningTime)
+
+        if (RunningTime === "00:00,0" && this.state.racerunning){
+            this.setState({
+                startdelayms: 0,
+                racerunning: false,
+                laplanedata: false,
+                finishlanedata: false
+            });
+        }
     }
 
     onLaneChange(lane: number, LaneData: any) {
@@ -134,7 +142,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
             if (LaneData.lap === "true") {
                 if (!this.state.finishlanedata) {
                     if (!this.state.laplanedata) {
-                        console.log("service change lap " + this.state.laplanedata + " finish " + this.state.finishlanedata)
+                        //console.log("service change lap " + this.state.laplanedata + " finish " + this.state.finishlanedata)
                         this.setState({
                             laplanedata: true
                         })
@@ -145,7 +153,7 @@ export default class Lcd extends React.Component<{}, FrontendState> {
             if (LaneData.finish !== undefined) {
                 if (LaneData.finish === "true") {
                     if (!this.state.finishlanedata) {
-                        console.log("service change to finish + " + LaneData.finish)
+                       //console.log("service change to finish + " + LaneData.finish)
                         this.setState({
                             finishlanedata: true
                         })
@@ -246,15 +254,21 @@ export default class Lcd extends React.Component<{}, FrontendState> {
     };
 
     async clearResults() {
-        console.log("+++++ clear Results")
+        console.log("+++++ clearResults()")
         this.resultData = []
         this.state.lanes.map((lane, index) => {
             var lanedata: LaneData = {
                 lane: lane.lane,
                 swimmer: lane.swimmer,
-                place: '0'
+                place: '0',
+                finishtime: '',
+                lap: ''
             }
             this.resultData.push(lanedata)
+
+            this.setState({
+                lanes: this.resultData
+            })
             return null
         })
 

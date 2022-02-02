@@ -7,13 +7,14 @@ import classnames from "classnames";
 import BoxEmpty from "./images/BoxEmpty";
 export class FrontendStartComponent extends React.Component<SimpleFrontendInterface, {}> {
 
+    /*
     componentDidUpdate(prevProps: SimpleFrontendInterface) {
 
         if (prevProps.lanes !== this.props.lanes) {
             console.log("update BaseFrontendStaticComponent lanes")
         }
     }
-
+*/
 
     /*
     {

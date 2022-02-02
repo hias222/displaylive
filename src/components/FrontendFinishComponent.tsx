@@ -72,8 +72,6 @@ export class FrontendFinishComponent extends React.Component<FinishFrontendInter
     }
 
     displayAll() {
-        console.log("stopped")
-
         this.sortLanesToPlace()
             .then(() => {
                 Promise.all(
@@ -86,7 +84,6 @@ export class FrontendFinishComponent extends React.Component<FinishFrontendInter
                         return null
                     }))
             }).then(() => {
-                console.log('finished sort and empty lanes')
                 this.setState(
                     {
                         lastRefresh: Date.now(),

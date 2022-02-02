@@ -4,7 +4,8 @@ export enum EnumHeatState {
   BeforeStart,
   Running,
   LapTimes,
-  Finished
+  Finished,
+  Ended
 }
 
 
